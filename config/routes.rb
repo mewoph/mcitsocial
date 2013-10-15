@@ -50,9 +50,11 @@ Mcitsocial::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 
-  devise_for :users
+  devise_for :users do
+    get '/' => "devise/sessions#new"
+  end
 
-  root :to => 'users#index'
+  root :to => "devise/sessions#new"
   resources :users
 
   # See how all your routes lay out with "rake routes"

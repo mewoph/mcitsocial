@@ -8,6 +8,8 @@ gem 'rails', '3.2.13'
 gem 'sqlite3'
 gem 'devise'
 gem "mailcatcher", "~> 0.5.12"
+gem "paperclip", "~> 3.0"
+gem "twitter-bootstrap-rails", "~> 2.2.8"
 
 
 # Gems used only for assets and not required
