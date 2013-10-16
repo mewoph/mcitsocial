@@ -1,10 +1,90 @@
+.navbar {
+	opacity: 0.7;
+}
+
 .landing {
 
 	text-align: center;
-	margin-top: 15%;	
+	margin-top: 10%;
 	color:white;
-	
+	font-family: 'Roboto', sans-serif;
 
+	.container {
+		background: rgba(0,0,0,0.5);
+		width: auto;
+		padding: 3em;
+		display: inline-block;
+		text-align: center;
+	}
+
+	form {
+		margin: 2em;
+	}
+
+	h1 {
+		font-family: 'Lobster', cursive;
+		color: white;
+		font-size: 5.5em;
+		margin-bottom: 0.5em;
+	}
+
+	h2 {
+		color: white;
+		margin-top: 1em;
+	}
+
+	label {
+		font-size: 1em;
+		text-transform: uppercase;
+		margin-bottom: 0.5em;
+	}
+
+	.button {
+		font-family: 'Roboto', sans-serif;
+		margin-top: 1em;
+		width: 100%;
+	    border: none;
+	    display: block;
+	    background: rgba(26,188,156,1);
+	    font-size: 1.5em;
+	    padding: 0.5em 1em 0.5em 1em;
+	    color: #ffffff;
+	    text-align: center;
+	    text-shadow: 0 1px rgba(0, 0, 0, 0.4);
+	    border-radius: 5px;
+	    box-shadow: 0px 5px 1px #0F7561;
+	  	-webkit-transition: all 0.15s linear;
+		  -moz-transition: all 0.15s linear;
+		  transition: all 0.15s linear;
+	}
+
+	.button:hover, .button:active {
+	  background: rgba(22,160,133,1);
+	  box-shadow: 0px 5px 1px #0F7561;
+	  text-decoration: none;
+	}
+
+	form {
+    	margin: 1em;
+	}
+
+	form input[type=text],
+	form input[type=password], 
+	form input[type=email] {
+		text-align: center;
+		font-weight: 400;
+	    font-size: 1.5em;
+	    letter-spacing: 1px;
+	    width: inherit;
+	    height: 40px;
+	    line-height: 40px;
+	    margin-top: 0.5em;
+	    background: rgba(255,255,255,0.2);
+	    border: none;
+	    outline: none;
+	    border-radius: 0px;
+	    color: white
+	}
 }
 
 .signup {
