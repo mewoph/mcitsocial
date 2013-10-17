@@ -11,6 +11,13 @@ gem "paperclip", "~> 3.0"
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 
 
+group :test do
+	gem "cucumber-rails",     ">= 1.3.0", :require => false
+	gem "capybara",           ">= 1.1.3"
+  	gem "capybara-webkit"
+  	gem "factory_girl_rails", ">= 4.1.0"
+end
+
 group :development do
   gem 'sqlite3'
 end
