@@ -6,8 +6,8 @@ gem 'rails', '3.2.13'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'thin'
 gem 'devise'
-gem "mailcatcher", "~> 0.5.12"
 gem "paperclip", "~> 3.0"
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'annotate', ">=2.5.0"
@@ -24,6 +24,7 @@ end
 
 group :development do
   gem 'sqlite3'
+  gem "mailcatcher", "~> 0.5.12"
 end
 
 # Gems used only for assets and not required
