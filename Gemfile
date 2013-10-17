@@ -9,7 +9,7 @@ gem 'devise'
 gem "mailcatcher", "~> 0.5.12"
 gem "paperclip", "~> 3.0"
 gem "twitter-bootstrap-rails", "~> 2.2.8"
-
+gem 'annotate', ">=2.5.0"
 
 group :test do
 	gem "cucumber-rails",     ">= 1.3.0", :require => false
