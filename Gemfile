@@ -6,13 +6,13 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'devise'
-gem "mailcatcher", "~> 0.5.12"
 gem "paperclip", "~> 3.0"
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 
 
 group :development do
   gem 'sqlite3'
+  gem "mailcatcher", "~> 0.5.12"
 end
 
 # Gems used only for assets and not required
