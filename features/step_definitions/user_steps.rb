@@ -21,21 +21,21 @@ end
 
 #When
 When /^I sign in$/ do
-	visit new_user_session_path
+	visit root_path
 	fill_in "user_email", :with => @user[:email]
 	fill_in "user_password", :with => @user[:password]
 	click_button "buttonid"
 end
 
 When /^I sign in with the incorrect password$/ do
-	visit new_user_session_path
+	visit root_path
 	fill_in "user_email", :with => @user[:email]
 	fill_in "user_password", :with => "incorrect"
 	click_button "buttonid"
 end
 
 When /^I sign in with an invalid email$/ do
-	visit new_user_session_path
+	visit root_path
 	fill_in "user_email", :with => "invalidemail"
 	fill_in "user_password", :with => @user[:password]
 	click_button "buttonid"
