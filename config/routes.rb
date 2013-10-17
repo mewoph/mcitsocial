@@ -50,7 +50,7 @@ Mcitsocial::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
 
-  devise_for :users do
+  devise_scope :users do
     get '/' => "devise/sessions#new"
   end
 
