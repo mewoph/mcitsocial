@@ -1,0 +1,22 @@
+<div class="landing">
+
+	<span class="container">
+
+		<h1>mcit social</h1>
+
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+		  <div>
+		  <%= f.email_field :email, :autofocus => true, :placeholder => 'EMAIL' %></div>
+
+		  <div>
+		  <%= f.password_field :password, :placeholder => 'PASSWORD' %></div>
+
+
+		  <div><%= f.submit "SIGN IN", :class => 'button' %></div>
+		<% end %>
+
+	</span>
+
+</div>
+
+<%= javascript_include_tag "landing_scripts" %>
