@@ -17,11 +17,11 @@ Scenario: User Signs In With Valid Credentials
 Scenario: User Signs in With Incorrect Password
 	Given I am a valid user
 	When I sign in with the incorrect password
-	Then I should see an "password" error message
+	Then I should see an error message
 	And I should not have access to the private content
 
 Scenario: User Signs In With Invalid Email
 	Given I am a valid user
 	When I sign in with an invalid email
-	Then I should see an "email" error message
+	Then I should see an error message
 	And I should not have access to the private content

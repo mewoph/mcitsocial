@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.0.0'
 gem 'rails', '3.2.13'
 
 # Bundle edge Rails instead:
@@ -12,7 +13,10 @@ gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'annotate', ">=2.5.0"
 
 group :test do
-	gem "cucumber-rails",     ">= 1.3.0", :require => false
+	gem "email_spec"
+	gem "rspec-rails",        ">= 2.11.4"
+	gem "database_cleaner",   ">= 0.9.1"
+	gem "cucumber-rails",     ">= 1.3.0"
 	gem "capybara",           ">= 1.1.3"
   	gem "capybara-webkit"
   	gem "factory_girl_rails", ">= 4.1.0"
