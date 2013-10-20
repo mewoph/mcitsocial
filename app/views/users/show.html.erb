@@ -1,3 +1,42 @@
-<%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %>
+<div class="main profile-show">
+    <div class="box">
+        <div class="row-fluid">
+            <div class="column span4">
+
+                <div class="hero-unit profile-leftbox">
+                  <div class="profile-picture"><%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %></div>
+                  <h2>Mew Ophaswongse</h2>
+                  <h4>Current Student</h4>
+                  <h4>Matriculated in 2012</h4>
+                  <h4>Expected Graduation in Dec 2013</h4>
+                  <hr/>
+                  <p>This is my bio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod...</p>
+                  <hr/>
+                  <div class="button email-user">EMAIL MEW</div>
+                  <div class="button edit-user">EDIT PROFILE</div>
+                </div>
+            </div>
+            <div class="column span8">
+                <div class="padding">
+					<div class="hero-unit info-box">
+                        <h2>Languages & Interests</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+                    <div class="hero-unit info-box">
+                        <h2>Courses</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+                    <div class="hero-unit info-box">
+                        <h2>Work Experience</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+                        </p>
+                    </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%= javascript_include_tag "landing_scripts" %>
