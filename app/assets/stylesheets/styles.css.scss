@@ -209,6 +209,64 @@ a:hover {
 			width: 100%;
 		}
 	}
+
+	form {
+		padding: 1em;
+		font-size: 1.25em;
+	}
+
+	form input[type=file] {
+		margin-bottom: 1em;
+	}
+
+	form input[type=text],
+	form input[type=password], 
+	form input[type=email], 
+	textarea {
+		text-align: left;
+		font-weight: 400;
+	    letter-spacing: 1px;
+	    width: 100%;
+	    height: 30px;
+	    line-height: 40px;
+	    background: rgba(0,0,0,0.2);
+	    border: none;
+	    outline: none;
+	    border-radius: 0px;
+	    color: black;
+	    border-bottom: 1px solid;
+	    border-color: black;
+	}
+
+	textarea {
+		height: 200px;
+		resize: none;
+		border-bottom: 0;
+	}
+
+	.info-box {
+		textarea {
+			height: 100px;
+			background: rgba(255,255,255,0.1);
+			color: white;
+			font-size: 1em;
+		}
+	}
+
+	form label {
+		font-family: $roboto;
+		text-transform: uppercase;
+		margin-bottom: 0;
+	}
+
+	.radiolabel {
+		text-transform: none;
+	}
+
+	.buttongroups {
+		padding-top: 1em;
+	}
+
 	
 }
 
