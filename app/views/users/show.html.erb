@@ -5,7 +5,7 @@
 
                 <div class="hero-unit profile-leftbox">
                   <div class="profile-picture"><%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %></div>
-                  <h2>Mew Ophaswongse</h2>
+                  <h2 class="name">Mew Ophaswongse</h2>
                   <h4>Current Student</h4>
                   <h4>Matriculated in 2012</h4>
                   <h4>Expected Graduation in Dec 2013</h4>
@@ -13,7 +13,8 @@
                   <p>This is my bio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod...</p>
                   <hr/>
                   <div class="button email-user">EMAIL MEW</div>
-                  <div class="button edit-user">EDIT PROFILE</div>
+                  
+                  <%= link_to '<div class="button edit-user">EDIT PROFILE</div>'.html_safe, edit_user_path %>
                 </div>
             </div>
             <div class="column span8">

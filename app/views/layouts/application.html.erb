@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Mcitsocial</title>
+  <title>MCIT Social</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700,900,500' rel='stylesheet' type='text/css'>
-
-
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -16,9 +14,11 @@
 	  <div class="navbar-inner">
 	    <a class="brand" href="#">mcit social</a>
 	    <ul class="nav">
-	      <li class="active"><a href="#">MCITSocial</a></li>
-	      <li><a href="#">Link</a></li>
-	      <li><a href="#">Link</a></li>
+	      <li class=<%= is_active('/')%>><a href="#">MCITSocial</a></li>
+	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path %></li>
+	      <% if not current_user.nil? %>
+	      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	      <% end %>
 	    </ul>
 	  </div>
 	</div>

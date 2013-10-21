@@ -1,4 +1,5 @@
 $midnight-blue: #2c3e50;
+$pumpkin: #d35400;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
 
@@ -6,6 +7,9 @@ body {
 	font-family: $roboto;
 }
 
+a:hover {
+	text-decoration: none;
+}
 
 .navbar {
 	opacity: 0.7;
@@ -30,8 +34,8 @@ body {
     border-radius: 5px;
     box-shadow: 0px 5px 1px #0F7561;
   	-webkit-transition: all 0.15s linear;
-	  -moz-transition: all 0.15s linear;
-	  transition: all 0.15s linear;
+	-moz-transition: all 0.15s linear;
+	transition: all 0.15s linear;
 }
 
 .button:hover, .button:active {
@@ -112,7 +116,7 @@ body {
 	}
 }
 
-.profile-show {
+.profile-show, .profile-edit {
 	
 	.hero-unit {
 		border-radius: 0px;
@@ -120,7 +124,7 @@ body {
 
 	.profile-leftbox {
 		background-color: black;
-		background: rgba(255,255,255, 0.6);
+		background: rgba(255,255,255, 0.7);
 		border: 1px solid;
 		border-color: white;
 		padding: 0.75em;
@@ -179,6 +183,59 @@ body {
 
 }
 
+.profile-edit {
+
+	.profile-leftbox {
+
+		input[type=submit] {
+			width: 100%;
+		}
+	}
+	
+}
+
+.user-index {
+
+	.profile-thumb {
+		padding: 1em;
+		background-color: black;
+		background: rgba(0, 0, 0, 0.7);
+		border-radius: 0px;
+		color: white;
+		margin-bottom: 1em;
+		margin-left: 0;
+		text-align: center;
+	}
+
+	.span3:nth-child(5n) {
+		margin-left: 0;
+	}
+
+	.show-email {
+		margin: 1em;
+		margin-top: 0.5em;
+	}
+
+	.button {
+		font-size: 1em;
+		width: inherit;
+		background: none;
+		border: 1px solid;
+		border-color: white;
+		box-shadow: none;
+		opacity: 0.7;
+	}
+
+	.button:hover, .button:active {
+		background: $midnight-blue;
+		opacity: 1;
+	}
+
+	img {
+		margin-bottom: 1em;
+	}
+}
+
 /* Classes that are dynamically added */
 
 /* Background Image Classes */
@@ -210,3 +267,4 @@ body {
 	  background-size: cover;
 
 }
+
