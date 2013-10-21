@@ -4,16 +4,63 @@
             <div class="column span4">
                 <div class="hero-unit profile-leftbox">
                   <div class="profile-picture"><%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %></div>
+                   
                    <%= form_for @user, :url => user_path(@user), :html => { :multipart => true } do |form| %>
-		  			<%= form.file_field :profile_picture %>
-		  			
-                  <h2 class="name">Mew Ophaswongse</h2>
-                  <h4>Current Student</h4>
-                  <h4>Matriculated in 2012</h4>
-                  <h4>Expected Graduation in Dec 2013</h4>
+		  			       
+                   <%= form.label :profile_picture %>
+                   <%= form.file_field :profile_picture %>
+		  			       
+                   <%= form.label :first_name %>
+                   <%= form.text_field :first_name %>
+
+                   <%= form.label :last_name %>
+                   <%= form.text_field :last_name %>
+
+                   <%= form.label :email %>
+                   <%= form.text_field :email %>
+
+                   <%= form.label :hometown %>
+                   <%= form.text_field :hometown %>
+
+                   <div class="buttongroups">
+                      <%= form.label "Current Status" %>
+                     <label class="radiolabel"><%= radio_button_tag :is_current_student, "1"%> Current Student</label>
+                     <label class="radiolabel"><%= radio_button_tag :is_current_student, "0"%> Alum</label>
+                   </div>
+
+                   <div class="buttongroups">
+                    <%= form.label :matriculation_date %>
+                    <select name="Date">
+                      <option>1999</option>
+                      <option>2001</option>
+                      <option>2002</option>
+                      <option>2003</option>
+                    </select>
+                   </div>
+
+                    <div class="buttongroups">
+                    <%= form.label :graduation_date %>
+                    <select name="Date">
+                      <option>1999</option>
+                      <option>2001</option>
+                      <option>2002</option>
+                      <option>2003</option>
+                    </select>
+                   </div>
+
                   <hr/>
-                  <p>This is my bio. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod...</p>
+
+                  <%= form.label :undergrad_major %>
+                  <%= form.text_field :undergrad_major %>
+
+                  <%= form.label :undergrad_school %>
+                  <%= form.text_field :undergrad_school %>
+
                   <hr/>
+
+                  <%= form.label :bio %>
+                  <%= form.text_area :bio %>
+
 					<input type="submit" name="commit" value="SAVE PROFILE" class="button edit-user" />
                 </div>
             </div>
@@ -21,18 +68,15 @@
                 <div class="padding">
 					<div class="hero-unit info-box">
                         <h2>Languages & Interests</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                        </p>
+                        <textarea></textarea>
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Courses</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                        </p>
+                        <textarea></textarea>
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Work Experience</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-                        </p>
+                        <%= form.text_area :previous_work %>
                     </div>
 	            </div><!--padding-->
             </div><!--colum span8-->
