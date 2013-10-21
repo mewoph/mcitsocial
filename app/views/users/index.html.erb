@@ -3,7 +3,11 @@
 	<% @users.each do |user| %>
 		<div class="span3">
 			<div class="profile-thumb">
-				<%= image_tag "http://placehold.it/300x300" %>
+				<% if user.profile_picture.present? %>
+					<div class="picture-thumb" style="background-image:url(<%= user.profile_picture.url %>)"></div>
+				<% else %>
+					<div class="picture-thumb" style='background-image:url("http://placehold.it/300x300")'></div>
+				<% end %>
 				<div class="show-email"><%= user.email %></div>
 				<%= link_to '<div class="button">Show Profile</div>'.html_safe, user %>
 			</div>
