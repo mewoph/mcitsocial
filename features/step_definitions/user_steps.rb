@@ -7,19 +7,47 @@ def create_user
 		:password_confirmation => "something"}
 end
 
+def create_valid_user
+	@user_created = FactoryGirl.create(:user, email: @user[:email], password: @user[:password],
+  								password_confirmation: @user[:password_confirmation], confirmed_at: "2013-10-10 10:15:00" )
+end
+
 #Given
+Given /^the following users exist:$/ do |table|
+  table.hashes.each do |attributes|
+    FactoryGirl.create(:user, first_name: attributes["First Name"], last_name: attributes["Last Name"], bio: attributes["Bio"], 
+    	is_current_student: attributes["Is Current Student"], graduation_date: attributes["Graduation Date"],
+    	 matriculation_date: attributes["Matriculation Date"], previous_work: attributes["Previous Work"],
+    	 undergrad_school: attributes["Undergrad Major"], undergrad_major: attributes["Undergrad School"],
+    	 password_confirmation: "please", password: "please", confirmed_at: "2013-10-10 10:15:00")
+  end 
+end
+
 Given /^I am not a valid user$/ do
 	create_user
 end
 
 Given /^I am a valid user$/ do
 	create_user
-  @user_created = FactoryGirl.create(:user, email: @user[:email], password: @user[:password],
-  								password_confirmation: @user[:password_confirmation], confirmed_at: "2013-10-10 10:15:00" )
+	create_valid_user
+end
+
+Given /^I am logged in$/ do
+	create_user
+	create_valid_user
+	visit root_path
+	fill_in "user_email", :with => @user[:email]
+	fill_in "user_password", :with => @user[:password]
+	click_button "buttonid"
 end
 
 
 #When
+When /^I edit my profile information$/ do
+	visit edit_user_path(@user_created.id)
+	#TODO: Add edit information 
+end
+
 When /^I sign in$/ do
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
