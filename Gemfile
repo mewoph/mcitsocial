@@ -18,8 +18,8 @@ group :test do
 	gem "database_cleaner",   ">= 0.9.1"
 	gem "cucumber-rails",     ">= 1.3.0"
 	gem "capybara",           ">= 1.1.3"
-  	gem "capybara-webkit"
-  	gem "factory_girl_rails", ">= 4.1.0"
+  # gem "capybara-webkit"
+  gem "factory_girl_rails", ">= 4.1.0"
 end
 
 group :development do

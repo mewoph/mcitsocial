@@ -1,6 +1,16 @@
-Here are all the users!
-
-	<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+<div class="user-index">
+	<div class="container">
+	<% @users.each do |user| %>
+		<div class="span3">
+			<div class="profile-thumb">
+				<%= image_tag "http://placehold.it/300x300" %>
+				<div class="show-email"><%= user.email %></div>
+				<%= link_to '<div class="button">Show Profile</div>'.html_safe, user %>
+			</div>
+		</div>
+	<% end %>
+</div>
+</div>
 
 
 <%= javascript_include_tag "landing_scripts" %>
