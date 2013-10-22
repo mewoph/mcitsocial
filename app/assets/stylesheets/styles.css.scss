@@ -26,7 +26,7 @@ a:hover {
     border: none;
     display: block;
     background: rgba(26,188,156,1);
-    font-size: 1.5em;
+    font-size: 1em;
     padding: 0.5em 1em 0.5em 1em;
     color: #ffffff;
     text-align: center;
@@ -199,6 +199,29 @@ a:hover {
 
 	}
 
+	.tag {
+	  border-radius: 4px;
+	  background-color: #1abc9c;
+	  color: #ffffff;
+	  cursor: pointer;
+	  display: inline-block;
+	  margin-right: 5px;
+	  margin-bottom: 5px;
+	  line-height: 15px;
+	  padding: 1em;
+	  padding-top: 0.5em;
+	  padding-bottom: 0.5em;
+	  position: relative;
+	  vertical-align: middle;
+	  -webkit-transition: 0.25s linear;
+	  transition: 0.25s linear;
+	  text-transform: uppercase;
+	}
+
+	.tag:hover {
+	  background: #2980b9;
+	}
+
 }
 
 .profile-edit {
@@ -212,7 +235,6 @@ a:hover {
 
 	form {
 		padding: 1em;
-		font-size: 1.25em;
 	}
 
 	form input[type=file] {
@@ -265,6 +287,12 @@ a:hover {
 
 	.buttongroups {
 		padding-top: 1em;
+	}
+
+	.button {
+		font-size: 1em;
+		font-weight: 300;
+		padding: 0.5em 1em 0.5em 1em;
 	}
 
 	

@@ -23,9 +23,9 @@
                    <%= form.text_field :hometown %>
 
                    <div class="buttongroups">
-                      <%= form.label "Current Status" %>
-                     <label class="radiolabel"><%= radio_button_tag :is_current_student, "1"%> Current Student</label>
-                     <label class="radiolabel"><%= radio_button_tag :is_current_student, "0"%> Alum</label>
+                    <%= form.label "Current Status" %>
+                     <label class="radiolabel"><%= form.radio_button :is_current_student, "true" %> Current Student</label>
+                     <label class="radiolabel"><%= form.radio_button :is_current_student, "false" %> Alum</label>
                    </div>
 
                    <div class="buttongroups">
@@ -61,7 +61,7 @@
                   <%= form.label :bio %>
                   <%= form.text_area :bio %>
 
-					<input type="submit" name="commit" value="SAVE PROFILE" class="button edit-user" />
+					<input type="submit" name="commit" value="Save Profile" class="button edit-user" />
                 </div>
             </div>
             <div class="column span8">
