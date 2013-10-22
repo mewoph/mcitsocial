@@ -1,3 +1,4 @@
+<%= stylesheet_link_tag "datepicker", :media => "all" %>
 <div class="main profile-edit">
     <div class="box">
         <div class="row-fluid">
@@ -23,30 +24,25 @@
                    <%= form.text_field :hometown %>
 
                    <div class="buttongroups">
-                    <%= form.label "Current Status" %>
-                     <label class="radiolabel"><%= form.radio_button :is_current_student, "true" %> Current Student</label>
-                     <label class="radiolabel"><%= form.radio_button :is_current_student, "false" %> Alum</label>
+                      <%= form.label "Current Status" %>
+                     <label class="radiolabel"><%= form.radio_button :is_current_student, "true"%> Current Student</label>
+                     <label class="radiolabel"><%= form.radio_button :is_current_student, "false"%> Alum</label>
                    </div>
 
                    <div class="buttongroups">
                     <%= form.label :matriculation_date %>
-                    <select name="Date">
-                      <option>1999</option>
-                      <option>2001</option>
-                      <option>2002</option>
-                      <option>2003</option>
-                    </select>
+                    <%= form.text_field :matriculation_date, :class => "datepicker"%>
+
+                    <!-- <input class="datepicker" data-date-format="mm/yyyy" id="user_matriculation_date" name="user[matriculation_date]"> -->
                    </div>
 
-                    <div class="buttongroups">
+
+                   <div class="buttongroups">
                     <%= form.label :graduation_date %>
-                    <select name="Date">
-                      <option>1999</option>
-                      <option>2001</option>
-                      <option>2002</option>
-                      <option>2003</option>
-                    </select>
+                    <%= form.text_field :graduation_date, :class => "datepicker"%>
+                    <!-- <input class="datepicker" data-date-format="mm/yyyy" id="user_graduation_date" name="user[graduation_date]"> -->
                    </div>
+
 
                   <hr/>
 
@@ -68,7 +64,7 @@
                 <div class="padding">
 					          <div class="hero-unit info-box">
                         <h2>Languages</h2>
-                        <textarea></textarea>
+                        <%= form.text_area :languages, :value => "Languages!" %>
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Areas of Interests</h2>
@@ -91,3 +87,13 @@
 </div>
 
 <%= javascript_include_tag "landing_scripts" %>
+<%= javascript_include_tag "bootstrap-datepicker" %>
+
+<script>
+  $(".datepicker").datepicker({
+    format:"mm-yyyy",
+    viewMode:"months",
+    minViewMode:"months"
+  });
+
+</script>

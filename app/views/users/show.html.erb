@@ -10,8 +10,8 @@
                   <% else %>
                     <h4>Alum</h4>
                   <% end %>
-                  <h4>Matriculated in <%= @user.matriculation_date_in_program %></h4>
-                  <h4>Graduation in <%= @user.graduation_date_in_program %></h4>
+                  <h4>Matriculated in <%= @user.matriculation_date1 %></h4>
+                  <h4>Graduation in <%= @user.graduation_date2 %></h4>
                   <h4>Hometown: <%= @user.full_hometown %></h4>
                   <p><%= @user.email %></p>
                   <hr/>
@@ -35,7 +35,6 @@
                           <% languages.each do |l| %>
                             <div class="tag"><%= l %></div>
                           <% end %>
-                        </p>
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Areas of Interest</h2>
@@ -44,7 +43,6 @@
                           <% interests.each do |i| %>
                             <div class="tag"><%= i %></div>
                           <% end %>
-                        </p>
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Courses</h2>
