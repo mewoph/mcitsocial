@@ -45,6 +45,14 @@ class User < ActiveRecord::Base
   has_attached_file :profile_picture, :styles => { :square => "400x400>", :thumb => "100x100>" }
   devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable, :timeoutable
 
+  #Connecting Course Model To User Model
+  has_many :enrollments
+  has_many :courses, :through => :enrollments, :class_name => 'Course', :dependent => :destroy
+
+  accepts_nested_attributes_for :courses, :allow_destroy => true
+
+
+
   #TODO Test this???
   # Gets the full name of of the user
   def full_name

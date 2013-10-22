@@ -13,4 +13,9 @@
 
 class Course < ActiveRecord::Base
   attr_accessible :registrar_name
+
+  #Connecting User Model To Course Model
+  has_many :enrollments
+  has_many :users, :through => :enrollments, :dependent => :destroy
+
 end
