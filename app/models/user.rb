@@ -34,7 +34,7 @@
 
 class User < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :email, :password, :password_confirmation, :profile_picture, :first_name, :last_name, :matriculation_date, :graduation_date, :bio, :undergrad_major, :undergrad_school, :hometown, :previous_work
+  attr_accessible :email, :password, :password_confirmation, :profile_picture, :first_name, :last_name, :matriculation_date, :graduation_date, :bio, :undergrad_major, :undergrad_school, :hometown, :previous_work, :areas_of_interest, :languages, :is_current_student
   has_attached_file :profile_picture, :styles => { :square => "400x400>", :thumb => "100x100>" }
   devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable, :timeoutable
 
@@ -53,15 +53,15 @@ class User < ActiveRecord::Base
   end
 
   # Returns the marticulation date in the format "Month Year", ie "September 2013"
-  def matriculation_date_in_program
+  def matriculation_date1
   	if !matriculation_date.blank?
-  		marticulation_date.strftime("%B %Y")
+  		matriculation_date.strftime("%B %Y")
   	else
   		"Unknown"
   	end
   end
 
-  def graduation_date_in_program
+  def graduation_date2
   	if !graduation_date.blank?
   		graduation_date.strftime("%B %Y")
   	else
@@ -107,5 +107,21 @@ class User < ActiveRecord::Base
   	else
   		hometown
   	end
+  end
+
+  def full_languages
+    if languages.blank?
+      ""
+    else
+      languages
+    end
+  end
+
+  def full_interests
+    if areas_of_interest.blank?
+      ""
+    else
+      areas_of_interest
+    end
   end
 end
