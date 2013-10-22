@@ -31,7 +31,7 @@
 					           <div class="hero-unit info-box">
                         <h2>Languages</h2>
                         <p>
-                          <% languages = "java,ruby,python,c".split(',') %>
+                          <% languages = @user.languages.split(',') %>
                           <% languages.each do |l| %>
                             <div class="tag"><%= l %></div>
                           <% end %>
@@ -39,7 +39,7 @@
                     <div class="hero-unit info-box">
                         <h2>Areas of Interest</h2>
                         <p>
-                          <% interests = "web dev, pretty things".split(',') %>
+                          <% interests = @user.areas_of_interest.split(',') %>
                           <% interests.each do |i| %>
                             <div class="tag"><%= i %></div>
                           <% end %>
