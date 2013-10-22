@@ -25,6 +25,21 @@ Feature: User Show Page
 			And I view a profile show page
 			Then I should not be able to access a profile show page
 
+		Scenario: A registered user has the edit button on own profile page
+			Given I am signed in as "Abeer"
+			When I view my profile page
+			Then I should see the edit profile button
+
+		Scenario: A registered user does not have the edit button on another users profile page
+			Given I am signed in as "Abeer"
+			When I view another users profile page
+			Then I should not see the edit profile button
+
+		Scenario: A registered user should be able to click own link on user index page and see own profile
+			Given I am signed in as "Abeer"
+			When I view user index page
+			Then Then I should see my profile information
+
 
 
 

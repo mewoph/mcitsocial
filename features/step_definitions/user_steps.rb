@@ -155,3 +155,7 @@ Then /^I should not be able to access a profile show page$/ do
 	#TODO add line for languages
 	page.should have_content "You need to sign in or sign up before continuing."
 end
+
+Then /^I should see the edit profile button$/ do
+	page.should have_button "button edit-user"
+end
