@@ -37,15 +37,18 @@
 #
 
 class User < ActiveRecord::Base
+  #Connecting Course Model To User Model
+
   # attr_accessible :title, :body
   attr_accessible :email, :password, :password_confirmation,
    :profile_picture, :first_name, :last_name, 
    :matriculation_date, :graduation_date, :bio, 
-   :undergrad_major, :undergrad_school, :hometown, :previous_work
+   :undergrad_major, :undergrad_school, :hometown, :previous_work,
+   :course, :courses_attributes
   has_attached_file :profile_picture, :styles => { :square => "400x400>", :thumb => "100x100>" }
   devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable, :timeoutable
 
-  #Connecting Course Model To User Model
+
   has_many :enrollments
   has_many :courses, :through => :enrollments, :class_name => 'Course', :dependent => :destroy
 

@@ -76,6 +76,10 @@
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Courses</h2>
+                        <%= form.fields_for :courses do |course_form|%>
+                         <%= course_form.collection_select(:course_id, Course.all, :id, :registrar_name, {}, {multiple: true, class: "chzn_select"})%>
+                        <% end %>
+                
                         <textarea></textarea>
                     </div>
                     <div class="hero-unit info-box">

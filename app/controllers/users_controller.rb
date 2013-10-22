@@ -15,12 +15,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.find(params[:id])
+		@user = User.new(params[:user])
 		@user.save
 	end
 
 	def edit
 		@user = User.find(params[:id])
+		@user.courses.build
 	end
 
 	def update

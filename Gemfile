@@ -11,6 +11,7 @@ gem 'devise'
 gem "paperclip", "~> 3.0"
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'annotate', ">=2.5.0"
+gem 'chosen-rails'
 
 group :test do
 	gem "email_spec"

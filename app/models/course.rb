@@ -12,10 +12,15 @@
 #
 
 class Course < ActiveRecord::Base
-  attr_accessible :registrar_name
+  attr_accessible :registrar_name, :user_id
 
   #Connecting User Model To Course Model
   has_many :enrollments
   has_many :users, :through => :enrollments, :dependent => :destroy
+
+
+  def to_s
+  	registrar_name
+  end
 
 end
