@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
 	protected 
 	def make_date(date_string)
-		if !date_string.nil?
+		if !date_string.blank?
 			begin
 				formatted_date = Date.strptime(date_string)
 			rescue
