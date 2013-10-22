@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 		params[:user][:matriculation_date] = make_date(params[:user][:matriculation_date])
 		params[:user][:graduation_date] = make_date(params[:user][:graduation_date])
 		@user.update_attributes(params[:user])
+
 		flash[:notice] = "Profile updated"
 		redirect_to @user
 	end

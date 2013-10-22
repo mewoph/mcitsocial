@@ -30,13 +30,19 @@
                 <div class="padding">
 					           <div class="hero-unit info-box">
                         <h2>Languages</h2>
-                        <p><%= @user.full_languages %>
-                        </p>
+                        <p>
+                          <% languages = "java,ruby,python,c".split(',') %>
+                          <% languages.each do |l| %>
+                            <div class="tag"><%= l %></div>
+                          <% end %>
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Areas of Interest</h2>
-                        <p><%= @user.full_interests %>
-                        </p>
+                        <p>
+                          <% interests = "web dev, pretty things".split(',') %>
+                          <% interests.each do |i| %>
+                            <div class="tag"><%= i %></div>
+                          <% end %>
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Courses</h2>
