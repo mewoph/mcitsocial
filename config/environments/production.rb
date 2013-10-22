@@ -61,12 +61,23 @@ Mcitsocial::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
-config.action_mailer.delivery_method = :smtp
-config.action_mailer.smtp_settings = {
-  :address => "127.0.0.1",
-  :port    => 25,
-  :domain  => 'yourdomain.com'
+  # config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
+  config.action_mailer.delivery_method = :smtp
+#   config.action_mailer.smtp_settings = {
+#   :address => "127.0.0.1",
+#   :port    => 25,
+#   :domain  => 'yourdomain.com'
+# }
+
+  config.action_mailer.default_url_options = { :host => 'fast-cove-4779.herokuapp.com/' }
+ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true
 }
 
   # Log the query plan for queries taking more than this (works
