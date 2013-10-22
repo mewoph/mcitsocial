@@ -13,3 +13,4 @@ courses = [["CIT 591"], ["CIT 592"], ["CIT 593"],
 courses.each do |registrar_name|
   Course.create(registrar_name: registrar_name);
 end
+
