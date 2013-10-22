@@ -10,7 +10,7 @@ FactoryGirl.define do
   	undergrad_school "University of Awesome"
   	hometown "Pittsburgh"
 		sequence(:email) {|n| "email#{n}@factory.com" }
-		password 'please'
-    password_confirmation 'please'
+		password 'something'
+    password_confirmation 'something'
   end
 end
