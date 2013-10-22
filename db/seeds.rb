@@ -5,3 +5,11 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+puts "CREATING COURSES"
+courses = [["CIT 591"], ["CIT 592"], ["CIT 593"],
+ ["CIT 594"], ["CIT 595"], ["CIT 596"]]
+
+courses.each do |registrar_name|
+  Course.create(registrar_name: registrar_name);
+end
