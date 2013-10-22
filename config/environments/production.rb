@@ -61,7 +61,6 @@ Mcitsocial::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-<<<<<<< HEAD
   # config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
   config.action_mailer.delivery_method = :smtp
 #   config.action_mailer.smtp_settings = {
@@ -79,14 +78,6 @@ ActionMailer::Base.smtp_settings = {
   :password       => ENV['SENDGRID_PASSWORD'],
   :domain         => 'heroku.com',
   :enable_starttls_auto => true
-=======
-  config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :address => "127.0.0.1",
-  :port    => 25,
-  :domain  => 'yourdomain.com'
->>>>>>> profile-view
 }
 
   # Add the fonts path
