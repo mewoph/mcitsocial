@@ -19,8 +19,9 @@ Given /^the following users exist:$/ do |table|
     	is_current_student: attributes["Is Current Student"], graduation_date: attributes["Graduation Date"],
     	 matriculation_date: attributes["Matriculation Date"], previous_work: attributes["Previous Work"],
     	 undergrad_school: attributes["Undergrad Major"], undergrad_major: attributes["Undergrad School"],
-    	 password_confirmation: "please", password: "please", confirmed_at: "2013-10-10 10:15:00")
+    	 password_confirmation: "pleaseplease", password: "pleaseplease", confirmed_at: "2013-10-10 10:15:00")
   end 
+  puts User.all
 end
 
 Given /^I am not a valid user$/ do

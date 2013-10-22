@@ -9,7 +9,7 @@ FactoryGirl.define do
   	undergrad_major "Political Science"
   	undergrad_school "University of Awesome"
   	hometown "Pittsburgh"
-		sequence(:email) {|n| "email#{n}@factory.com" }
+		email "email@email.com"
 		password 'please'
     password_confirmation 'please'
   end
