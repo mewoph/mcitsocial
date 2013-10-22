@@ -11,24 +11,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131016200255) do
+<<<<<<< HEAD
+ActiveRecord::Schema.define(:version => 20131022182049) do
+=======
+ActiveRecord::Schema.define(:version => 20131022172847) do
+>>>>>>> 1ca7b3413b84b40f63004f58a9913816814d493a
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "bio",                          :limit => 140
-    t.boolean  "is_current_student",                          :default => true
-    t.boolean  "is_parttime",                                 :default => false
+    t.boolean  "is_current_student"
+    t.boolean  "is_parttime"
     t.date     "matriculation_date"
     t.date     "graduation_date"
     t.text     "previous_work"
     t.string   "undergrad_major"
     t.string   "undergrad_school"
     t.string   "hometown"
-    t.datetime "created_at",                                                     :null => false
-    t.datetime "updated_at",                                                     :null => false
-    t.string   "email",                                       :default => "",    :null => false
-    t.string   "encrypted_password",                          :default => "",    :null => false
+    t.datetime "created_at",                                                  :null => false
+    t.datetime "updated_at",                                                  :null => false
+    t.string   "email",                                       :default => "", :null => false
+    t.string   "encrypted_password",                          :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -45,6 +49,8 @@ ActiveRecord::Schema.define(:version => 20131016200255) do
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
+    t.string   "areas_of_interest"
+    t.string   "languages"
   end
 
 end
