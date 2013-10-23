@@ -128,4 +128,5 @@ class User < ActiveRecord::Base
       areas_of_interest
     end
   end
+
 end

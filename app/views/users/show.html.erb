@@ -23,7 +23,11 @@
                   <% if !@user.email.blank? %>
                     <a href="mailto:<%= @user.email %>"><div class="button email-user">Email <%= @user.first_name %></div></a>
                   <% end %>
+
+                  <% if current_user.id == params[:id].to_i %>
                   <%= link_to '<div class="button edit-user">Edit Profile</div>'.html_safe, edit_user_path %>
+                  <% end %>
+
                 </div>
             </div>
             <div class="column span8">
