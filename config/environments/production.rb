@@ -48,6 +48,11 @@ Mcitsocial::Application.configure do
   # Precompile additional assets (application.js, application.css, and all non-JS/CSS are already added)
   # config.assets.precompile += %w( search.js )
   config.assets.precompile += %w( landing_scripts.js )
+  config.assets.precompile += %w( datepicker.css )
+  config.assets.precompile += %w( jquery.tagsinput.css )
+  config.assets.precompile += %w( bootstrap.datepicker.js )
+
+
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
@@ -61,19 +66,25 @@ Mcitsocial::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  config.action_mailer.default_url_options = {:host => 'yourdomain.com'}
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-  :address => "127.0.0.1",
-  :port    => 25,
-  :domain  => 'yourdomain.com'
+
+
+  config.action_mailer.default_url_options = { :host => 'fast-cove-4779.herokuapp.com/' }
+ActionMailer::Base.smtp_settings = {
+  :address        => 'smtp.sendgrid.net',
+  :port           => '587',
+  :authentication => :plain,
+  :user_name      => ENV['SENDGRID_USERNAME'],
+  :password       => ENV['SENDGRID_PASSWORD'],
+  :domain         => 'heroku.com',
+  :enable_starttls_auto => true
 }
 
   # Add the fonts path
-config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+  config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
-# Precompile additional assets
-config.assets.precompile += %w( .svg .eot .woff .ttf )
+  # Precompile additional assets
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
   
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
