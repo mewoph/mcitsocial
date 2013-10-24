@@ -13,6 +13,15 @@ a:hover {
 
 .navbar {
 	opacity: 0.7;
+
+	.navbar-right {
+		float: right;
+	}
+
+	.sign-in-status {
+		color: #777777;
+		padding: 10px 15px;
+	}
 }
 
 .brand {
@@ -309,6 +318,13 @@ a:hover {
 		margin-bottom: 1em;
 		margin-left: 0;
 		text-align: center;
+		-webkit-transition: 0.25s linear;
+	  	transition: 0.25s linear;
+	}
+
+	.profile-thumb:hover {
+		background: black;
+		background: rgba(0, 0, 0, 1);
 	}
 
 	.picture-thumb {
@@ -320,11 +336,33 @@ a:hover {
 		margin-bottom: 1em;
 	}
 
+	.status-ribbon {
+		float: right;
+	}
+
+	.current-ribbon {
+		float: right;
+		background-image: url("../assets/current.png");
+		background-repeat:no-repeat;
+		width: 85px;
+		height: 101px;
+
+		.yr {
+		  margin-top: 30px;
+		  -webkit-transform: rotate(-90deg);
+		  -moz-transform: rotate(-90deg);
+		  -ms-transform: rotate(-90deg);
+		  -o-transform: rotate(-90deg);
+		  transform: rotate(-90deg);
+		  text-shadow: 3px 3px #000000;
+		}
+	}
+
 	.span3:nth-child(5n) {
 		margin-left: 0;
 	}
 
-	.show-email {
+	.show-name {
 		margin: 1em;
 		margin-top: 0.5em;
 	}
@@ -348,6 +386,8 @@ a:hover {
 		margin-bottom: 1em;
 	}
 }
+
+
 
 /* Classes that are dynamically added */
 

@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
 	before_filter :authenticate_user!, :except => [:sign_in]
-	before_filter :temp, :only => [:edit]
 
+	before_filter :is_owner, :only => [:edit, :update]
 
 	def index
 		@users = User.all
@@ -52,7 +52,10 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def temp
-
+	def is_owner
+		if params[:id].to_i != current_user.id
+			flash[:notice] = "You can't edit other people's profile."
+			redirect_to users_path
+		end
 	end
 end
