@@ -336,6 +336,28 @@ a:hover {
 		margin-bottom: 1em;
 	}
 
+	.status-ribbon {
+		float: right;
+	}
+
+	.current-ribbon {
+		float: right;
+		background-image: url("../assets/current.png");
+		background-repeat:no-repeat;
+		width: 85px;
+		height: 101px;
+
+		.yr {
+		  margin-top: 30px;
+		  -webkit-transform: rotate(-90deg);
+		  -moz-transform: rotate(-90deg);
+		  -ms-transform: rotate(-90deg);
+		  -o-transform: rotate(-90deg);
+		  transform: rotate(-90deg);
+		  text-shadow: 3px 3px #000000;
+		}
+	}
+
 	.span3:nth-child(5n) {
 		margin-left: 0;
 	}
@@ -364,6 +386,8 @@ a:hover {
 		margin-bottom: 1em;
 	}
 }
+
+
 
 /* Classes that are dynamically added */
 

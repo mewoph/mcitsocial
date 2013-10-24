@@ -16,15 +16,19 @@
 	    <ul class="nav">
 	      <li class=<%= is_active('/')%>><a href="#">MCITSocial</a></li>
 	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path %></li>
-	      <% if not current_user.nil? %>
-	      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	      <% if current_user.nil? %>
+	      	<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
 	      	<% else %>
-			<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
+	      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 	      <% end %>
 	    </ul>
-	    <ul class="nav navbar-right">
-	    	<li class="sign-in-status">Signed in as User</li>
-	    </ul>
+
+	    <% unless current_user.nil? %>
+	    	<ul class="nav navbar-right">
+	    	<li class="sign-in-status">Signed in as <%= current_user.email %></li>
+	    	</ul>
+	    <% end %>
+
 	  </div>
 	</div>
 	<div class="row-fluid">

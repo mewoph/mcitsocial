@@ -4,7 +4,13 @@
 		<div class="span3">
 			<div class="profile-thumb">
 				<% if user.profile_picture.present? %>
-					<div class="picture-thumb" style="background-image:url(<%= user.profile_picture.url %>)"></div>
+					<div class="picture-thumb" style="background-image:url(<%= user.profile_picture.url %>)">
+						<% if not user.is_current_student %>
+							<%= image_tag "alum.png", :class => 'status-ribbon' %>
+						<% else %>
+							<div class="current-ribbon"><div class="yr"><%= user.matriculation_year %></div></div>
+						<% end %>
+					</div>
 				<% else %>
 					<div class="picture-thumb" style='background-image:url("http://placehold.it/300x300")'></div>
 				<% end %>
