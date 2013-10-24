@@ -58,7 +58,15 @@
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Courses</h2>
-                        <p>@user.full_courses
+                        <p>
+                          <% if @user.courses.nil?%>
+                          No courses yet.
+                          <% else %>
+                            <% courses = @user.courses.split(',') %>
+                            <% courses.each do |c| %>
+                              <div class="tag"><%= c %></div>
+                            <% end %>
+                          <% end %>
                         </p>
                     </div>
                     <div class="hero-unit info-box">

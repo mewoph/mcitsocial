@@ -152,9 +152,10 @@ you can use the generic selector below, but it's slower:
   content: "\e000";
 }
 
-
 .tagsinput {
+  font-weight: 400;
   background: white;
+  background: rgba(255, 255, 255, 0.3);
   border: 2px solid #1abc9c;
   border-radius: 6px;
   height: 100px;
@@ -194,7 +195,7 @@ you can use the generic selector below, but it's slower:
 .tagsinput input {
   background: transparent;
   border: none;
-  color: #34495e;
+  color: white;
   font-family: "Lato", Helvetica, Arial, sans-serif;
   font-size: 14px;
   margin: 0px;
@@ -230,15 +231,15 @@ you can use the generic selector below, but it's slower:
   display: inline-block;
 }
 .tagsinput-add {
-  background-color: #d6dbdf;
+  background: #3498db;
   border-radius: 3px;
-  color: #ffffff;
+  color: white;
   cursor: pointer;
   display: inline-block;
   font-size: 14px;
   line-height: 1;
   margin-bottom: 5px;
-  padding: 7px 9px;
+  padding: 6px;
   vertical-align: top;
   -webkit-transition: 0.25s linear;
   transition: 0.25s linear;
