@@ -1,3 +1,83 @@
-<%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %>
+<div class="main profile-show">
+    <div class="box">
+        <div class="row-fluid">
+            <div class="column span4">
+                <div class="hero-unit profile-leftbox">
+                  <div class="profile-picture"><%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %></div>
+                  <h2 class="name"><%= @user.full_name %></h2>
+                  <% if @user.is_current_student %>
+                    <h4>Current Student</h4>
+                  <% else %>
+                    <h4>Alum</h4>
+                  <% end %>
+                  <h4>Matriculated in <%= @user.matriculation_date1 %></h4>
+                  <h4>Graduation in <%= @user.graduation_date2 %></h4>
+                  <h4>Hometown: <%= @user.full_hometown %></h4>
+                  <p><%= @user.email %></p>
+                  <hr/>
+                  <h4>Undergrad Major: <%= @user.full_undergrad_major %></h4>
+                  <h4>Undergrad School: <%= @user.full_undergrad_school %></h4>
+                  <hr/>
+                  <p><%= @user.full_bio %></p>
+                  <hr/>
+                  <% if !@user.email.blank? %>
+                    <a href="mailto:<%= @user.email %>"><div class="button email-user">Email <%= @user.first_name %></div></a>
+                  <% end %>
+
+                  <% if current_user.id == params[:id].to_i %>
+                  <%= link_to '<div class="button edit-user">Edit Profile</div>'.html_safe, edit_user_path %>
+                  <% end %>
+
+                </div>
+            </div>
+            <div class="column span8">
+                <div class="padding">
+					           <div class="hero-unit info-box">
+                        <h2>Languages</h2>
+                        <p>
+                          <% if @user.languages.nil? %>
+                          No languages yet.
+                          <% else %>
+                            <% languages = @user.languages.split(',') %>
+                            <% languages.each do |l| %>
+                              <div class="tag"><%= l %></div>
+                            <% end %>
+                          <% end %>
+                    </div>
+                    <div class="hero-unit info-box">
+                        <h2>Areas of Interest</h2>
+                        <p>
+                          <% if @user.areas_of_interest.nil?%>
+                          No areas of interests yet.
+                          <% else %>
+                            <% interests = @user.areas_of_interest.split(',') %>
+                            <% interests.each do |i| %>
+                              <div class="tag"><%= i %></div>
+                            <% end %>
+                          <% end %>
+                    </div>
+                    <div class="hero-unit info-box">
+                        <h2>Courses</h2>
+                        <p>
+                          <% if @user.courses.nil?%>
+                          No courses yet.
+                          <% else %>
+                            <% courses = @user.courses.split(',') %>
+                            <% courses.each do |c| %>
+                              <div class="tag"><%= c %></div>
+                            <% end %>
+                          <% end %>
+                        </p>
+                    </div>
+                    <div class="hero-unit info-box">
+                        <h2>Work Experience</h2>
+                        <p><%= @user.full_work_experience %>
+                        </p>
+                    </div>
+	            </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <%= javascript_include_tag "landing_scripts" %>
