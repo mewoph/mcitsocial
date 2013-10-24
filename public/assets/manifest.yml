@@ -1,4 +1,16 @@
 ---
+Flat-UI-Icons.dev.svg: Flat-UI-Icons.dev-8ab539c282d2ddf3cf1357faa0aef0a7.svg
+Flat-UI-Icons/index.dev.svg: Flat-UI-Icons.dev-8ab539c282d2ddf3cf1357faa0aef0a7.svg
+Flat-UI-Icons.eot: Flat-UI-Icons-e1eab2822818c7c1e3791d20a92ce602.eot
+Flat-UI-Icons/index.eot: Flat-UI-Icons-e1eab2822818c7c1e3791d20a92ce602.eot
+Flat-UI-Icons.svg: Flat-UI-Icons-070ef3ccb1408dfc041d855295de909f.svg
+Flat-UI-Icons/index.svg: Flat-UI-Icons-070ef3ccb1408dfc041d855295de909f.svg
+Flat-UI-Icons.ttf: Flat-UI-Icons-c38f9418fddf53de20414da62adff92d.ttf
+Flat-UI-Icons/index.ttf: Flat-UI-Icons-c38f9418fddf53de20414da62adff92d.ttf
+Flat-UI-Icons.woff: Flat-UI-Icons-1c09785d79d48930b2f3d32276d0d04d.woff
+Flat-UI-Icons/index.woff: Flat-UI-Icons-1c09785d79d48930b2f3d32276d0d04d.woff
+icomoon-session.json: icomoon-session-cc7265f122ff76fdd3957bfa84d2d115.json
+icomoon-session/index.json: icomoon-session-cc7265f122ff76fdd3957bfa84d2d115.json
 landing_background1.png: landing_background1-7852beede37036b352d6fa8839f15439.png
 landing_background1/index.png: landing_background1-7852beede37036b352d6fa8839f15439.png
 landing_background2.png: landing_background2-a76fc761375bc2c740540bd0bc8752d4.png
@@ -9,8 +21,12 @@ application.js: application-2ce5bb14a5afcdb39f0360f1d7d4a156.js
 application/index.js: application-2ce5bb14a5afcdb39f0360f1d7d4a156.js
 landing_scripts.js: landing_scripts-a8a595e677d0c4a292930465c6a0ebce.js
 landing_scripts/index.js: landing_scripts-a8a595e677d0c4a292930465c6a0ebce.js
-application.css: application-22367e2eac589a956240fe968a488676.css
-application/index.css: application-22367e2eac589a956240fe968a488676.css
+application.css: application-91c511d1e4f8070051774664bcf0eaa0.css
+application/index.css: application-91c511d1e4f8070051774664bcf0eaa0.css
+datepicker.css: datepicker-69bad981b84c8886e2305bb85143007f.css
+datepicker/index.css: datepicker-69bad981b84c8886e2305bb85143007f.css
+jquery.tagsinput.css: jquery.tagsinput-9e4438721051d8a43e72e5ebc1225889.css
+jquery/index.tagsinput.css: jquery.tagsinput-9e4438721051d8a43e72e5ebc1225889.css
 jquery.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 jquery/index.min.map: jquery.min-6336c5bca4c709e809647cdfcb484d0a.map
 fontawesome-webfont.eot: fontawesome-webfont-009f6d1f667cc42c25e712ab3429cbc7.eot

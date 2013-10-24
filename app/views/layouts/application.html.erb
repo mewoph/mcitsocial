@@ -18,6 +18,8 @@
 	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path %></li>
 	      <% if not current_user.nil? %>
 	      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	      	<% else %>
+			<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
 	      <% end %>
 	    </ul>
 	  </div>
