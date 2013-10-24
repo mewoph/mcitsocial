@@ -14,7 +14,7 @@ Feature: User Show Page
 			When I view my profile page
 			Then I should see my profile information 
 
-		Scenario: Registered user cannot view another registered user's profile
+		Scenario: Registered user cannot view another registered users profile
 			Given I am signed in as "Abeer"
 			When I view my profile page
 			Then I should not see another users profile information
@@ -38,7 +38,7 @@ Feature: User Show Page
 		Scenario: A registered user should be able to click own link on user index page and see own profile
 			Given I am signed in as "Abeer"
 			When I view user index page
-			Then Then I should see my profile information
+			Then I should see a link to my profile
 
 
 

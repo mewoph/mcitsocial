@@ -86,6 +86,20 @@ When /^I view a profile show page$/ do
 	visit user_path(@user.id)
 end
 
+When /^I view another users profile page$/ do
+	@user = User.first
+	if @user.id != @registeredUser.id 
+		visit user_path(@user.id)
+	else
+		@user = User.last
+		visit users#index
+end
+
+When /^I view user index page$/ do
+	@user = User.first
+	visit user_path(@user.id)
+end
+
 #Then
 Then /^I should be able to login successfully$/ do
 	page.should have_content "Signed in successfully"
@@ -159,3 +173,13 @@ end
 Then /^I should see the edit profile button$/ do
 	page.should have_button "button edit-user"
 end
+
+Then /^I should not see the edit profile button$/ do
+	page.should_not have_button "button edit-user"
+end
+
+Then /^I should see a link to my profile$/ do
+	page.should have_content @user.email
+end
+
+
