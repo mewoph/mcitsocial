@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
 	before_filter :authenticate_user!, :except => [:sign_in]
+	before_filter :temp, :only => [:edit]
+
 
 	def index
 		@users = User.all
@@ -48,5 +50,9 @@ class UsersController < ApplicationController
 				formatted_date = Date.strptime(date_string, "%m-%Y")
 			end	
 		end
+	end
+
+	def temp
+
 	end
 end
