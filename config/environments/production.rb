@@ -51,6 +51,7 @@ Mcitsocial::Application.configure do
   config.assets.precompile += %w( datepicker.css )
   config.assets.precompile += %w( jquery.tagsinput.css )
   config.assets.precompile += %w( bootstrap-datepicker.js )
+  config.assets.precompile += %w( jquery.tagsinput.js )
 
 
 

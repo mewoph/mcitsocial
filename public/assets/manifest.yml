@@ -21,10 +21,14 @@ landing_background2.png: landing_background2-a76fc761375bc2c740540bd0bc8752d4.pn
 landing_background2/index.png: landing_background2-a76fc761375bc2c740540bd0bc8752d4.png
 landing_background3.png: landing_background3-cfbaf87246a1ab8e6f036f8d106ac61e.png
 landing_background3/index.png: landing_background3-cfbaf87246a1ab8e6f036f8d106ac61e.png
+m_logo.ico: m_logo-16c4df9e702c1c6aa0746f2318577286.ico
+m_logo/index.ico: m_logo-16c4df9e702c1c6aa0746f2318577286.ico
 application.js: application-2ce5bb14a5afcdb39f0360f1d7d4a156.js
 application/index.js: application-2ce5bb14a5afcdb39f0360f1d7d4a156.js
 bootstrap-datepicker.js: bootstrap-datepicker-522b19d018df8b9ae2428b4b87614c20.js
 bootstrap-datepicker/index.js: bootstrap-datepicker-522b19d018df8b9ae2428b4b87614c20.js
+jquery.tagsinput.js: jquery.tagsinput-5c3fca16172a0f68e52deccdda72b625.js
+jquery/index.tagsinput.js: jquery.tagsinput-5c3fca16172a0f68e52deccdda72b625.js
 landing_scripts.js: landing_scripts-a8a595e677d0c4a292930465c6a0ebce.js
 landing_scripts/index.js: landing_scripts-a8a595e677d0c4a292930465c6a0ebce.js
 application.css: application-4bd4cd733e46dc55ffb86ccbabb0aeee.css
