@@ -90,18 +90,18 @@ class User < ActiveRecord::Base
   end
 
   def full_undergrad_school
-  	if undergrad_major.blank?
-  		"Unknown"
-  	else
-  		undergrad_major
-  	end
-  end
-
-  def full_undergrad_major
   	if undergrad_school.blank?
   		"Unknown"
   	else
   		undergrad_school
+  	end
+  end
+
+  def full_undergrad_major
+  	if undergrad_major.blank?
+  		"Unknown"
+  	else
+  		undergrad_major
   	end
   end
 
