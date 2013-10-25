@@ -386,12 +386,16 @@ a:hover {
 		margin-bottom: 1em;
 	}
 }
-
+/* These classes need refactored, they were added too late into the game*/
 	.name {
 		overflow: hidden;
 		white-space: nowrap; /* Don't forget this one */
 		text-overflow: ellipsis;
 	}
+
+			input[type=submit] {
+			width: 100%;
+		}
 
 /* Classes that are dynamically added */
 
