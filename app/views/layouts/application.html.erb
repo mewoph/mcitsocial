@@ -12,9 +12,12 @@
 
 	<div class="navbar">
 	  <div class="navbar-inner">
-	    <a class="brand" href="#">mcit social</a>
+	  	<% if current_user.nil? %>
+	    	<a class="brand" href="/">mcit social</a>
+	    <% else %>
+	    	<a class="brand" href="/users">mcit social</a>
+	    <% end %>
 	    <ul class="nav">
-	      <li class=<%= is_active('/')%>><a href="#">MCITSocial</a></li>
 	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path %></li>
 	      <% if current_user.nil? %>
 	      	<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
