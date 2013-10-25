@@ -144,7 +144,7 @@ a:hover {
 }
 
 .profile-show, .profile-edit {
-	
+
 	.hero-unit {
 		border-radius: 0px;
 	}
@@ -387,7 +387,11 @@ a:hover {
 	}
 }
 
-
+	.name {
+		overflow: hidden;
+		white-space: nowrap; /* Don't forget this one */
+		text-overflow: ellipsis;
+	}
 
 /* Classes that are dynamically added */
 
