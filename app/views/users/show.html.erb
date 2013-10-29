@@ -23,7 +23,11 @@
                   <% if !@user.email.blank? %>
                     <a href="mailto:<%= @user.email %>"><div class="button email-user">Email <%= @user.first_name %></div></a>
                   <% end %>
+
+                  <% if current_user.id == params[:id].to_i %>
                   <%= link_to '<div class="button edit-user">Edit Profile</div>'.html_safe, edit_user_path %>
+                  <% end %>
+
                 </div>
             </div>
             <div class="column span8">
@@ -54,7 +58,15 @@
                     </div>
                     <div class="hero-unit info-box">
                         <h2>Courses</h2>
-                        <p>@user.full_courses
+                        <p>
+                          <% if @user.courses.nil?%>
+                          No courses yet.
+                          <% else %>
+                            <% courses = @user.courses.split(',') %>
+                            <% courses.each do |c| %>
+                              <div class="tag"><%= c %></div>
+                            <% end %>
+                          <% end %>
                         </p>
                     </div>
                     <div class="hero-unit info-box">

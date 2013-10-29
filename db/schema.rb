@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131022182049) do
+ActiveRecord::Schema.define(:version => 20131024162421) do
+
+  create_table "courses", :force => true do |t|
+    t.string   "registrar_name"
+    t.string   "title"
+    t.string   "professor"
+    t.string   "description"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
+  end
+
+  create_table "enrollments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "course_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first_name"
@@ -45,8 +62,10 @@ ActiveRecord::Schema.define(:version => 20131022182049) do
     t.string   "profile_picture_content_type"
     t.integer  "profile_picture_file_size"
     t.datetime "profile_picture_updated_at"
+    t.integer  "course_id"
     t.string   "areas_of_interest"
     t.string   "languages"
+    t.string   "courses"
   end
 
 end
