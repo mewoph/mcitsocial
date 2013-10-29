@@ -3,28 +3,19 @@ def create_user
 		:bio => "A really awesome bio", :matriculation_date => "2012-10-15",
 		:graduation_date => "2013-05-05", :previous_work => "Professor", 
 		:undergrad_major => "Computer Science", :undergrad_school => "UPenn",
-<<<<<<< HEAD
 		:hometown => "Philadelphia", :password => @password, 
-		:password_confirmation => @password}
-=======
-		:hometown => "Philadelphia", :password => "something", 
-		:password_confirmation => "something", :languages => "HTML, JavaScript, Ruby",
-		:interests => "Hockey, Programming", :courses => "CIS 573, CIS 555",
-}
+		:password_confirmation => @password, :languages => "HTML, JavaScript, Ruby",
+		:interests => "Hockey, Programming", :courses => "CIS 573, CIS 555"
+	}
 end
 
 def create_password
 	@password = "pleaseplease"
->>>>>>> b23ce198a54f320b7fef990c0422a4e82d988db2
 end
 
 def create_valid_user
 	@user_created = FactoryGirl.create(:user, email: @user[:email], password: @user[:password],
   								password_confirmation: @user[:password_confirmation], confirmed_at: "2013-10-10 10:15:00" )
-end
-
-def password
-	@password = "pleaseplease"
 end
 
 def my_profile
@@ -44,11 +35,7 @@ end
 
 #Given
 Given /^the following users exist:$/ do |table|
-<<<<<<< HEAD
-	password
-=======
-	create_password
->>>>>>> b23ce198a54f320b7fef990c0422a4e82d988db2
+ create_password
   table.hashes.each do |attributes|
     FactoryGirl.create(:user, first_name: attributes["First Name"], last_name: attributes["Last Name"], bio: attributes["Bio"], 
     	is_current_student: attributes["Is Current Student"], graduation_date: attributes["Graduation Date"],
@@ -60,18 +47,18 @@ Given /^the following users exist:$/ do |table|
 end
 
 Given /^I am not a valid user$/ do
-	password
+	create_password
 	create_user
 end
 
 Given /^I am a valid user$/ do
-	password
+	create_password
 	create_user
 	create_valid_user
 end
 
 Given /^I am logged in$/ do
-	password
+	create_password
 	create_user
 	create_valid_user
 	visit root_path
@@ -80,10 +67,9 @@ Given /^I am logged in$/ do
 	click_button "buttonid"
 end
 
-Given /^I am signed in as "(.*?)"$/ do |name|
-	password
+Given /^I am logged in as "(.*?)"$/ do |name|
+	create_password
 	@original_user = User.where(:first_name => name)[0]
-	puts @original_user
 	visit root_path
 	fill_in "user_email", :with => @original_user[:email]
 	fill_in "user_password", :with => @password
@@ -117,7 +103,7 @@ When /^I edit my profile information$/ do
 end
 
 When /^I sign in$/ do
-	password
+	create_password
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
 	fill_in "user_password", :with => @password
@@ -125,7 +111,7 @@ When /^I sign in$/ do
 end
 
 When /^I sign in with the incorrect password$/ do
-	password
+	create_password
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
 	fill_in "user_password", :with => "incorrect"
@@ -133,7 +119,7 @@ When /^I sign in with the incorrect password$/ do
 end
 
 When /^I sign in with an invalid email$/ do
-	password
+	create_password
 	visit root_path
 	fill_in "user_email", :with => "invalidemail"
 	fill_in "user_password", :with => @password
