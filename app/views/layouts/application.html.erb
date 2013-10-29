@@ -6,25 +6,33 @@
   <%= javascript_include_tag "application" %>
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700,900,500' rel='stylesheet' type='text/css'>
+  <link rel="shortcut icon" href="/assets/mcit_logo.ico">
   <%= csrf_meta_tags %>
 </head>
 <body>
 
 	<div class="navbar">
 	  <div class="navbar-inner">
-	    <a class="brand" href="#">mcit social</a>
+	  	<% if current_user.nil? %>
+	    	<a class="brand" href="/">mcit social</a>
+	    <% else %>
+	    	<a class="brand" href="/users">mcit social</a>
+	    <% end %>
 	    <ul class="nav">
-	      <li class=<%= is_active('/')%>><a href="#">MCITSocial</a></li>
 	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path %></li>
-	      <% if not current_user.nil? %>
-	      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	      <% if current_user.nil? %>
+	      	<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
 	      	<% else %>
-			<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
+	      	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 	      <% end %>
 	    </ul>
-	    <ul class="nav navbar-right">
-	    	<li class="sign-in-status">Signed in as User</li>
-	    </ul>
+
+	    <% unless current_user.nil? %>
+	    	<ul class="nav navbar-right">
+	    	<li class="sign-in-status">Signed in as <%= current_user.email %></li>
+	    	</ul>
+	    <% end %>
+
 	  </div>
 	</div>
 	<div class="row-fluid">

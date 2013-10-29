@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
 	before_filter :authenticate_user!, :except => [:sign_in]
+
 	before_filter :is_owner, :only => [:edit, :update]
 
 	def index

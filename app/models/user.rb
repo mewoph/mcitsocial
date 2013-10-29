@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   # Gets the full name of of the user
   def full_name
   	if first_name.blank? && last_name.blank?
-  		"Default Name"
+  		email
   	elsif first_name.blank?
   		last_name
   	elsif last_name.blank?
@@ -90,18 +90,18 @@ class User < ActiveRecord::Base
   end
 
   def full_undergrad_school
-  	if undergrad_major.blank?
-  		"Unknown"
-  	else
-  		undergrad_major
-  	end
-  end
-
-  def full_undergrad_major
   	if undergrad_school.blank?
   		"Unknown"
   	else
   		undergrad_school
+  	end
+  end
+
+  def full_undergrad_major
+  	if undergrad_major.blank?
+  		"Unknown"
+  	else
+  		undergrad_major
   	end
   end
 
@@ -126,6 +126,14 @@ class User < ActiveRecord::Base
       ""
     else
       areas_of_interest
+    end
+  end
+
+  def matriculation_year
+    if matriculation_date.blank?
+      "current"
+    else
+      matriculation_date.year
     end
   end
 
