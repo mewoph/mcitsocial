@@ -1,7 +1,6 @@
 $(function(){
 
     var numRand = Math.floor(Math.random()*3)
-    console.log(numRand);
 
     if (numRand == 0){
         $('body').addClass("background-image1"); 
