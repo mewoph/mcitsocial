@@ -1,4 +1,5 @@
 def create_user
+	create_password
 	@user = {:email => "User@user.com", :first_name => "Chris", :last_name => "Murphy",
 		:bio => "A really awesome bio", :matriculation_date => "2012-10-15",
 		:graduation_date => "2013-05-05", :previous_work => "Professor", 
@@ -19,14 +20,14 @@ def create_valid_user
 end
 
 def my_profile
-	page.should have_content @registeredUser.first_name
-	page.should have_content @registeredUser.last_name
-	page.should have_content @registeredUser.bio
-	page.should have_content @registeredUser.previous_work
-	page.should have_content @registeredUser.undergrad_major
-	page.should have_content @registeredUser.undergrad_school
-	page.should have_content @registeredUser.hometown
-	page.should have_content @registeredUser.email
+	page.should have_content @original_user.first_name
+	page.should have_content @original_user.last_name
+	page.should have_content @original_user.bio
+	page.should have_content @original_user.previous_work
+	page.should have_content @original_user.undergrad_major
+	page.should have_content @original_user.undergrad_school
+	page.should have_content @original_user.hometown
+	page.should have_content @original_user.email
 	#TODO add line to check is current student 
 	#TODO add line for part time student
 	#TODO add line for courses
@@ -35,7 +36,7 @@ end
 
 #Given
 Given /^the following users exist:$/ do |table|
- create_password
+  create_password
   table.hashes.each do |attributes|
     FactoryGirl.create(:user, first_name: attributes["First Name"], last_name: attributes["Last Name"], bio: attributes["Bio"], 
     	is_current_student: attributes["Is Current Student"], graduation_date: attributes["Graduation Date"],
@@ -52,23 +53,23 @@ Given /^I am not a valid user$/ do
 end
 
 Given /^I am a valid user$/ do
-	create_password
+	# create_password
 	create_user
 	create_valid_user
 end
 
 Given /^I am logged in$/ do
-	create_password
+	# create_password
 	create_user
 	create_valid_user
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
-	fill_in "user_password", :with => @password
+	fill_in "user_password", :with => @user[:password]
 	click_button "buttonid"
 end
 
 Given /^I am logged in as "(.*?)"$/ do |name|
-	create_password
+	# create_password
 	@original_user = User.where(:first_name => name)[0]
 	visit root_path
 	fill_in "user_email", :with => @original_user[:email]
@@ -103,15 +104,15 @@ When /^I edit my profile information$/ do
 end
 
 When /^I sign in$/ do
-	create_password
+	# create_password
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
-	fill_in "user_password", :with => @password
+	fill_in "user_password", :with => @user[:password]
 	click_button "buttonid"
 end
 
 When /^I sign in with the incorrect password$/ do
-	create_password
+	# create_password
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
 	fill_in "user_password", :with => "incorrect"
@@ -119,10 +120,10 @@ When /^I sign in with the incorrect password$/ do
 end
 
 When /^I sign in with an invalid email$/ do
-	create_password
+	# create_password
 	visit root_path
 	fill_in "user_email", :with => "invalidemail"
-	fill_in "user_password", :with => @password
+	fill_in "user_password", :with => @user[:password]
 	click_button "buttonid"
 end
 
@@ -133,20 +134,6 @@ end
 When /^I view a profile show page$/ do
 	@user = User.first
 	visit user_path(@user.id)
-end
-
-When /^I view another users profile page$/ do
-	@user = User.first
-	if @user.id != @original_user.id 
-		visit user_path(@user.id)
-	else
-		@user = User.last
-		visit user_path(@user.id)
-	end
-end
-
-When /^I view user index page$/ do
-	visit users_path
 end
 
 #Then
@@ -195,7 +182,18 @@ Then /^I should have access to the private content$/ do
 end
 
 Then /^I should see my profile information$/ do
-	my_profile
+	page.should have_content @original_user.first_name
+	page.should have_content @original_user.last_name
+	page.should have_content @original_user.bio
+	page.should have_content @original_user.previous_work
+	page.should have_content @original_user.undergrad_major
+	page.should have_content @original_user.undergrad_school
+	page.should have_content @original_user.hometown
+	page.should have_content @original_user.email
+	#TODO add line to check is current student 
+	#TODO add line for part time student
+	#TODO add line for courses
+	#TODO add line for languages
 end
 
 Then /^I should not see another users profile information$/ do
@@ -229,19 +227,3 @@ Then /^I should not be able to access a profile show page$/ do
 	#TODO add line for languages
 	page.should have_content "You need to sign in or sign up before continuing."
 end
-
-Then /^I should see the edit profile button$/ do
-	page.should have_content "Edit Profile"
-end
-
-Then /^I should not see the edit profile button$/ do
-	page.should have_content "Edit Profile"
-end
-
-# Then /^I should see a link to my profile$/ do
-# 	puts user_path(@registeredUser.id)
-# 	page.should have_content @original_user.email
-# 	page.should have_content user_path(@original_user.id)
-# 	click_link user_path(@original_user.id)
-# 	my_profile
-# end
