@@ -1,16 +1,18 @@
 # == Schema Information
 #
-# Table name: companies
+# Table name: questions
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
+#  question   :string(255)
+#  adder_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  company_id :integer
 #
 
 require 'test_helper'
 
-class CompanyTest < ActiveSupport::TestCase
+class QuestionTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
