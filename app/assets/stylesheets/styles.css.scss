@@ -11,6 +11,10 @@ a:hover {
 	text-decoration: none;
 }
 
+* {
+	word-wrap: break-word;
+}
+
 .navbar {
 	opacity: 0.7;
 
@@ -123,6 +127,11 @@ a:hover {
 	    border-radius: 0px;
 	    color: white
 	}
+
+	input[type=submit] {
+		width: 100%;
+	}
+
 }
 
 .email-confirm {
