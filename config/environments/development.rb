@@ -38,4 +38,10 @@ Mcitsocial::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {:address => "localhost", :port => 1025}
+
+  config.paperclip_defaults = {
+    :url => "/system/:attachment/:id/:style/:basename.:extension",  
+    :path => ":rails_root/public/system/:attachment/:id/:style/:basename.:extension"  
+  }
+
 end
