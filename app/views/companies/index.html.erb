@@ -1,4 +1,17 @@
-<%  @companies.each do |company| %>
-	<h1><%= company.name %></h1>
+<div class="companies-index">
 
+<%  @companies.each do |company| %>
+	<h2><% company.name %></h2>
 <% end%>
+	
+<ul class="companies-list">
+	<li>Company 1</li>
+	<li>Company 2</li>
+	<li>Company 3</li>
+</ul>
+
+</div>
+
+<script>
+$('body').addClass('companies-index-bg');
+</script>

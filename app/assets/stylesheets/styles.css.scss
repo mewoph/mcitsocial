@@ -1,7 +1,27 @@
 $midnight-blue: #2c3e50;
 $pumpkin: #d35400;
+$cloud: #ecf0f1;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
+
+
+@mixin background-image($src) {
+   	background: url($src) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+@mixin turquoise($opacity) {
+	background-color: #1abc9c;
+	background-color: rgba(26, 188, 156, $opacity);
+}
+
+@mixin green-sea($opacity) {
+	background-color: #16a085;
+	background-color: rgba(22, 160, 133, $opacity);
+}
 
 body {
 	font-family: $roboto;
@@ -13,6 +33,11 @@ a:hover {
 
 * {
 	word-wrap: break-word;
+}
+
+
+input[type=submit] {
+	width: 100%;
 }
 
 .navbar {
@@ -367,7 +392,7 @@ a:hover {
 		}
 	}
 
-	.span3:nth-child(5n) {
+	.span3:nth-child(4n + 1) {
 		margin-left: 0;
 	}
 
@@ -396,43 +421,35 @@ a:hover {
 	}
 }
 
-	.name {
-		word-wrap:break-word;
-	}
+.companies-index-bg {
+	background: url('../assets/ricepaper.png');
+}
 
-	input[type=submit] {
-		width: 100%;
+.companies-index {
+
+	.companies-list {
+		list-style: none;
 	}
+}
+	
 
 /* Classes that are dynamically added */
 
 /* Background Image Classes */
 .background-image1 {
 
-	background: url('../assets/landing_background1.png') no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	@include background-image('../assets/landing_background1.png');
 
 }
 
 .background-image2 {
 
-	background: url('../assets/landing_background2.png') no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	@include background-image('../assets/landing_background2.png');
 }
 
 .background-image3 {
 
-	background: url('../assets/landing_background3.png') no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	@include background-image('../assets/landing_background3.png');
 
 }
 
