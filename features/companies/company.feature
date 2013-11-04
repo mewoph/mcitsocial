@@ -4,11 +4,11 @@ Feature: Viewing and Creating Companies
 
 Background:
 	Given the following companies exist:
-	| Name |
+	| name |
 	| Microsoft| 
 	| Amazon| 
 	And the following questions exist:
-	| Question 											| Company |
+	| question 											| company |
 	| What is that? 								| Microsoft |
 	| Where am I? 									| Microsoft |
 	| What is this? 								| Amazon | 
