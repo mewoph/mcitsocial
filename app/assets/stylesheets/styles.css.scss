@@ -1,9 +1,11 @@
 $midnight-blue: #2c3e50;
 $pumpkin: #d35400;
 $cloud: #ecf0f1;
+$belize: #2980b9;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
 
+@import 'font-awesome';
 
 @mixin background-image($src) {
    	background: url($src) no-repeat center center fixed; 
@@ -429,9 +431,58 @@ input[type=submit] {
 
 	.companies-list {
 		list-style: none;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+
+		@media  (max-width: 600px) {
+			width: 80%;
+		}
+
+		a, .company-name {
+			display: inline-block;
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		}
+
+		a {
+			float: right;
+			margin-left: 1em;
+		}
+
+		li {
+			border: 0;
+			padding: 1em;
+			border-bottom: 1px solid;
+			-webkit-transition: 0.25s linear;
+	  		transition: 0.25s linear;
+		}
+
+		li:hover {
+			background-color: rgba(255,255,255, 0.5);
+			cursor: pointer;
+
+			.company-name {
+				color: $belize;
+			}
+		}
+
+		i {
+			font-size: 2em;
+			position: absolute;
+		}
+
+		.number {
+			z-index: 10;
+			position: relative;
+			color: white;
+			font-size: 0.8em;
+			padding-left: 0.5em;
+		}
+
 	}
 }
-	
+
 
 /* Classes that are dynamically added */
 
