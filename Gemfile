@@ -12,6 +12,7 @@ gem "paperclip", "~> 3.0"
 gem 'aws-sdk'
 gem "twitter-bootstrap-rails", "~> 2.2.8"
 gem 'annotate', ">=2.5.0"
+gem 'simple_form'
 gem 'delayed_job_active_record'
 gem 'unicorn'
 
