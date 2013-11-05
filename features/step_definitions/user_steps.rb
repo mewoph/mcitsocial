@@ -5,8 +5,8 @@ def create_user
 		:graduation_date => "2013-05-05", :previous_work => "Professor", 
 		:undergrad_major => "Computer Science", :undergrad_school => "UPenn",
 		:hometown => "Philadelphia", :password => @password, 
-		:password_confirmation => @password, :languages => "HTML, JavaScript, Ruby",
-		:interests => "Hockey, Programming", :courses => "CIS 573, CIS 555"
+		:password_confirmation => @password, :languages => "HTML,JavaScript,Ruby",
+		:interests => "Hockey,Programming", :courses => "CIS573,CIS555"
 	}
 end
 
@@ -28,10 +28,24 @@ def my_profile
 	page.should have_content @original_user.undergrad_school
 	page.should have_content @original_user.hometown
 	page.should have_content @original_user.email
-	#TODO add line to check is current student 
-	#TODO add line for part time student
-	#TODO add line for courses
-	#TODO add line for languages
+	if @original_user.is_current_student 
+		then page.should have_content "Current Student"
+	else
+		page.should have_content "Former Student"
+	end
+	if@original_user.is_parttime 
+		then page.should have_content "Full Time Student"
+	else 
+		page.should have_content "Part Time Student"
+	end
+	a =  @original_user.courses.split(",")
+	a.each do |course|
+		page.should have_content course
+	end
+	b =  @original_user.languages.split(",")
+	b.each do |language|
+		page.should have_content language
+	end
 end
 
 #Given
@@ -42,9 +56,9 @@ Given /^the following users exist:$/ do |table|
     	is_current_student: attributes["Is Current Student"], graduation_date: attributes["Graduation Date"],
     	 matriculation_date: attributes["Matriculation Date"], previous_work: attributes["Previous Work"],
     	 undergrad_school: attributes["Undergrad Major"], undergrad_major: attributes["Undergrad School"],
+    	 areas_of_interest: attributes["Interests"], languages: attributes["Languages"], courses: attributes["Courses"],
     	 password_confirmation: @password, password: @password, confirmed_at: "2013-10-10 10:15:00")
   end 
-  puts User.all
 end
 
 Given /^I am not a valid user$/ do
@@ -86,7 +100,6 @@ When /^I edit my profile information$/ do
 	# within "#user_profile_picture" do
 	# 	attach_file("file", "#{Rails.root}/features/fixtures/test.jpg")
 	# end
-	puts "ASDFSADF #{@user[:first_name]}"
 	fill_in "First Name", :with => "Honolulu"
 	fill_in "user_last_name", :with => @user[:last_name]
 	fill_in "user_email", :with => @user[:email]
@@ -158,7 +171,6 @@ Then /^I should see a successful profile edited message$/ do
 end	
 
 Then /^I should see the updated profile information$/ do
-	puts page.body
 	page.should have_selector("img[src$='test.jpg']")
 	page.should have_content @user[:first_name]
 	page.should have_content @user[:last_name]
@@ -182,18 +194,7 @@ Then /^I should have access to the private content$/ do
 end
 
 Then /^I should see my profile information$/ do
-	page.should have_content @original_user.first_name
-	page.should have_content @original_user.last_name
-	page.should have_content @original_user.bio
-	page.should have_content @original_user.previous_work
-	page.should have_content @original_user.undergrad_major
-	page.should have_content @original_user.undergrad_school
-	page.should have_content @original_user.hometown
-	page.should have_content @original_user.email
-	#TODO add line to check is current student 
-	#TODO add line for part time student
-	#TODO add line for courses
-	#TODO add line for languages
+	my_profile
 end
 
 Then /^I should not see another users profile information$/ do
@@ -206,10 +207,24 @@ Then /^I should not see another users profile information$/ do
 	page.should_not have_content userTwo.undergrad_major
 	page.should_not have_content userTwo.hometown
 	page.should_not have_content userTwo.email
-	#TODO add line to check is current student 
-	#TODO add line for part time student
-	#TODO add line for courses
-	#TODO add line for languages
+	if @userTwo.is_current_student 
+		then page.should_not have_content "Current Student"
+	else
+		page.should_not have_content "Former Student"
+	end
+	if@userTwo.is_parttime 
+		then page.should_not have_content "Full Time Student"
+	else 
+		page.should_not have_content "Part Time Student"
+	end
+	a =  @userTwo.courses.split(",")
+	a.each do |course|
+		page.should_not have_content course
+	end
+	b =  @userTwo.languages.split(",")
+	b.each do |language|
+		page.should_not have_content language
+	end
 end
 
 Then /^I should not be able to access a profile show page$/ do
@@ -221,9 +236,23 @@ Then /^I should not be able to access a profile show page$/ do
 	page.should_not have_content @user.undergrad_major
 	page.should_not have_content @user.hometown
 	page.should_not have_content @user.email
-	#TODO add line to check is current student 
-	#TODO add line for part time student
-	#TODO add line for courses
-	#TODO add line for languages
+	if @user.is_current_student 
+		then page.should_not have_content "Current Student"
+	else
+		page.should_not have_content "Former Student"
+	end
+	if@user.is_parttime 
+		then page.should_not have_content "Full Time Student"
+	else 
+		page.should_not have_content "Part Time Student"
+	end
+	a =  @user.courses.split(",")
+	a.each do |course|
+		page.should_not have_content course
+	end
+	b =  @user.languages.split(",")
+	b.each do |language|
+		page.should_not have_content language
+	end
 	page.should have_content "You need to sign in or sign up before continuing."
 end
