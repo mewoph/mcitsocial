@@ -8,11 +8,11 @@ Background:
 	| Microsoft| 
 	| Amazon| 
 	And the following questions exist:
-	| question 											| company |
+	| question 										| company |
 	| What is that? 								| Microsoft |
 	| Where am I? 									| Microsoft |
 	| What is this? 								| Amazon | 
-	| What is the meaning of life? 	| Amazon | 
+	| What is the meaning of life? 					| Amazon | 
 
 Scenario: A Registered User Can View A List of Companies
 	Given I am a valid user that is logged in

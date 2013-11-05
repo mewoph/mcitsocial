@@ -15,6 +15,7 @@ gem 'annotate', ">=2.5.0"
 gem 'delayed_job_active_record'
 gem 'unicorn'
 gem 'font-awesome-rails'
+gem "simple_form"
 
 group :test do
 	gem "email_spec"

@@ -1,5 +1,7 @@
 class CompaniesController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def index
 		@companies = Company.all
 	end
@@ -13,8 +15,9 @@ class CompaniesController < ApplicationController
 	end
 
 	def create
-		@company = Company.find(params[:id])
+		@company = Company.new(params[:company])
 		@company.save
+		redirect_to @company
 	end
 
 	def edit

@@ -33,8 +33,6 @@ Given /^the following questions exist:$/ do |table|
   end 
 end
 
-
-
 #When
 When /^I click on the companies tab$/ do
 	within(".navbar") do
@@ -43,8 +41,14 @@ When /^I click on the companies tab$/ do
 end
 
 When /^I view the company "(.*?)"$/ do |name|
-        @original_company = Company.where(:name => name)[0]
-        visit company_path(@original_company.id)
+    @original_company = Company.where(:name => name)[0]
+    visit company_path(@original_company.id)
+end
+
+When /^I create the company "(.*?)"$/ do |name|
+	visit new_company_path
+	fill_in "company_name", :with => "Google"
+	click_button "submit_button"
 end
 
 #Then
