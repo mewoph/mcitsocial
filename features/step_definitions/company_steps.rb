@@ -7,6 +7,11 @@ def create_user
 		:password_confirmation => "something"}
 end
 
+def create_valid_user
+	@user_created = FactoryGirl.create(:user, email: @user[:email], password: @user[:password],
+  								password_confirmation: @user[:password_confirmation], confirmed_at: "2013-10-10 10:15:00" )
+end
+
 def sign_in
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
@@ -18,13 +23,18 @@ end
 #Given
 Given /^I am a valid user that is logged in$/ do
 	create_user
+	create_valid_user
 	sign_in
+end
+
+Given /^I am an unregistered user$/ do
+	create_user
 end
 
 Given /^the following companies exist:$/ do |table|
   table.hashes.each do |attributes|
     FactoryGirl.create(:company, name: attributes["name"])
-  end 
+  end
 end
 
 Given /^the following questions exist:$/ do |table|
@@ -40,6 +50,10 @@ When /^I click on the companies tab$/ do
 	end
 end
 
+When /^I view the companies index page$/ do
+	visit companies_path
+end
+
 When /^I view the company "(.*?)"$/ do |name|
     @original_company = Company.where(:name => name)[0]
     visit company_path(@original_company.id)
@@ -47,7 +61,7 @@ end
 
 When /^I create the company "(.*?)"$/ do |name|
 	visit new_company_path
-	fill_in "company_name", :with => "Google"
+	fill_in "company_name", :with => name
 	click_button "submit_button"
 end
 
@@ -59,4 +73,34 @@ end
 
 Then /^I should see all of "(.*?)"s company information$/ do |name|
 	page.should have_content @original_company.name
+end
+
+Then /^I should see a successful company created message$/ do
+	page.should have_content "Company Created"
+end
+
+Then /^I should be redirected to "(.*?)"s show page$/ do |name|
+	page.should have_content name
+end
+
+Then /^I should be able to view "(.*?)" on the company index page$/ do |name|
+	visit companies_path
+	page.should have_content name
+end
+
+Then /^I should see a failure to create a company message$/ do
+	page.should have_content "Company Already Exists"
+end
+
+Then /^I should see a message saying you must sign in$/ do
+	page.should have_content "You need to sign in or sign up before continuing"
+end
+
+Then /^I should not see "(.*?)"s information$/ do |name|
+	page.should_not have_content name
+end
+
+Then /^I should not see any of the companies names$/ do
+	page.should_not have_content "Microsoft"
+	page.should_not have_content "Amazon"
 end

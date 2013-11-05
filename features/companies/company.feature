@@ -24,10 +24,10 @@ Scenario: A Registered User Can View A Company
 	When I view the company "Microsoft"
 	Then I should see all of "Microsoft"s company information
 
-Scenario: A Registered User Can Add a Company If It Doesn't Exist
+Scenario: A Registered User Can Add a Company If It Does not Exist
 	Given I am a valid user that is logged in
 	When I create the company "Facebook"
-	Then I should be see a successful company created message
+	Then I should see a successful company created message
 	And I should be redirected to "Facebook"s show page
 	And I should be able to view "Facebook" on the company index page
 
@@ -46,13 +46,13 @@ Scenario: A Registered User Can View All Questions Of A Company
 Scenario: An Unregistered User Cannot View A Companies Information
 	Given I am an unregistered user
 	When I view the company "Microsoft"
-	Then I should see an error message
+	Then I should see a message saying you must sign in
 	And I should not see "Microsoft"s information
 
 Scenario: An Unregistered User Cannot View The List Of Companies
 	Given I am an unregistered user
-	When I view the the companies index page
-	Then I should see an error message
-	And I should not see any of the companies name
+	When I view the companies index page
+	Then I should see a message saying you must sign in
+	And I should not see any of the companies names
 	
 #TODO: Testing pagination or load more 

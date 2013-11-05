@@ -29,6 +29,7 @@ group :test do
 end
 
 group :development do
+  gem 'guard'
   gem 'sqlite3'
   gem "mailcatcher", "~> 0.5.12"
 end
