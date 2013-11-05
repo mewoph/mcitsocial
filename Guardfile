@@ -8,4 +8,4 @@ guard 'cucumber' do
 end
 
 notification :off,
-all_after_pass: true
+all_after_pass: false
