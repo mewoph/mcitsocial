@@ -30,6 +30,7 @@ end
 
 group :development do
   gem 'guard'
+  gem 'guard-cucumber'
   gem 'sqlite3'
   gem "mailcatcher", "~> 0.5.12"
 end
