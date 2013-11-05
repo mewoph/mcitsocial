@@ -11,4 +11,22 @@
 class Company < ActiveRecord::Base
   attr_accessible :name
   has_many :feedbacks
+
+  def num_questions
+  	count = 0
+  	feedbacks.each do |f|
+  		count += 1 if f.is_question
+  	end
+  	count
+  end
+
+  def num_comments
+  	count = 0
+  	feedbacks.each do |f|
+  		count += 1 if not f.is_question
+  	end
+  	count
+  end
+
+
 end

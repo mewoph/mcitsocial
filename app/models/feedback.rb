@@ -12,6 +12,6 @@
 #
 
 class Feedback < ActiveRecord::Base
-  attr_accessible :question, :adder_id, :company_id
+  attr_accessible :id, :adder_id, :company_id, :feedback_content, :is_question
   belongs_to :company
 end
