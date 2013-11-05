@@ -10,6 +10,8 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
+		@questions = @company.feedbacks.where(:is_question => true)
+		@comments = @company.feedbacks.where(:is_question => false)
 	end
 
 	def create

@@ -2,9 +2,11 @@ $midnight-blue: #2c3e50;
 $pumpkin: #d35400;
 $cloud: #ecf0f1;
 $belize: #2980b9;
+$green: #27ae60;
+$silver: #bdc3c7;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
-$green: #27ae60;
+$italiana: 'Italiana', serif;
 
 @import 'font-awesome';
 
@@ -448,7 +450,7 @@ input[type=submit] {
 		}
 
 		.company-name {
-			font-family: 'Italiana', serif;
+			font-family: $italiana;
 		}
 
 		a {
@@ -496,7 +498,82 @@ input[type=submit] {
 }
 
 .company-show {
+	
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	color: white;
 
+	.header-wrapper {
+		width: 100%;
+
+		a:hover {
+			color: $silver;
+		}
+	}
+
+
+	h1 {
+		margin-top: 0.5em;
+		margin-right: 0.5em;
+		font-size: 3em;
+		font-family: $italiana;
+		color: white;
+		display: inline-block;
+	}
+
+	h3 {
+		color: white;
+		display: block-block;
+		text-transform: uppercase;
+		font-weight: 300;
+		color: $silver;
+		opacity: 0.6;
+	}
+
+	.span6 {
+		margin: 0;
+		padding: 1em;
+	}
+
+
+	.questions-list, .comments-list {
+		float: left;
+		list-style: none;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		color: white;
+
+		@media  (max-width: 600px) {
+			width: 80%;
+		}
+
+		li {
+			border: 0;
+			padding: 1em;
+			border-bottom: 1px solid;
+			-webkit-transition: 0.25s linear;
+	  		transition: 0.25s linear;
+	  		font-size: 1.2em;
+		}
+
+		li:hover {
+			background-color: rgba(0,0,0, 0.6);
+			cursor: pointer;
+
+			.company-name {
+				color: $green;
+			}
+		}
+	}
+
+	.adder-name {
+		padding: 0.25em;
+		font-size: 0.8em;
+		opacity: 0.6;
+		text-decoration: italic;
+	}
 }
 
 

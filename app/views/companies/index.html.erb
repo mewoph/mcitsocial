@@ -7,9 +7,9 @@
 		<% comments_link = "<i class='fa fa-comments'></i><div class='number'>" + num_comments + "</div>" %>
 		<% num_questions = company.num_questions.to_s %>
 
-		<%= link_to comments_link.html_safe, company, :title => num_comments + " comment(s) added", :class => 'comments' %>
+		<%= link_to comments_link.html_safe, company_path(company.id, anchor: 'comments'), :title => num_comments + " comment(s) added", :class => 'comments' %>
 
-		<%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company, :class => "questions", :title => num_questions + " question(s) added" %>
+		<%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company_path(company.id, anchor: 'questions'), :anchor => 'questions', :class => "questions", :title => num_questions + " question(s) added" %>
 	</li>
 <% end %>
 </ul>

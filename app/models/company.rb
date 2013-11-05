@@ -12,6 +12,17 @@ class Company < ActiveRecord::Base
   attr_accessible :name
   has_many :feedbacks
 
+
+#TODO - add order to questions and comments
+
+  scope :questions, lambda {
+    feedbacks.where(:is_question => true)
+  }
+
+  scope :comments, lambda {
+    feedbacks.where(:is_question => false)
+  }
+
   def num_questions
   	count = 0
   	feedbacks.each do |f|
