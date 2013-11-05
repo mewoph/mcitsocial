@@ -34,13 +34,18 @@
 #  profile_picture_content_type :string(255)
 #  profile_picture_file_size    :integer
 #  profile_picture_updated_at   :datetime
+#  areas_of_interest            :string(255)
+#  languages                    :string(255)
+#  courses                      :string(255)
 #
 
 class User < ActiveRecord::Base
   # attr_accessible :title, :body
   attr_accessible :email, :password, :password_confirmation, :profile_picture, :first_name, :last_name, :matriculation_date, :graduation_date, :bio, :undergrad_major, :undergrad_school, :hometown, :previous_work, :areas_of_interest, :languages, :is_current_student, :courses
-  has_attached_file :profile_picture, :styles => { :square => "400x400>", :thumb => "100x100>" }
+  has_attached_file :profile_picture, :styles => { :square => "400x400>", :thumb => "100x100>"}
   devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable, :timeoutable
+  validates_length_of :bio, :maximum => 140, :too_long  => "Bio is over 140 chars."
+
 
 
   #TODO Test this???
@@ -58,7 +63,7 @@ class User < ActiveRecord::Base
   end
 
   # Returns the marticulation date in the format "Month Year", ie "September 2013"
-  def matriculation_date1
+  def matriculate
   	if !matriculation_date.blank?
   		matriculation_date.strftime("%B %Y")
   	else
@@ -66,7 +71,7 @@ class User < ActiveRecord::Base
   	end
   end
 
-  def graduation_date2
+  def graduate
   	if !graduation_date.blank?
   		graduation_date.strftime("%B %Y")
   	else

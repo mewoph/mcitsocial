@@ -34,6 +34,9 @@
 #  profile_picture_content_type :string(255)
 #  profile_picture_file_size    :integer
 #  profile_picture_updated_at   :datetime
+#  areas_of_interest            :string(255)
+#  languages                    :string(255)
+#  courses                      :string(255)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html

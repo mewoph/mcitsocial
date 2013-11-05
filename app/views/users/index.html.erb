@@ -7,8 +7,6 @@
 					<div class="picture-thumb" style="background-image:url(<%= user.profile_picture.url %>)">
 						<% if not user.is_current_student %>
 							<%= image_tag "alum.png", :class => 'status-ribbon' %>
-						<% else %>
-							<div class="current-ribbon"><div class="yr"><%= user.matriculation_year %></div></div>
 						<% end %>
 					</div>
 				<% else %>

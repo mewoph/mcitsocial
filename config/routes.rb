@@ -60,10 +60,10 @@ Mcitsocial::Application.routes.draw do
     post "/signup" => "devise/registrations#create", :as => :user_registration
   end
 
-
   root :to => "users#sign_in"
 
   resources :users
+  resources :companies
 
   # See how all your routes lay out with "rake routes"
 
