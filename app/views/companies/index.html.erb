@@ -4,7 +4,9 @@
 	<li><div class="company-name"><%= company.name %></div>
 		<%= link_to "<i class='fa fa-comments'></i><div class='number'>94</div>".html_safe, company, :title => "94 comments added", :class => 'comments' %>
 		<%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company, :class => "questions", :title => "10 questions added" %>
-		<%= link_to "<i class='fa fa-circle'></i>".html_safe, company, :class => "questions-shownum", :title => "10 questions added" %>
+
+		<!-- this is not used yet -->
+		<% link_to "<i class='fa fa-circle'></i>".html_safe, company, :class => "questions-shownum", :title => "10 questions added" %>
 	</li>
 <% end %>
 	<li><div class="company-name">Company One</div></li>
@@ -18,13 +20,12 @@
 $('body').addClass('companies-index-bg');
 $('.comments').tipsy({gravity: 'sw'});
 $('.questions').tipsy({gravity: 'sw'});
-$('.questions-shownum').hide();
-$('.questions').hover(function()
-{
-     $('.questions-shownum').show();
-}, function()
-{ 
-     $('.questions').fadeIn('fast');
-     $('.questions-shownum').hide();
-});
+// $('.questions-shownum').hide();
+// $('.questions').hover(function() {
+// 	 $('.questions-shownum').fadeIn('fast');
+//      $('.questions-shownum').show();
+// }, function() { 
+//      $('.questions').fadeIn('fast');
+//      $('.questions-shownum').hide();
+// });
 </script>

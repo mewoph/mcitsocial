@@ -4,6 +4,7 @@ $cloud: #ecf0f1;
 $belize: #2980b9;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
+$green: #27ae60;
 
 @import 'font-awesome';
 
@@ -423,8 +424,8 @@ input[type=submit] {
 	}
 }
 
-.companies-index-bg {
-	background: url('../assets/ricepaper.png');
+.companies-index-bg, .company-show-bg {
+	@include background-image('../assets/locust-walk-bg.png');
 }
 
 .companies-index {
@@ -434,6 +435,7 @@ input[type=submit] {
 		width: 50%;
 		margin-left: auto;
 		margin-right: auto;
+		color: white;
 
 		@media  (max-width: 600px) {
 			width: 80%;
@@ -445,6 +447,10 @@ input[type=submit] {
 			padding-right: 0.5em;
 		}
 
+		.company-name {
+			font-family: 'Italiana', serif;
+		}
+
 		a {
 			float: right;
 			margin-left: 1em;
@@ -452,35 +458,45 @@ input[type=submit] {
 
 		li {
 			border: 0;
-			padding: 1em;
+			padding: 1.25em;
 			border-bottom: 1px solid;
 			-webkit-transition: 0.25s linear;
 	  		transition: 0.25s linear;
+	  		font-size: 1.25em;
 		}
 
 		li:hover {
-			background-color: rgba(255,255,255, 0.5);
+			background-color: rgba(0,0,0, 0.6);
 			cursor: pointer;
 
 			.company-name {
-				color: $belize;
+				color: $green;
 			}
 		}
 
 		i {
 			font-size: 2em;
 			position: absolute;
+			color: white;
+		}
+
+		i:hover {
+			color: $green;
 		}
 
 		.number {
 			z-index: 10;
 			position: relative;
-			color: white;
+			color: black;
 			font-size: 0.8em;
 			padding-left: 0.5em;
 		}
 
 	}
+}
+
+.company-show {
+
 }
 
 
