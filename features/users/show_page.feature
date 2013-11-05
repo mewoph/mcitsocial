@@ -16,8 +16,8 @@ Background:
 
 		Scenario: Registered user can view another registered users profile
 			Given I am logged in as "Abeer"
-			When I view my profile page
-			Then I should see another users profile information
+			When I view "Connor"s profile page
+			Then I should see "Connor"s profile information
 
 		Scenario: Unregistered user cannot view profile page
 			Given I am not a valid user
@@ -32,7 +32,7 @@ Background:
 
 		Scenario: A registered user does not have the edit button on another users profile page
 			Given I am logged in as "Connor"
-			When I view another users profile page
+			When I view "Abeer"s profile page
 			Then I should not see the edit profile button
 
 		Scenario: A registered user should be able to click own link on user index page and see own profile

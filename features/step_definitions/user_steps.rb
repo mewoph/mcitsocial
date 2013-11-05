@@ -19,32 +19,61 @@ def create_valid_user
   								password_confirmation: @user[:password_confirmation], confirmed_at: "2013-10-10 10:15:00" )
 end
 
-def my_profile
-	page.should have_content @original_user.first_name
-	page.should have_content @original_user.last_name
-	page.should have_content @original_user.bio
-	page.should have_content @original_user.previous_work
-	page.should have_content @original_user.undergrad_major
-	page.should have_content @original_user.undergrad_school
-	page.should have_content @original_user.hometown
-	page.should have_content @original_user.email
-	if @original_user.is_current_student 
+def see_profile(user)
+	page.should have_content user.first_name
+	page.should have_content user.last_name
+	page.should have_content user.bio
+	page.should have_content user.previous_work
+	page.should have_content user.undergrad_major
+	page.should have_content user.undergrad_school
+	page.should have_content user.hometown
+	page.should have_content user.email
+	if user.is_current_student 
 		then page.should have_content "Current Student"
 	else
 		page.should have_content "Former Student"
 	end
-	if@original_user.is_parttime 
+	if user.is_parttime 
 		then page.should have_content "Full Time Student"
 	else 
 		page.should have_content "Part Time Student"
 	end
-	a =  @original_user.courses.split(",")
+	a =  user.courses.split(",")
 	a.each do |course|
 		page.should have_content course
 	end
-	b =  @original_user.languages.split(",")
+	b =  user.languages.split(",")
 	b.each do |language|
 		page.should have_content language
+	end
+end
+
+def not_see_profile(user)
+	page.should_not have_content user.first_name
+	page.should_not have_content user.last_name
+	page.should_not have_content user.bio
+	page.should_not have_content user.previous_work
+	page.should_not have_content user.undergrad_school
+	page.should_not have_content user.undergrad_major
+	page.should_not have_content user.hometown
+	page.should_not have_content user.email
+	if user.is_current_student 
+		then page.should_not have_content "Current Student"
+	else
+		page.should_not have_content "Former Student"
+	end
+	if user.is_parttime 
+		then page.should_not have_content "Part Time Student"
+	else 
+		page.should_not have_content "Full Time Student"
+	end
+	a =  user.courses.split(",")
+	a.each do |course|
+		page.should_not have_content course
+	end
+	b =  user.languages.split(",")
+	b.each do |language|
+		page.should_not have_content language
 	end
 end
 
@@ -75,7 +104,6 @@ end
 Given /^I am logged in$/ do
 	# create_password
 	create_user
-	create_valid_user
 	visit root_path
 	fill_in "user_email", :with => @user[:email]
 	fill_in "user_password", :with => @user[:password]
@@ -84,9 +112,9 @@ end
 
 Given /^I am logged in as "(.*?)"$/ do |name|
 	# create_password
-	@original_user = User.where(:first_name => name)[0]
+	@user = User.where(:first_name => name)[0]
 	visit root_path
-	fill_in "user_email", :with => @original_user[:email]
+	fill_in "user_email", :with => @user[:email]
 	fill_in "user_password", :with => @password
 	click_button "buttonid"
 end
@@ -141,12 +169,21 @@ When /^I sign in with an invalid email$/ do
 end
 
 When /^I view my profile page$/ do
-	visit user_path(@original_user.id)
+	visit user_path(@user.id)
 end
 
 When /^I view a profile show page$/ do
 	@user = User.first
 	visit user_path(@user.id)
+end
+
+When /^I view user index page$/ do
+	visit users_path
+end
+
+When /^I view "(.*?)"s profile page$/ do |name|
+  other_user = User.where(:first_name => name)[0]
+  visit user_path(other_user.id)
 end
 
 #Then
@@ -188,71 +225,51 @@ Then /^I should see the updated profile information$/ do
 end
 
 Then /^I should have access to the private content$/ do
-	#TODO: Make sure that this is updated with updated landing page content
 	page.should have_content "Signed in successfully."
 	page.should have_content "Sign out"
 end
 
 Then /^I should see my profile information$/ do
-	my_profile
+	see_profile(@user)
 end
 
 Then /^I should not see another users profile information$/ do
 	userTwo = User.find(2)
-	page.should_not have_content userTwo.first_name
-	page.should_not have_content userTwo.last_name
-	page.should_not have_content userTwo.bio
-	page.should_not have_content userTwo.previous_work
-	page.should_not have_content userTwo.undergrad_school
-	page.should_not have_content userTwo.undergrad_major
-	page.should_not have_content userTwo.hometown
-	page.should_not have_content userTwo.email
-	if @userTwo.is_current_student 
-		then page.should_not have_content "Current Student"
-	else
-		page.should_not have_content "Former Student"
+	if userTwo.id = @user.id
+		then userTwo = User.first
 	end
-	if@userTwo.is_parttime 
-		then page.should_not have_content "Full Time Student"
-	else 
-		page.should_not have_content "Part Time Student"
-	end
-	a =  @userTwo.courses.split(",")
-	a.each do |course|
-		page.should_not have_content course
-	end
-	b =  @userTwo.languages.split(",")
-	b.each do |language|
-		page.should_not have_content language
-	end
+	not_see_profile(userTwo)
 end
 
 Then /^I should not be able to access a profile show page$/ do
-	page.should_not have_content @user.first_name
-	page.should_not have_content @user.last_name
-	page.should_not have_content @user.bio
-	page.should_not have_content @user.previous_work
-	page.should_not have_content @user.undergrad_school
-	page.should_not have_content @user.undergrad_major
-	page.should_not have_content @user.hometown
-	page.should_not have_content @user.email
-	if @user.is_current_student 
-		then page.should_not have_content "Current Student"
-	else
-		page.should_not have_content "Former Student"
-	end
-	if@user.is_parttime 
-		then page.should_not have_content "Full Time Student"
-	else 
-		page.should_not have_content "Part Time Student"
-	end
-	a =  @user.courses.split(",")
-	a.each do |course|
-		page.should_not have_content course
-	end
-	b =  @user.languages.split(",")
-	b.each do |language|
-		page.should_not have_content language
-	end
+	not_see_profile(@user)
 	page.should have_content "You need to sign in or sign up before continuing."
+end
+
+Then /^I should see the edit profile button$/ do
+	page.should have_content "Edit Profile"
+end
+
+Then /^I should not see the edit profile button$/ do
+	page.should_not have_content "Edit Profile"
+end
+
+Then /^I should see "(.*?)"s profile information$/ do |name|
+	other_user = User.where(:first_name => name)[0]
+	see_profile(other_user)
+end
+
+Then /^I should see a link to my profile$/ do
+   page.should have_content @user.first_name
+   page.should have_link("Show Profile", :href => user_path(@user))
+end
+
+Then /^I should not see the old profile information$/ do
+  page.should_not have_content user.hometown
+end
+
+Then /^I should not be able to edit "(.*?)"s page$/ do |name|
+  other_user = User.where(:first_name => name)[0]
+  visit edit_user_path(other_user.id)
+  page.should have_content "You can't edit other people's profile."
 end

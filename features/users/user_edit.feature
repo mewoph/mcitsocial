@@ -19,5 +19,5 @@ Scenario: I sign in and Edit My Account
 Scenario: User should not able to edit another user's page
 	Given I am logged in as "Abeer"
 	When I view "Connor"s profile page
-	Then I should not be able to edit the page
+	Then I should not be able to edit "Connor"s page
 
