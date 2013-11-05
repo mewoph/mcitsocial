@@ -1,6 +1,8 @@
 <div class="user-index">
 	<div class="row-fluid">
-	<% @users.each do |user| %>
+	
+
+<% @users.each do |user| %>
 		<div class="span3">
 			<div class="profile-thumb">
 				<% if user.profile_picture.present? %>
@@ -17,6 +19,7 @@
 			</div>
 		</div>
 	<% end %>
+
 </div>
 </div>
 

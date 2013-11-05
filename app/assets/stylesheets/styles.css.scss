@@ -1,7 +1,30 @@
 $midnight-blue: #2c3e50;
 $pumpkin: #d35400;
+$cloud: #ecf0f1;
+$belize: #2980b9;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
+$green: #27ae60;
+
+@import 'font-awesome';
+
+@mixin background-image($src) {
+   	background: url($src) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+@mixin turquoise($opacity) {
+	background-color: #1abc9c;
+	background-color: rgba(26, 188, 156, $opacity);
+}
+
+@mixin green-sea($opacity) {
+	background-color: #16a085;
+	background-color: rgba(22, 160, 133, $opacity);
+}
 
 body {
 	font-family: $roboto;
@@ -13,6 +36,11 @@ a:hover {
 
 * {
 	word-wrap: break-word;
+}
+
+
+input[type=submit] {
+	width: 100%;
 }
 
 .navbar {
@@ -367,7 +395,7 @@ a:hover {
 		}
 	}
 
-	.span3:nth-child(5n) {
+	.span3:nth-child(4n + 1) {
 		margin-left: 0;
 	}
 
@@ -396,43 +424,99 @@ a:hover {
 	}
 }
 
-	.name {
-		word-wrap:break-word;
-	}
+.companies-index-bg, .company-show-bg {
+	@include background-image('../assets/locust-walk-bg.png');
+}
 
-	input[type=submit] {
-		width: 100%;
+.companies-index {
+
+	.companies-list {
+		list-style: none;
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		color: white;
+
+		@media  (max-width: 600px) {
+			width: 80%;
+		}
+
+		a, .company-name {
+			display: inline-block;
+			padding-left: 0.5em;
+			padding-right: 0.5em;
+		}
+
+		.company-name {
+			font-family: 'Italiana', serif;
+		}
+
+		a {
+			float: right;
+			margin-left: 1em;
+		}
+
+		li {
+			border: 0;
+			padding: 1.25em;
+			border-bottom: 1px solid;
+			-webkit-transition: 0.25s linear;
+	  		transition: 0.25s linear;
+	  		font-size: 1.25em;
+		}
+
+		li:hover {
+			background-color: rgba(0,0,0, 0.6);
+			cursor: pointer;
+
+			.company-name {
+				color: $green;
+			}
+		}
+
+		i {
+			font-size: 2em;
+			position: absolute;
+			color: white;
+		}
+
+		i:hover {
+			color: $green;
+		}
+
+		.number {
+			z-index: 10;
+			position: relative;
+			color: black;
+			font-size: 0.8em;
+			padding-left: 0.5em;
+		}
+
 	}
+}
+
+.company-show {
+
+}
+
 
 /* Classes that are dynamically added */
 
 /* Background Image Classes */
 .background-image1 {
 
-	background: url('../assets/landing_background1.png') no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	@include background-image('../assets/landing_background1.png');
 
 }
 
 .background-image2 {
 
-	background: url('../assets/landing_background2.png') no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	@include background-image('../assets/landing_background2.png');
 }
 
 .background-image3 {
 
-	background: url('../assets/landing_background3.png') no-repeat center center fixed; 
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
+	@include background-image('../assets/landing_background3.png');
 
 }
 
