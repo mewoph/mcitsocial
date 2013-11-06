@@ -62,6 +62,7 @@ Mcitsocial::Application.routes.draw do
 
   root :to => "users#sign_in"
 
+  resources :feedbacks
   resources :users
   resources :companies
 

@@ -66,7 +66,9 @@ When /^I create the company "(.*?)"$/ do |name|
 end
 
 When(/^I click on the feedbacks tab$/) do
-  pending # express the regexp above with the code you wish you had
+  within(".navbar") do
+		click_link "questions"
+	end
 end
 
 #Then
@@ -109,18 +111,20 @@ Then /^I should not see any of the companies names$/ do
 	page.should_not have_content "Amazon"
 end
 
-# IMPLEMENT BELOW
-
 Then /^I should be able to view all of "(.*?)"s feedbacks$/ do |name|
-  page.should have_content "Where is that?"
+  page.should have_content "What is that?"
 end
 
-Then(/^I should not be able to view any other companies feedbacks$/) do
-  pending # express the regexp above with the code you wish you had
+Then /^I should not be able to view any other companies feedbacks$/ do
+  page.should_not have_content "What is the meaning of life?"
+  page.should_not have_content "What is this?"
 end
 
-Then(/^I should see a list of all feedbacks and the company name it belongs to$/) do
-  pending # express the regexp above with the code you wish you had
+Then /^I should see a list of all feedbacks and the company name it belongs to$/ do
+  page.should_not have_content "What is that?"
+  page.should_not have_content "Where am I?"
+  page.should_not have_content "What is the meaning of life?"
+  page.should_not have_content "What is this?"
 end
 
 
