@@ -432,11 +432,50 @@ input[type=submit] {
 
 .companies-index {
 
-	.companies-list {
-		list-style: none;
+	color: white;
+
+	.add-company, .companies-list {
 		width: 50%;
 		margin-left: auto;
 		margin-right: auto;
+	}
+
+	.add-company {
+		padding: 1.25em;
+		padding-left: 0;
+		padding-right: 0;
+		margin-bottom: 1.25em;
+		background: black;
+		background: rgba(0,0,0,0.5);
+
+		.text-wrapper {
+			padding-left: 1.25em;
+			padding-right: 1.25em;
+		}
+
+		.text1 {
+			opacity: 0.7;
+			display: inline-block;
+			margin-right: 1em;
+		}
+
+		a:hover {
+			color: $silver;
+		}
+
+		.pagination-wrapper {
+			width: 50%;
+			text-align: center;
+
+			nav {
+				width: 300px;
+				display: inline;
+			}
+		}
+	}
+
+	.companies-list {
+		list-style: none;
 		color: white;
 
 		@media  (max-width: 600px) {
@@ -451,6 +490,14 @@ input[type=submit] {
 
 		.company-name {
 			font-family: $italiana;
+
+			a {
+				color: $green;
+			}
+
+			a:hover {
+				color: $silver;
+			}
 		}
 
 		a {
@@ -520,6 +567,7 @@ input[type=submit] {
 		font-family: $italiana;
 		color: white;
 		display: inline-block;
+		text-shadow: 3px 5px 7px #474747;
 	}
 
 	h3 {

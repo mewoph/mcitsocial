@@ -11,6 +11,7 @@
 class Company < ActiveRecord::Base
   attr_accessible :name
   has_many :feedbacks
+  paginates_per 2
 
 
 #TODO - add order to questions and comments
