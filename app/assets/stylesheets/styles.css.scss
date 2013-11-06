@@ -462,16 +462,6 @@ input[type=submit] {
 		a:hover {
 			color: $silver;
 		}
-
-		.pagination-wrapper {
-			width: 50%;
-			text-align: center;
-
-			nav {
-				width: 300px;
-				display: inline;
-			}
-		}
 	}
 
 	.companies-list {
@@ -624,6 +614,52 @@ input[type=submit] {
 	}
 }
 
+
+/* PAGINATION */
+.pagination a, .pagination span.current, .pagination span.gap {
+	float: left;
+	padding: 0 14px;
+	line-height: 38px;
+	text-decoration: none;
+	background-color: white;
+	border: 1px solid #DDD;
+	border-left-width: 0;
+
+}
+ 
+.pagination ul>li>a, .pagination ul>li>span, .pagination ul>li>a:hover, .pagination ul>li>a:focus, .pagination ul>.active>a, .pagination ul>.active>span {
+	background: none;
+	color: white;
+	-webkit-transition: all 0.15s linear;
+	-moz-transition: all 0.15s linear;
+	transition: all 0.15s linear;
+}
+
+.pagination ul>li>a:hover, .pagination ul>li>a:focus, .pagination ul>.active>a, .pagination ul>.active>span {
+	background: black;
+	background: rgba(0,0,0,0.4);
+}
+
+.pagination {
+
+	background: none;
+	width: 50%;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+
+	.first, .prev, .page, .next, .last {
+		background: none;
+		padding : 0;
+		float: none;
+		border: none;
+	}
+
+	ul {
+		padding: 1em;
+	}
+
+}
 
 /* Classes that are dynamically added */
 
