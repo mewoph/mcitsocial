@@ -7,12 +7,12 @@ Background:
 	| name |
 	| Microsoft| 
 	| Amazon| 
-	And the following questions exist:
-	| question 										| company |
-	| What is that? 								| Microsoft |
-	| Where am I? 									| Microsoft |
-	| What is this? 								| Amazon | 
-	| What is the meaning of life? 					| Amazon | 
+	And the following feedbacks exist:
+	| feedback_content 								| company_id | is_question |
+	| What is that? 								| 1 | true |
+	| Where am I? 									| 1 | true | 
+	| What is this? 								| 2 | true |
+	| What is the meaning of life? 					| 2 | true |
 
 Scenario: A Registered User Can View A List of Companies
 	Given I am a valid user that is logged in
@@ -37,11 +37,11 @@ Scenario: A Registered User Cannot Add A Company That Already Exists
 	Then I should see a failure to create a company message
 	And I should be redirected to "Microsoft"s show page
 
-Scenario: A Registered User Can View All Questions Of A Company
+Scenario: A Registered User Can View All Feedbacks Of A Company
 	Given I am a valid user that is logged in
 	When I view the company "Microsoft"
-	Then I should be able to view all of "Microsoft"s questions
-	And I should not be able to view any other companies questions
+	Then I should be able to view all of "Microsoft"s feedbacks
+	And I should not be able to view any other companies feedbacks
 
 Scenario: An Unregistered User Cannot View A Companies Information
 	Given I am an unregistered user

@@ -37,9 +37,9 @@ Given /^the following companies exist:$/ do |table|
   end
 end
 
-Given /^the following questions exist:$/ do |table|
+Given /^the following feedbacks exist:$/ do |table|
   table.hashes.each do |attributes|
-    FactoryGirl.create(:question, question: attributes["question"])
+    FactoryGirl.create(:feedback, feedback_content: attributes["feedback_content"], company_id: attributes["company_id"], is_question: attributes["is_question"])
   end 
 end
 
