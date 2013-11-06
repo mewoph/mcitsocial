@@ -52,7 +52,8 @@ Mcitsocial::Application.configure do
   config.assets.precompile += %w( jquery.tagsinput.css )
   config.assets.precompile += %w( bootstrap-datepicker.js )
   config.assets.precompile += %w( jquery.tagsinput.js )
-
+  config.assets.precompile += %w( tipsy.css )
+  config.assets.precompile += %w( jquery.tipsy.js )
 
 
   # Disable delivery errors, bad email addresses will be ignored
