@@ -7,11 +7,11 @@ Background:
 	| Microsoft| 
 	| Amazon| 
 	And the following feedbacks exist:
-	| Feedback 													| Company |
-	| How to reverse a linkedlist?			| Microsoft |
-	| What is a hashmap? 								| Microsoft |
-	| What is a heap? 									| Amazon | 
-	| What is the number for SIGKILL? 	| Amazon | 
+	| feedback_content 								| company_id | is_question |
+	| What is that? 								| 1 | true |
+	| Where am I? 									| 1 | true | 
+	| What is this? 								| 2 | true |
+	| What is the meaning of life? 					| 2 | true |
 
 Scenario: A Registered User Can View A List Of Feedbacks On The Feedbacks Index Page
 	Given I am a valid user that is logged in
