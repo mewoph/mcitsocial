@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@companies = Company.all
+		@companies = Company.order(:name).page params[:page]
 	end
 
 	def new
@@ -12,6 +12,8 @@ class CompaniesController < ApplicationController
 
 	def show
 		@company = Company.find(params[:id])
+		@questions = @company.feedbacks.where(:is_question => true)
+		@comments = @company.feedbacks.where(:is_question => false)
 	end
 
 	def create

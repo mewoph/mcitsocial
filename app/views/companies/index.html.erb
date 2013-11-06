@@ -1,18 +1,33 @@
 <div class="companies-index">
+
+	<div class="add-company">
+
+		<div class="text-wrapper">
+
+			<div class="text1">Didn't see the company you're looking for?</div><a><i class='fa fa-suitcase'></i>  Add Company</a>
+
+		</div>
+
+	</div>
+
 <ul class="companies-list">
 <%  @companies.each do |company| %>
-	<li><div class="company-name"><%= company.name %></div>
+		<li onclick="location.href='<%= company_path(company.id) %>';"><div class="company-name"><%= company.name  %></div>
 
-		<% num_comments = company.num_comments.to_s %>
-		<% comments_link = "<i class='fa fa-comments'></i><div class='number'>" + num_comments + "</div>" %>
-		<% num_questions = company.num_questions.to_s %>
+			<% num_comments = company.num_comments.to_s %>
+			<% comments_link = "<i class='fa fa-comments'></i><div class='number'>" + num_comments + "</div>" %>
+			<% num_questions = company.num_questions.to_s %>
 
-		<%= link_to comments_link.html_safe, company, :title => num_comments + " comment(s) added", :class => 'comments' %>
+			<%= link_to comments_link.html_safe, company_path(company.id, anchor: 'comments'), :title => num_comments + " comment(s) added", :class => 'comments' %>
 
-		<%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company, :class => "questions", :title => num_questions + " question(s) added" %>
-	</li>
+			<%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company_path(company.id, anchor: 'questions'), :anchor => 'questions', :class => "questions", :title => num_questions + " question(s) added" %>
+		</li>
 <% end %>
 </ul>
+
+<div class="pagination-wrapper">
+	<%= paginate @companies %>
+</div>
 
 </div>
 
