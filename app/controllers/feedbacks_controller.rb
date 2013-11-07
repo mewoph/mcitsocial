@@ -1,7 +1,7 @@
 class FeedbacksController < ApplicationController
 
 	def index
-		@feedbacks = Feedback.all
+		@feedbacks = Feedback.where(is_question: true)
 	end
 
 	def new
