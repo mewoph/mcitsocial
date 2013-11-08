@@ -558,7 +558,6 @@ input[type=submit] {
 	margin-right: auto;
 	width: 80%;
 	color: white;
-	padding-bottom: 800px;
 
 	.header-wrapper {
 		width: 100%;
@@ -570,6 +569,10 @@ input[type=submit] {
 
 	#questions, #comments {
 		margin-top: 1.5em;
+	}
+
+	#comments {
+		margin-bottom: 150px;
 	}
 
 
@@ -605,10 +608,6 @@ input[type=submit] {
 		margin-right: auto;
 		width: 100%;
 		color: white;
-
-		@media  (max-width: 600px) {
-			width: 80%;
-		}
 
 		@include list();
 
@@ -682,7 +681,7 @@ input[type=submit] {
 .pagination {
 
 	background: none;
-	width: 50%;
+	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;
