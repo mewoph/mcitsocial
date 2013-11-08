@@ -430,23 +430,33 @@ input[type=submit] {
 	@include background-image('../assets/locust-walk-bg.png');
 }
 
-.companies-index {
+@mixin list() {
 
-	color: white;
+	li {
+			border: 0;
+			padding: 1.25em;
+			border-bottom: 1px solid;
+			-webkit-transition: 0.25s linear;
+	  		transition: 0.25s linear;
+	  		font-size: 1.25em;
+	  		border-color: white;
+	  		color: white;
+		}
 
-	.add-company, .companies-list {
-		width: 50%;
-		margin-left: auto;
-		margin-right: auto;
+	li:hover {
+		background-color: rgba(0,0,0, 0.6);
+		cursor: pointer;
 	}
 
-	.add-company {
+}
+
+@mixin index-header() {
 		padding: 1.25em;
 		padding-left: 0;
 		padding-right: 0;
 		margin-bottom: 1.25em;
 		background: black;
-		background: rgba(0,0,0,0.5);
+		background: rgba(0,0,0,0.7);
 
 		.text-wrapper {
 			padding-left: 1.25em;
@@ -462,6 +472,23 @@ input[type=submit] {
 		a:hover {
 			color: $silver;
 		}
+}
+
+.companies-index {
+
+	color: white;
+
+	.add-company, .companies-list {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.add-company {
+		@include index-header();
+		@media  (max-width: 600px) {
+			width: 100%;
+		}
 	}
 
 	.companies-list {
@@ -469,7 +496,7 @@ input[type=submit] {
 		color: white;
 
 		@media  (max-width: 600px) {
-			width: 80%;
+			width: 100%;
 		}
 
 		a, .company-name {
@@ -495,18 +522,9 @@ input[type=submit] {
 			margin-left: 1em;
 		}
 
-		li {
-			border: 0;
-			padding: 1.25em;
-			border-bottom: 1px solid;
-			-webkit-transition: 0.25s linear;
-	  		transition: 0.25s linear;
-	  		font-size: 1.25em;
-		}
+		@include list();
 
 		li:hover {
-			background-color: rgba(0,0,0, 0.6);
-			cursor: pointer;
 
 			.company-name {
 				color: $green;
@@ -540,6 +558,7 @@ input[type=submit] {
 	margin-right: auto;
 	width: 80%;
 	color: white;
+	padding-bottom: 800px;
 
 	.header-wrapper {
 		width: 100%;
@@ -547,6 +566,10 @@ input[type=submit] {
 		a:hover {
 			color: $silver;
 		}
+	}
+
+	#questions, #comments {
+		margin-top: 1.5em;
 	}
 
 
@@ -587,19 +610,9 @@ input[type=submit] {
 			width: 80%;
 		}
 
-		li {
-			border: 0;
-			padding: 1em;
-			border-bottom: 1px solid;
-			-webkit-transition: 0.25s linear;
-	  		transition: 0.25s linear;
-	  		font-size: 1.2em;
-		}
+		@include list();
 
 		li:hover {
-			background-color: rgba(0,0,0, 0.6);
-			cursor: pointer;
-
 			.company-name {
 				color: $green;
 			}
@@ -607,11 +620,37 @@ input[type=submit] {
 	}
 
 	.adder-name {
-		padding: 0.25em;
+		margin-top: 1em;
 		font-size: 0.8em;
 		opacity: 0.6;
 		text-decoration: italic;
 	}
+}
+
+.questions-index-bg {
+	@include background-image('../assets/library-bg.png');
+}
+
+.questions-index {
+
+	color: white;
+
+	.questions-list {
+
+		list-style: none;
+		margin-left: 0;
+
+		@include list();
+
+		@media  (max-width: 600px) {
+			width: 100%;
+		}
+	}
+
+	.add-question {
+		@include index-header();
+	}
+
 }
 
 

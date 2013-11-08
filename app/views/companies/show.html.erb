@@ -6,41 +6,47 @@
 		<a><i class="fa fa-pencil-square-o"></i> Add Feedback</a>
 	</div>
 
-	<div class="span6" id="questions">
-		<h3>Questions</h3>
+	<div class="span12" id="questions">
+		<h3>Interview Questions</h3>
 		<ul class="questions-list">
-			<% @questions.each do |q| %>
-				<li><%= q.feedback_content %>
-					<div class="adder-name">
-						<i class="fa fa-user"></i>  Posted by <%= q.adder_name %>
-					</div>
-				</li>
+			<% if @questions.count == 0 %>
+				No questions have been added yet.
+			<% else %>
+				<% @questions.each do |q| %>
+					<li><%= q.feedback_content %>
+						<div class="adder-name">
+							<i class="fa fa-user"></i>  Posted by <%= q.adder_name %>
+						</div>
+					</li>
+				<% end %>
 			<% end %>
 		</ul>
 	</div>
 
-	<div class="span6" id="comments">
+	<div class="span12" id="comments">
 		<h3>Comments</h3>
 		<ul class="comments-list">
-			<% @comments.each do |c| %>
-				<li><%= c.feedback_content %>
-				<div class="adder-name">
-						<i class="fa fa-user"></i>  Posted by <%= c.adder_name %>
-					</div>
-				</li>
+			<% if @comments.count == 0 %>
+				No comments have been added yet.
+			<% else %>
+				<% @comments.each do |c| %>
+					<li><%= c.feedback_content %>
+					<div class="adder-name">
+							<i class="fa fa-user"></i>  Posted by <%= c.adder_name %>
+						</div>
+					</li>
+				<% end %>
 			<% end %>
 		</ul>
 	</div>
-
-
 </div>
 
 <script>
 	$('body').addClass('company-show-bg');
 
-	if (location.hash) {
-		var section = location.hash;
-		$(section).css("background-color", "rgba(0,0,0,0.2)");
+	if (location.hash != "") {
+	    $('html, body').animate( {
+	    	scrollTop: $(location.hash).offset().top
+	    	}, 1000);
 	}
-
 </script>
