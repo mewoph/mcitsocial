@@ -1,7 +1,16 @@
 class FeedbacksController < ApplicationController
 
 	def index
-		@feedbacks = Feedback.where(is_question: true)
+		if params[:search].blank?
+			@feedbacks = Feedback.where(is_question: true)
+		else
+			@results = Feedback.search do
+				fulltext params[:search] do
+			    	fields(:feedback_content)
+			    end
+			end
+			@feedbacks = @results.results
+		end
 	end
 
 	def new

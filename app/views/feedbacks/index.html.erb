@@ -1,3 +1,10 @@
 <% @feedbacks.each do |feedback| %>
 	<h1><%= feedback.feedback_content %></h1>
 <% end %>
+
+<%= form_tag(feedbacks_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+    <div class="input-append">
+      <%= text_field_tag :search, params[:search], class: "span12", placeholder: "Search Feedback" %>
+      <button class="btn" type="submit"><i class="icon-search"></i></button>
+    </div>
+  <% end %>

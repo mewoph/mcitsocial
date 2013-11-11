@@ -13,6 +13,12 @@ class Company < ActiveRecord::Base
   has_many :feedbacks
   paginates_per 2
 
+  searchable do #can only search text fields on solr, so need to convert our string fields to text
+    text :name
+    string  :sort_name do
+      name.downcase.gsub(/^(an?|the)/, '')
+    end
+  end
 
 #TODO - add order to questions and comments
 

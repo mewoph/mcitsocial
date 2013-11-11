@@ -15,6 +15,13 @@ class Feedback < ActiveRecord::Base
   attr_accessible :id, :adder_id, :company_id, :feedback_content, :is_question
   belongs_to :company
 
+  searchable do #can only search text fields on solr, so need to convert out string fields to text
+  	text :feedback_content
+  	string  :sort_feedback_content do
+      feedback_content.downcase.gsub(/^(an?|the)/, '')
+    end
+  end
+
   def adder_name
   	user = User.find(adder_id)
   	user.full_name
