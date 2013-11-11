@@ -9,7 +9,7 @@ Background:
 		| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT 596,CIT 550" | "Java,Ruby" |  "MCIT social" |
 		| Connor    | Liddic | Web Developer | true | false | 2010-08-05 | 2012-05-05 | Program Manager | Colgate University | Graphic Design | Albany | cl@seas.upenn.edu | "CIT 598,CIT 552" | "Ruby,Rails" | "MCIT" |
 
-Scenario: I sign in and Edit My Account
+Scenario: I sign in and Edit My User Profile Information
 	Given I am logged in as "Abeer"
 	When I view my profile page
 	And I click the "Edit Profile" button
@@ -32,3 +32,17 @@ Scenario: I sign in and Edit My Account
 	And I should not see the old profile information for "First Name", "Last Name", "Email", "Hometown", "Current Status", "Graduation Date", "Undergrad Major", "Undergrad School", "Bio", and "Work Experience"
 	And I should see the old profile information along with the added additions to "Courses", "Languages", and "Areas of Interest"
 
+Scenario: I sign in and Edit My Account
+	Given I am logged in as "Abeer"
+	When I view my profile page
+	And I click the "Edit Profile" button
+	And I remove all fields from "Languages" field
+	And I add "Python" to the "Languages" field
+	And I remove all fields from the "Courses" field
+	And I add "CIS573" to the "Courses" field
+	And I remove all fields from "Areas of Interest" field
+	And I add "Defeating Spiderman" to "Areas of Interest" field	
+	And I click the "Save Profile" button
+ 	Then I should see a successful profile edited message
+	And I should see the updated profile information
+	And I should not see the old profile information for "Courses", "Languages", and "Areas of Interest"
