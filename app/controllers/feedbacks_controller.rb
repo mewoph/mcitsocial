@@ -6,6 +6,7 @@ class FeedbacksController < ApplicationController
 
 	def new
 		@feedback = Feedback.new
+		@feedback.company_id = params[:company_id]
 	end
 
 	def show
@@ -13,8 +14,10 @@ class FeedbacksController < ApplicationController
 	end
 
 	def create
-		@feedback = Feedback.find(params[:id])
+		@feedback = Feedback.new(params[:feedback])
 		@feedback.save
+		redirect_to company_path(@feedback.company_id)
+
 	end
 
 	def edit

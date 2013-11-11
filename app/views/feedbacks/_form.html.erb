@@ -1,0 +1,8 @@
+<%= simple_form_for(@feedback) do |form| %>
+    Feedback for <%= @feedback.get_company_name(@feedback.company_id) %>
+    <%= form.hidden_field :company_id, :value => @feedback.company_id.to_i %>
+    <%= form.hidden_field :is_question, :value => true %>
+    <%= form.hidden_field :adder_id, :value => current_user.id%>
+    <%= form.input :feedback_content %> 
+    <%= form.submit%>
+  <% end %>
