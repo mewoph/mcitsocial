@@ -1,0 +1,34 @@
+Feature: Edit User Profile
+	As a registered user 
+	I want to be able to edit my profile
+	So I can update information
+
+Background: 
+	Given the following users exist:
+		| First Name | Last Name | Bio   | Is Current Student | Is Part Time | Matriculation Date | Graduation Date | Previous Work | Undergrad Major | Undergrad School | Hometown | Email | Courses | Languages | Interests |
+		| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT 596,CIT 550" | "Java,Ruby" |  "MCIT social" |
+		| Connor    | Liddic | Web Developer | true | false | 2010-08-05 | 2012-05-05 | Program Manager | Colgate University | Graphic Design | Albany | cl@seas.upenn.edu | "CIT 598,CIT 552" | "Ruby,Rails" | "MCIT" |
+
+Scenario: I sign in and Edit My Account
+	Given I am logged in as "Abeer"
+	When I view my profile page
+	And I click the "Edit Profile" button
+	And I change the "FIRST NAME" field to "Doctor"
+	And I change the "LAST NAME" field to "Oct"
+	And I change the "EMAIL" field to "doctoroct@example.com"
+	And I change the "HOMETOWN" field to "Metropolis"
+	And I change the "CURRENT STATUS" field to "Alum"
+	And I change the "GRADUATION DATE" field to "10-10-2010"
+	And I change the "UNDERGRAD MAJOR" field to "Chemistry"
+	And I change the "UNDERGRAD SCHOOL" field to "Chemistry University"
+	And I change the "BIO" field to "Evil Octopus Doctor"
+	And I add "Python" to the "Languages" field
+	And I add "CIS573" to the "Courses" field
+	And I add "Defeating Spiderman" to "Areas of Interest" field
+	And I change the "Work Experience" field to "Evil Doctor at Dr. Oct" 
+	And I click the "Save Profile" button
+ 	Then I should see a successful profile edited message
+	And I should see the updated profile information
+	And I should not see the old profile information for "First Name", "Last Name", "Email", "Hometown", "Current Status", "Graduation Date", "Undergrad Major", "Undergrad School", "Bio", and "Work Experience"
+	And I should see the old profile information along with the added additions to "Courses", "Languages", and "Areas of Interest"
+
