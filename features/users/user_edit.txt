@@ -1,3 +1,5 @@
+#NOTE: This is not a features page, we were unable to properly test the UI of the edit page feature. Therefore we were asked to write a 'script' page that has easy to follow steps to understand and test the product.
+
 Feature: Edit User Profile
 	As a registered user 
 	I want to be able to edit my profile
@@ -32,7 +34,7 @@ Scenario: I sign in and Edit My User Profile Information
 	And I should not see the old profile information for "First Name", "Last Name", "Email", "Hometown", "Current Status", "Graduation Date", "Undergrad Major", "Undergrad School", "Bio", and "Work Experience"
 	And I should see the old profile information along with the added additions to "Courses", "Languages", and "Areas of Interest"
 
-Scenario: I sign in and Edit My Account
+Scenario: I sign in and Edit the Languages, Courses, and Areas of Interest
 	Given I am logged in as "Abeer"
 	When I view my profile page
 	And I click the "Edit Profile" button
