@@ -1,4 +1,4 @@
 <div class="feedback-show">
-	<%= @feedback.feedback_content %> <%= @feedback.adder_id%>  <%= @feedback.created_at %> 
+	<%= @feedback.feedback_content %> <%= @User.find(feedback.adder_id).name%>  <%= @feedback.created_at %> 
 </div>
 
