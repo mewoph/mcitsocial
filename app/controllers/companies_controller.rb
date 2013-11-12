@@ -20,9 +20,13 @@ class CompaniesController < ApplicationController
 		existing_company = Company.find_by_name params[:company][:name]
 		if existing_company.nil?
 			@company = Company.new(params[:company])
-			@company.save
-			flash[:notice] = "Company Created"
-			redirect_to @company
+			if @company.save
+				flash[:notice] = "Company Created"
+				redirect_to @company
+			else
+				flash[:alert] = "Company name cannot be blank."
+				redirect_to :back
+			end
 		else
 			redirect_to company_path(existing_company.id)
 			flash[:notice] = "Company Already Exists"

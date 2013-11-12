@@ -117,6 +117,7 @@ input[type=submit] {
 	background-color: rgba(230,126,34,1);
 	color: white;
 	border: none;
+	text-shadow: none;
 }
 
 .landing, .signup, .email-confirm {
@@ -499,6 +500,7 @@ input[type=submit] {
 	.companies-list {
 		list-style: none;
 		color: white;
+		background: rgba(0,0,0,0.2);
 
 		@media  (max-width: 600px) {
 			width: 100%;
