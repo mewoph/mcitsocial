@@ -8,22 +8,17 @@
                 <div class="hero-unit profile-leftbox">
                   <div class="profile-picture"><%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %></div>
                    
-                   <%= form_for @user, :url => user_path(@user), :html => { :multipart => true } do |form| %>
+                   <%= simple_form_for @user, :url => user_path(@user), :html => { :multipart => true } do |form| %>
 		  			       
-                   <%= form.label :profile_picture %>
-                   <%= form.file_field :profile_picture %>
+                   <%= form.input :profile_picture %>
 		  			       
-                   <%= form.label :first_name %>
-                   <%= form.text_field :first_name %>
+                   <%= form.input :first_name, :label => "First Name" %>
 
-                   <%= form.label :last_name %>
-                   <%= form.text_field :last_name %>
+                   <%= form.input :last_name %>
 
-                   <%= form.label :email %>
-                   <%= form.text_field :email %>
+                   <%= form.input :email %>
 
-                   <%= form.label :hometown %>
-                   <%= form.text_field :hometown %>
+                   <%= form.input :hometown %>
 
                    <div class="buttongroups">
                       <%= form.label "Current Status" %>

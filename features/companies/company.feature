@@ -7,12 +7,12 @@ Background:
 	| name |
 	| Microsoft| 
 	| Amazon| 
-	And the following questions exist:
-	| question 											| company |
-	| What is that? 								| Microsoft |
-	| Where am I? 									| Microsoft |
-	| What is this? 								| Amazon | 
-	| What is the meaning of life? 	| Amazon | 
+	And the following feedbacks exist:
+	| feedback_content 								| company_id | is_question |
+	| What is that? 								| 1 | true |
+	| Where am I? 									| 1 | true | 
+	| What is this? 								| 2 | true |
+	| What is the meaning of life? 					| 2 | true |
 
 Scenario: A Registered User Can View A List of Companies
 	Given I am a valid user that is logged in
@@ -24,10 +24,10 @@ Scenario: A Registered User Can View A Company
 	When I view the company "Microsoft"
 	Then I should see all of "Microsoft"s company information
 
-Scenario: A Registered User Can Add a Company If It Doesn't Exist
+Scenario: A Registered User Can Add a Company If It Does not Exist
 	Given I am a valid user that is logged in
 	When I create the company "Facebook"
-	Then I should be see a successful company created message
+	Then I should see a successful company created message
 	And I should be redirected to "Facebook"s show page
 	And I should be able to view "Facebook" on the company index page
 
@@ -37,22 +37,22 @@ Scenario: A Registered User Cannot Add A Company That Already Exists
 	Then I should see a failure to create a company message
 	And I should be redirected to "Microsoft"s show page
 
-Scenario: A Registered User Can View All Questions Of A Company
+Scenario: A Registered User Can View All Feedbacks Of A Company
 	Given I am a valid user that is logged in
 	When I view the company "Microsoft"
-	Then I should be able to view all of "Microsoft"s questions
-	And I should not be able to view any other companies questions
+	Then I should be able to view all of "Microsoft"s feedbacks
+	And I should not be able to view any other companies feedbacks
 
 Scenario: An Unregistered User Cannot View A Companies Information
 	Given I am an unregistered user
 	When I view the company "Microsoft"
-	Then I should see an error message
+	Then I should see a message saying you must sign in
 	And I should not see "Microsoft"s information
 
 Scenario: An Unregistered User Cannot View The List Of Companies
 	Given I am an unregistered user
-	When I view the the companies index page
-	Then I should see an error message
-	And I should not see any of the companies name
+	When I view the companies index page
+	Then I should see a message saying you must sign in
+	And I should not see any of the companies names
 	
 #TODO: Testing pagination or load more 
