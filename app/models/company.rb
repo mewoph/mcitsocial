@@ -24,6 +24,8 @@ class Company < ActiveRecord::Base
     feedbacks.where(:is_question => false)
   }
 
+  
+
   def num_questions
   	count = 0
   	feedbacks.each do |f|

@@ -3,7 +3,8 @@
 	<div class="header-wrapper">
 
 	<h1><%= @company.name %></h1>
-		<a><i class="fa fa-pencil-square-o"></i> Add Feedback</a>
+		<a><i class="fa fa-pencil-square-o"></i> <br><%= link_to "Add Feedback", new_feedback_path(:company_id => @company.id) %></br>
+</a>
 	</div>
 
 	<div class="span12" id="questions">

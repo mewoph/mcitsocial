@@ -507,6 +507,7 @@ input[type=submit] {
 
 		.company-name {
 			font-family: $italiana;
+			text-shadow: 2px 2px 3px black;
 
 			a {
 				color: $green;
@@ -520,6 +521,7 @@ input[type=submit] {
 		a {
 			float: right;
 			margin-left: 1em;
+			display: block;
 		}
 
 		@include list();
@@ -547,6 +549,10 @@ input[type=submit] {
 			color: black;
 			font-size: 0.8em;
 			padding-left: 0.5em;
+		}
+
+		.add-feedback {
+			z-index: 15;
 		}
 
 	}
