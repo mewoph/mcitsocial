@@ -28,6 +28,26 @@ $italiana: 'Italiana', serif;
 	background-color: rgba(22, 160, 133, $opacity);
 }
 
+@mixin form-input() {
+	form input[type=text],
+	form input[type=password], 
+	form input[type=email] {
+		text-align: center;
+		font-weight: 400;
+	    font-size: 1.5em;
+	    letter-spacing: 1px;
+	    width: inherit;
+	    height: 40px;
+	    line-height: 40px;
+	    margin-top: 0.5em;
+	    background: rgba(255,255,255,0.2);
+	    border: none;
+	    outline: none;
+	    border-radius: 0px;
+	    color: white
+	}
+}
+
 body {
 	font-family: $roboto;
 }
@@ -97,6 +117,7 @@ input[type=submit] {
 	background-color: rgba(230,126,34,1);
 	color: white;
 	border: none;
+	text-shadow: none;
 }
 
 .landing, .signup, .email-confirm {
@@ -140,23 +161,8 @@ input[type=submit] {
     	margin: 1em;
 	}
 
-	form input[type=text],
-	form input[type=password], 
-	form input[type=email] {
-		text-align: center;
-		font-weight: 400;
-	    font-size: 1.5em;
-	    letter-spacing: 1px;
-	    width: inherit;
-	    height: 40px;
-	    line-height: 40px;
-	    margin-top: 0.5em;
-	    background: rgba(255,255,255,0.2);
-	    border: none;
-	    outline: none;
-	    border-radius: 0px;
-	    color: white
-	}
+	@include form-input();
+
 
 	input[type=submit] {
 		width: 100%;
@@ -426,7 +432,7 @@ input[type=submit] {
 	}
 }
 
-.companies-index-bg, .company-show-bg {
+.companies-index-bg, .company-show-bg, .company-new-bg {
 	@include background-image('../assets/locust-walk-bg.png');
 }
 
@@ -494,6 +500,7 @@ input[type=submit] {
 	.companies-list {
 		list-style: none;
 		color: white;
+		background: rgba(0,0,0,0.2);
 
 		@media  (max-width: 600px) {
 			width: 100%;
@@ -518,11 +525,6 @@ input[type=submit] {
 			}
 		}
 
-		a {
-			float: right;
-			margin-left: 1em;
-			display: block;
-		}
 
 		@include list();
 
@@ -534,7 +536,7 @@ input[type=submit] {
 		}
 
 		i {
-			font-size: 2em;
+			font-size: 1.5em;
 			position: absolute;
 			color: white;
 		}
@@ -544,11 +546,39 @@ input[type=submit] {
 		}
 
 		.number {
-			z-index: 10;
+			z-index: 3;
 			position: relative;
 			color: black;
-			font-size: 0.8em;
-			padding-left: 0.5em;
+			font-size: 0.5em;
+			padding-top: 0.25em;
+			padding-left: 0.7em;
+		}
+
+		.icons {
+			list-style: none;
+			float: right;
+
+			li {
+				display: inline;
+				padding: 0;
+				padding-left: 0.25em;
+				border: 0;
+			}
+
+			li:hover {
+				background: none;
+			}
+
+			li:nth-child(2), li:nth-child(3) {
+				i {
+					margin-top: -15px;
+				}
+			}
+
+			li:nth-child(3) {
+				padding-left: 0.5em;
+			}
+
 		}
 
 		.add-feedback {
@@ -629,6 +659,34 @@ input[type=submit] {
 		font-size: 0.8em;
 		opacity: 0.6;
 		text-decoration: italic;
+	}
+}
+
+.company-new {
+	@include form-input();
+	color: white;
+	text-align: center;
+
+	.form-wrapper {
+		width: 40%;
+		margin-left: auto;
+		margin-right: auto;
+		background: black;
+		background: rgba(0,0,0,0.5);
+		padding: 2em;
+
+		form input[type='text'] {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.button {
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			text-transform: uppercase;
+		}
 	}
 }
 

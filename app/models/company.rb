@@ -11,18 +11,19 @@
 class Company < ActiveRecord::Base
   attr_accessible :name
   has_many :feedbacks
-  paginates_per 2
+  paginates_per 5
+  validates :name, :presence => {:message => "Company name cannot be blank"}, :uniqueness => true
 
 
 #TODO - add order to questions and comments
 
-  scope :questions, lambda {
-    feedbacks.where(:is_question => true)
-  }
+  # scope :questions, lambda {
+  #   feedbacks.where(:is_question => true)
+  # }
 
-  scope :comments, lambda {
-    feedbacks.where(:is_question => false)
-  }
+  # scope :comments, lambda {
+  #   feedbacks.where(:is_question => false)
+  # }
 
   
 
