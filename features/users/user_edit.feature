@@ -9,13 +9,6 @@ Background:
 		| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT 596,CIT 550" | "Java,Ruby" |  "MCIT social" |
 		| Connor    | Liddic | Web Developer | true | false | 2010-08-05 | 2012-05-05 | Program Manager | Colgate University | Graphic Design | Albany | cl@seas.upenn.edu | "CIT 598,CIT 552" | "Ruby,Rails" | "MCIT" |
 
-Scenario: I sign in and Edit My Account
-	Given I am logged in as "Abeer"
-	When I edit my profile information
-	Then I should see a successful profile edited message
-	And I should see the updated profile information
-	And I should not see the old profile information
-
 Scenario: User should not able to edit another user's page
 	Given I am logged in as "Abeer"
 	When I view "Connor"s profile page
