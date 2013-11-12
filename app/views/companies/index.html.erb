@@ -15,12 +15,20 @@
 		<li onclick="location.href='<%= company_path(company.id) %>';"><div class="company-name"><%= company.name  %></div>
 
 			<% num_comments = company.num_comments.to_s %>
-			<% comments_link = "<i class='fa fa-comments'></i><div class='number'>" + num_comments + "</div>" %>
 			<% num_questions = company.num_questions.to_s %>
 
-			<%= link_to comments_link.html_safe, company_path(company.id, anchor: 'comments'), :title => num_comments + " comment(s) added", :class => 'comments' %>
+			<% comments_link = "<i class='fa fa-comments'></i><div class='number'>" + num_comments + "</div>" %>			
 
-			<%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company_path(company.id, anchor: 'questions'), :anchor => 'questions', :class => "questions", :title => num_questions + " question(s) added" %>
+			<ul class="icons">
+
+				<li><%= link_to comments_link.html_safe, company_path(company.id, anchor: 'comments'), :title => num_comments + " comment(s) added", :class => 'comments' %></li>
+
+				<li><%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company_path(company.id, anchor: 'questions'), :anchor => 'questions', :class => "questions", :title => num_questions + " question(s) added" %></li>
+
+				<li><%= link_to "<i class='fa fa-plus-circle add'></i>".html_safe, new_feedback_path, :class => 'add', :title => "Add new interview question or comment." %></li>
+
+			</ul>
+
 		</li>
 <% end %>
 </ul>
@@ -33,4 +41,5 @@
 $('body').addClass('companies-index-bg');
 $('.comments').tipsy({gravity: 'sw'});
 $('.questions').tipsy({gravity: 'sw'});
+$('.add').tipsy({gravity: 'sw'});
 </script>

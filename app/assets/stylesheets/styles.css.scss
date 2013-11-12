@@ -517,10 +517,6 @@ input[type=submit] {
 			}
 		}
 
-		a {
-			float: right;
-			margin-left: 1em;
-		}
 
 		@include list();
 
@@ -532,7 +528,7 @@ input[type=submit] {
 		}
 
 		i {
-			font-size: 2em;
+			font-size: 1.5em;
 			position: absolute;
 			color: white;
 		}
@@ -542,11 +538,39 @@ input[type=submit] {
 		}
 
 		.number {
-			z-index: 10;
+			z-index: 3;
 			position: relative;
 			color: black;
-			font-size: 0.8em;
-			padding-left: 0.5em;
+			font-size: 0.5em;
+			padding-top: 0.25em;
+			padding-left: 0.7em;
+		}
+
+		.icons {
+			list-style: none;
+			float: right;
+
+			li {
+				display: inline;
+				padding: 0;
+				padding-left: 0.25em;
+				border: 0;
+			}
+
+			li:hover {
+				background: none;
+			}
+
+			li:nth-child(2), li:nth-child(3) {
+				i {
+					margin-top: -15px;
+				}
+			}
+
+			li:nth-child(3) {
+				padding-left: 0.5em;
+			}
+
 		}
 
 	}
