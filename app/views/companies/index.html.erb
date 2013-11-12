@@ -20,9 +20,9 @@
 
 			<%= link_to comments_link.html_safe, company_path(company.id, anchor: 'comments'), :title => num_comments + " comment(s) added", :class => 'comments' %>
 
-
 			<%= link_to "<i class='fa fa-question-circle'></i>".html_safe, company_path(company.id, anchor: 'questions'), :anchor => 'questions', :class => "questions", :title => num_questions + " question(s) added" %>
 
+			<i class='fa fa-question-circle'></i>
 			
 
 		</li>
