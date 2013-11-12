@@ -36,6 +36,7 @@ class Company < ActiveRecord::Base
   		count += 1 if f.is_question
   	end
   	count
+    #feedback.all.where("is_question" = true).count //won't something like this work here?
   end
 
   def num_comments

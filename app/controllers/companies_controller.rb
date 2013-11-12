@@ -3,7 +3,19 @@ class CompaniesController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@companies = Company.order(:name).page params[:page]
+		if params[:search].blank?
+			@search_results = false
+			@companies = Company.order(:name).page params[:page]
+		else
+			@search_results = true 
+			@results = Company.search do
+				fulltext params[:search] do
+			    	fields(:name)
+			    end
+			end
+			@companies = @results.results
+		end
+
 	end
 
 	def new
