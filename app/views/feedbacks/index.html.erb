@@ -7,8 +7,14 @@
 	</div>
 
 	<ul class="questions-list">
-		<li>one</li>
-		<li>two</li>
+		<% @questions.each do |q| %>
+			<li><%= q.feedback_content %>
+			<div class ="post-info">
+				<div class="company-name"><i class="fa fa-suitcase"></i><%= q.get_company_name(q.company_id) %></div>
+					<i class="fa fa-user"></i> Posted by <%= q.adder_name %> on <%= q.get_created_time %>
+				</div>
+			</li>
+		<% end %>
 	</ul>
 
 </div>

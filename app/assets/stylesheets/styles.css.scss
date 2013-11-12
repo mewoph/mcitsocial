@@ -31,7 +31,7 @@ $italiana: 'Italiana', serif;
 @mixin form-input() {
 	form input[type=text],
 	form input[type=password], 
-	form input[type=email] {
+	form input[type=email], textarea {
 		text-align: center;
 		font-weight: 400;
 	    font-size: 1.5em;
@@ -432,7 +432,7 @@ input[type=submit] {
 	}
 }
 
-.companies-index-bg, .company-show-bg, .company-new-bg {
+.companies-index-bg, .company-show-bg, .company-new-bg, {
 	@include background-image('../assets/locust-walk-bg.png');
 }
 
@@ -687,6 +687,55 @@ input[type=submit] {
 			margin-right: auto;
 			text-transform: uppercase;
 		}
+
+		.button:hover {
+		color: white;
+		}
+	}
+}
+
+.feedback-new-bg {
+	@include background-image('../assets/rittenhouse_bg.png');
+}
+
+.feedback-new {
+	color: white;
+	@include form-input();
+	textarea {
+		height: 200px;
+		resize: none;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		text-align: left;
+	}
+
+	h1 {
+		font-family: $italiana;
+		text-shadow: 2px 2px 3px black;
+		margin-bottom: 0.75em;
+	}
+
+	.form-wrapper {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		background: rgba(0,0,0,0.5);
+		padding: 1em;
+
+		@media(max-width: 900px) {
+			width: 80%;
+		}
+
+		form input[type='text'],  {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	.button:hover {
+		color: white;
 	}
 }
 
@@ -708,10 +757,31 @@ input[type=submit] {
 		@media  (max-width: 600px) {
 			width: 100%;
 		}
+
+		i {
+			margin-left: 1em;
+			margin-right: 0.25em;
+		}
 	}
 
 	.add-question {
 		@include index-header();
+	}
+
+	.post-info {
+		text-align: right;
+		font-size: 0.8em;
+		opacity: 0.8;
+		padding: 0.5em;
+		margin-top: 1.5em;
+		border: 1px solid;
+		border-color: rgba(255,255,255,0.3);
+		// background: rgba(255,255,255,0.2);
+		background: rgba(54,7,24,0.5);
+	}
+
+	.company-name {
+		display: inline;
 	}
 
 }
