@@ -1,4 +1,21 @@
 <div class="feedback-show">
-	<%= @feedback.feedback_content %> <%=@feedback.adder_id%>  <%= @feedback.created_at %> 
+
+	<div class="header-wrapper">
+
+	<h1><%= @feedback.feedback_content %></h1>
+
+	<div class="adder-name">
+		Posted by <%= @feedback.adder_name%> on <%= @feedback.created_at%>
+	</div>
+
 </div>
 
+<script>
+	$('body').addClass('company-show-bg');
+
+	if (location.hash) {
+		var section = location.hash;
+		$(section).css("background-color", "rgba(0,0,0,0.2)");
+	}
+
+</script>
