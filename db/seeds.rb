@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 users = User.create([{email: "User@user.com", first_name: "John", last_name: "Smith",
-		is_current_student: true,
+		is_current_student: true, is_parttime: false,
 		bio: "A really awesome bio", matriculation_date: "2012-10-15",
 		graduation_date: "2013-05-05", previous_work: "Test Dummy", 
 		undergrad_major: "Computer Science", undergrad_school: "UPenn",
@@ -16,7 +16,7 @@ users = User.create([{email: "User@user.com", first_name: "John", last_name: "Sm
 		courses: "CIT590,CIT591,CIT592"}, 
 
 		{email: "aminhas@seas.upenn.edu", first_name: "Abeer", last_name: "Minhas",
-		is_current_student: true,
+		is_current_student: true, is_parttime: true,
 		bio: "MCIT Student", matriculation_date: "2010-08-05",
 		graduation_date: "2012-05-05", previous_work: "Social Worker", 
 		undergrad_major: "Political Science", undergrad_school: "Binghamton University",
@@ -25,7 +25,7 @@ users = User.create([{email: "User@user.com", first_name: "John", last_name: "Sm
 		courses: "CIT596,CIT550"},  
 
 		{email: "cl@seas.upenn.edu", first_name: "Connor", last_name: "Liddic",
-		is_current_student: false,
+		is_current_student: false, is_parttime: true,
 		bio: "Web Developer", matriculation_date: "2010-08-05",
 		graduation_date: "2012-05-05", previous_work: "Program Manager ", 
 		undergrad_major: "Graphic Design", undergrad_school: "Colgate University",
@@ -34,7 +34,7 @@ users = User.create([{email: "User@user.com", first_name: "John", last_name: "Sm
 		courses: "CIT598,CIT552"},
 
 		{email: "anfoster@seas.upenn.edu", first_name: "Anne", last_name: "Foster",
-		is_current_student: false,
+		is_current_student: false, is_parttime: false,
 		bio: "MCIT Student", matriculation_date: "2010-08-05",
 		graduation_date: "2012-12-20", previous_work: "Program Manager", 
 		undergrad_major: "Business", undergrad_school: "Drexel University",
