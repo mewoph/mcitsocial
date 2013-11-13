@@ -1,13 +1,13 @@
 <div class="questions-index">
 
 	<div class="add-question">
-		<%= form_tag(feedbacks_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-		  <div class="input-append">
-		    <%= text_field_tag :search, params[:search], class: "span12", placeholder: "Search Feedback" %>
-		    <button class="btn" type="submit"><i class="icon-search"></i></button>
-		  </div>
-		<% end %>
 		<div class="text-wrapper">
+			<%= form_tag(feedbacks_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+			  <div class="input-append">
+			    <%= text_field_tag :search, params[:search], class: "span12", placeholder: "Search Feedback" %>
+			    <button class="btn" type="submit"><i class="icon-search"></i></button>
+			  </div>
+			<% end %>
 			<div class="text1">Have an interview question to share?</div> <a><i class="fa fa-pencil-square-o"></i> Add a Question</a>
 		</div>
 	</div>
