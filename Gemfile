@@ -18,6 +18,7 @@ gem 'unicorn'
 gem 'font-awesome-rails'
 gem "simple_form"
 gem 'kaminari'
+gem 'chosen-rails'
 
 group :test do
 	gem "email_spec"

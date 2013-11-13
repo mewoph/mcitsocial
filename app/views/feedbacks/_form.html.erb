@@ -2,9 +2,15 @@
 
 <%= simple_form_for(@feedback) do |form| %>
 
-    <h1>Feedback for <%= @feedback.get_company_name(@feedback.company_id) %></h1>
+    <% if not params[:company_id].nil? %>
+        <h1>Feedback for <%= @feedback.get_company_name(@feedback.company_id) %></h1>
+        <%= form.hidden_field :company_id, :value => @feedback.company_id.to_i %>
+    <% else %>
+        <%= form.input :company_id, :collection => @feedback.make_company_collection, :input_html => {:class => 'chosen-select'} %>
 
-    <%= form.hidden_field :company_id, :value => @feedback.company_id.to_i %>
+    <% end %>
+
+    
     <%= form.input :is_question, collection: [['Interview Question', true] ,['Comment', false]], as: :radio_buttons, label: false %>
     <%= form.hidden_field :adder_id, :value => current_user.id%>
 
@@ -25,6 +31,12 @@
 		$('#feedback_feedback_content').attr('placeholder', '  Enter your comment');
 
 	});
+
+    $('.chosen-select').chosen({
+      allow_single_deselect: true,
+      no_results_text: 'No results matched',
+      width: '200px'
+    });
 
 
 </script>
