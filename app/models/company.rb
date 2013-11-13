@@ -14,6 +14,12 @@ class Company < ActiveRecord::Base
   paginates_per 5
   validates :name, :presence => {:message => "Company name cannot be blank"}, :uniqueness => true
 
+  searchable do #can only search text fields on solr, so need to convert our string fields to text
+    text :name
+    string  :sort_name do
+      name.downcase.gsub(/^(an?|the)/, '')
+    end
+  end
 
 #TODO - add order to questions and comments
 
@@ -33,6 +39,7 @@ class Company < ActiveRecord::Base
   		count += 1 if f.is_question
   	end
   	count
+    #feedback.all.where("is_question" = true).count //won't something like this work here?
   end
 
   def num_comments

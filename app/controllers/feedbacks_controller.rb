@@ -1,7 +1,20 @@
 class FeedbacksController < ApplicationController
 
+	before_filter :authenticate_user!
+
 	def index
-		@questions = Feedback.where(is_question: true)
+		if params[:search].blank?
+			@search_results = false
+			@questions = Feedback.where(is_question: true)
+		else
+			@search_results = true 
+			@results = Feedback.search do
+				fulltext params[:search] do
+			    	fields(:feedback_content)
+			    end
+			end
+			@questions = @results.results
+		end
 	end
 
 	def new

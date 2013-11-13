@@ -3,15 +3,24 @@
 	<div class="add-company">
 
 		<div class="text-wrapper">
-
+			<%= form_tag(companies_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+			  <div class="input-append">
+			    <%= text_field_tag :search, params[:search], class: "span12", placeholder: "Search Companies" %>
+			    <button class="btn" type="submit"><i class="icon-search"></i></button>
+			  </div>
+			<% end %>
 			<div class="text1">Didn't see the company you're looking for?</div>
 			<%= link_to "<i class='fa fa-suitcase'></i>  Add Company".html_safe, new_company_path %>
-
 		</div>
 
 	</div>
 
 <ul class="companies-list">
+	<% if @search_results %>
+		<h2>Search Results</h2>
+	<% else %>
+		<h2>All Companies</h2>
+	<% end %>
 <%  @companies.each do |company| %>
 		<li onclick="location.href='<%= company_path(company.id) %>';"><div class="company-name"><%= company.name  %></div>
 

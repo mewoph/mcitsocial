@@ -46,7 +46,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable, :timeoutable
   validates_length_of :bio, :maximum => 140, :too_long  => "Bio is over 140 chars."
 
-
+  searchable do
+    text :previous_work
+  end
 
   #TODO Test this???
   # Gets the full name of of the user

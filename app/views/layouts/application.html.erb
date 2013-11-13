@@ -34,7 +34,7 @@
 
 	    <% unless current_user.nil? %>
 	    	<ul class="nav navbar-right">
-	    	<li class="sign-in-status">Signed in as <%= current_user.email %></li>
+	    	<li class="sign-in-status"><%= current_user.email %></li>
 	    	</ul>
 	    <% end %>
 
