@@ -14,9 +14,9 @@
 				No questions have been added yet.
 			<% else %>
 				<% @questions.each do |q| %>
-					<li><%= q.feedback_content %>
+					<li><div  onclick="location.href='<%= feedback_path(q.id) %>';"><%= q.feedback_content %></div>
 						<div class="adder-name">
-							<i class="fa fa-user"></i>  Posted by <%= q.adder_name %>
+							<i class="fa fa-user"></i>  Posted by <div class="user-name" onclick="location.href='<%= user_path(q.adder_id) %>';"><%= q.adder_name %></div>
 							on <%= q.get_created_time %>
 						</div>
 					</li>
@@ -34,7 +34,7 @@
 				<% @comments.each do |c| %>
 					<li><%= c.feedback_content %>
 					<div class="adder-name">
-							<i class="fa fa-user"></i>  Posted by <%= c.adder_name %>
+							<i class="fa fa-user"></i>  Posted by <div class="user-name" onclick="location.href='<%= user_path(c.adder_id) %>';"><%= c.adder_name %></div>
 							on <%= c.get_created_time %>
 						</div>
 					</li>
