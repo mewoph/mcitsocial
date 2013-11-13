@@ -27,6 +27,12 @@
                    </div>
 
                    <div class="buttongroups">
+                      <%= form.label "Full Time Status" %>
+                     <label class="radiolabel"><%= form.radio_button :is_parttime, "false"%> Full Time</label>
+                     <label class="radiolabel"><%= form.radio_button :is_parttime, "true"%> Part Time</label>
+                   </div>
+
+                   <div class="buttongroups">
                     <%= form.label :matriculation_date %>
                     <%= form.text_field :matriculation_date, :class => "datepicker"%>
                    </div>
