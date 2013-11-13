@@ -717,6 +717,12 @@ input[type=submit] {
 
 .feedback-new {
 	color: white;
+
+	.select-wrapper {
+		color: black;
+		margin-bottom: 1em;
+	}
+
 	@include form-input();
 	textarea {
 		height: 200px;

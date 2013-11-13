@@ -6,8 +6,9 @@
         <h1>Feedback for <%= @feedback.get_company_name(@feedback.company_id) %></h1>
         <%= form.hidden_field :company_id, :value => @feedback.company_id.to_i %>
     <% else %>
-        <%= form.input :company_id, :collection => @feedback.make_company_collection, :input_html => {:class => 'chosen-select'} %>
-
+    <div class='select-wrapper'>
+        <%= form.input :company_id, :collection => @feedback.make_company_collection, :input_html => {:class => 'chosen-select'}, label: false %>
+    </div>
     <% end %>
 
     
