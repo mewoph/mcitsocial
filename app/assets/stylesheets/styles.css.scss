@@ -739,7 +739,7 @@ input[type=submit] {
 	}
 }
 
-.questions-index-bg {
+.questions-index-bg, .question-show-bg {
 	@include background-image('../assets/library-bg.png');
 }
 
@@ -784,6 +784,30 @@ input[type=submit] {
 		display: inline;
 	}
 
+}
+
+.question-show {
+	color: white;
+	background: rgba(0,0,0,0.5);
+	padding: 2em;
+	margin-bottom: 4em;
+
+	h1 {
+		color: white;
+		margin-bottom: 1em;
+		font-size: 2em;
+	}
+
+	.company-name {
+		font-size: 2em;
+		font-family: $italiana;
+		margin-bottom: 0.5em;
+	}
+
+	.adder-name, .company-name {
+		text-align: right;
+		opacity: 0.7;
+	}
 }
 
 
