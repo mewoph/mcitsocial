@@ -66,6 +66,9 @@ Mcitsocial::Application.routes.draw do
   resources :users
   resources :companies
   resources :feedbacks
+  get "/questions" => "feedbacks#index"
+
+
 
   # See how all your routes lay out with "rake routes"
 

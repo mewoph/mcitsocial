@@ -1,4 +1,12 @@
-<%= simple_form_for @company do |f| %>
-  <%= f.text_field :name %>
-  <%= f.button :submit, id: 'submit_button' %>
-<% end %>
+<div class="company-new">
+	<div class="form-wrapper">
+		<%= simple_form_for @company do |f| %>
+		  <%= f.text_field :name, placeholder: 'Company Name' %>
+		  <%= f.button :submit, id: 'submit_button', class: 'button', value: 'Add Company' %>
+		<% end %>
+	</div>
+</div>
+
+<script>
+$('body').addClass('company-new-bg');
+</script>

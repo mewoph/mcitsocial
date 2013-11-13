@@ -28,6 +28,26 @@ $italiana: 'Italiana', serif;
 	background-color: rgba(22, 160, 133, $opacity);
 }
 
+@mixin form-input() {
+	form input[type=text],
+	form input[type=password], 
+	form input[type=email], textarea {
+		text-align: center;
+		font-weight: 400;
+	    font-size: 1.5em;
+	    letter-spacing: 1px;
+	    width: inherit;
+	    height: 40px;
+	    line-height: 40px;
+	    margin-top: 0.5em;
+	    background: rgba(255,255,255,0.2);
+	    border: none;
+	    outline: none;
+	    border-radius: 0px;
+	    color: white
+	}
+}
+
 body {
 	font-family: $roboto;
 }
@@ -97,6 +117,7 @@ input[type=submit] {
 	background-color: rgba(230,126,34,1);
 	color: white;
 	border: none;
+	text-shadow: none;
 }
 
 .landing, .signup, .email-confirm {
@@ -140,23 +161,8 @@ input[type=submit] {
     	margin: 1em;
 	}
 
-	form input[type=text],
-	form input[type=password], 
-	form input[type=email] {
-		text-align: center;
-		font-weight: 400;
-	    font-size: 1.5em;
-	    letter-spacing: 1px;
-	    width: inherit;
-	    height: 40px;
-	    line-height: 40px;
-	    margin-top: 0.5em;
-	    background: rgba(255,255,255,0.2);
-	    border: none;
-	    outline: none;
-	    border-radius: 0px;
-	    color: white
-	}
+	@include form-input();
+
 
 	input[type=submit] {
 		width: 100%;
@@ -426,27 +432,37 @@ input[type=submit] {
 	}
 }
 
-.companies-index-bg, .company-show-bg {
+.companies-index-bg, .company-show-bg, .company-new-bg, {
 	@include background-image('../assets/locust-walk-bg.png');
 }
 
-.companies-index {
+@mixin list() {
 
-	color: white;
+	li {
+			border: 0;
+			padding: 1.25em;
+			border-bottom: 1px solid;
+			-webkit-transition: 0.25s linear;
+	  		transition: 0.25s linear;
+	  		font-size: 1.25em;
+	  		border-color: white;
+	  		color: white;
+		}
 
-	.add-company, .companies-list {
-		width: 50%;
-		margin-left: auto;
-		margin-right: auto;
+	li:hover {
+		background-color: rgba(0,0,0, 0.6);
+		cursor: pointer;
 	}
 
-	.add-company {
+}
+
+@mixin index-header() {
 		padding: 1.25em;
 		padding-left: 0;
 		padding-right: 0;
 		margin-bottom: 1.25em;
 		background: black;
-		background: rgba(0,0,0,0.5);
+		background: rgba(0,0,0,0.7);
 
 		.text-wrapper {
 			padding-left: 1.25em;
@@ -462,14 +478,32 @@ input[type=submit] {
 		a:hover {
 			color: $silver;
 		}
+}
+
+.companies-index {
+
+	color: white;
+
+	.add-company, .companies-list {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.add-company {
+		@include index-header();
+		@media  (max-width: 600px) {
+			width: 100%;
+		}
 	}
 
 	.companies-list {
 		list-style: none;
 		color: white;
+		background: rgba(0,0,0,0.2);
 
 		@media  (max-width: 600px) {
-			width: 80%;
+			width: 100%;
 		}
 
 		a, .company-name {
@@ -480,6 +514,7 @@ input[type=submit] {
 
 		.company-name {
 			font-family: $italiana;
+			text-shadow: 2px 2px 3px black;
 
 			a {
 				color: $green;
@@ -490,23 +525,10 @@ input[type=submit] {
 			}
 		}
 
-		a {
-			float: right;
-			margin-left: 1em;
-		}
 
-		li {
-			border: 0;
-			padding: 1.25em;
-			border-bottom: 1px solid;
-			-webkit-transition: 0.25s linear;
-	  		transition: 0.25s linear;
-	  		font-size: 1.25em;
-		}
+		@include list();
 
 		li:hover {
-			background-color: rgba(0,0,0, 0.6);
-			cursor: pointer;
 
 			.company-name {
 				color: $green;
@@ -514,7 +536,7 @@ input[type=submit] {
 		}
 
 		i {
-			font-size: 2em;
+			font-size: 1.5em;
 			position: absolute;
 			color: white;
 		}
@@ -524,11 +546,43 @@ input[type=submit] {
 		}
 
 		.number {
-			z-index: 10;
+			z-index: 3;
 			position: relative;
 			color: black;
-			font-size: 0.8em;
-			padding-left: 0.5em;
+			font-size: 0.5em;
+			padding-top: 0.25em;
+			padding-left: 0.7em;
+		}
+
+		.icons {
+			list-style: none;
+			float: right;
+
+			li {
+				display: inline;
+				padding: 0;
+				padding-left: 0.25em;
+				border: 0;
+			}
+
+			li:hover {
+				background: none;
+			}
+
+			li:nth-child(2), li:nth-child(3) {
+				i {
+					margin-top: -15px;
+				}
+			}
+
+			li:nth-child(3) {
+				padding-left: 0.5em;
+			}
+
+		}
+
+		.add-feedback {
+			z-index: 15;
 		}
 
 	}
@@ -547,6 +601,14 @@ input[type=submit] {
 		a:hover {
 			color: $silver;
 		}
+	}
+
+	#questions, #comments {
+		margin-top: 1.5em;
+	}
+
+	#comments {
+		margin-bottom: 150px;
 	}
 
 
@@ -583,23 +645,9 @@ input[type=submit] {
 		width: 100%;
 		color: white;
 
-		@media  (max-width: 600px) {
-			width: 80%;
-		}
-
-		li {
-			border: 0;
-			padding: 1em;
-			border-bottom: 1px solid;
-			-webkit-transition: 0.25s linear;
-	  		transition: 0.25s linear;
-	  		font-size: 1.2em;
-		}
+		@include list();
 
 		li:hover {
-			background-color: rgba(0,0,0, 0.6);
-			cursor: pointer;
-
 			.company-name {
 				color: $green;
 			}
@@ -607,11 +655,135 @@ input[type=submit] {
 	}
 
 	.adder-name {
-		padding: 0.25em;
+		margin-top: 1em;
 		font-size: 0.8em;
 		opacity: 0.6;
 		text-decoration: italic;
 	}
+}
+
+.company-new {
+	@include form-input();
+	color: white;
+	text-align: center;
+
+	.form-wrapper {
+		width: 40%;
+		margin-left: auto;
+		margin-right: auto;
+		background: black;
+		background: rgba(0,0,0,0.5);
+		padding: 2em;
+
+		form input[type='text'] {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+
+		.button {
+			width: 100%;
+			margin-left: auto;
+			margin-right: auto;
+			text-transform: uppercase;
+		}
+
+		.button:hover {
+		color: white;
+		}
+	}
+}
+
+.feedback-new-bg {
+	@include background-image('../assets/rittenhouse_bg.png');
+}
+
+.feedback-new {
+	color: white;
+	@include form-input();
+	textarea {
+		height: 200px;
+		resize: none;
+		width: 100%;
+		padding-left: 0;
+		padding-right: 0;
+		text-align: left;
+	}
+
+	h1 {
+		font-family: $italiana;
+		text-shadow: 2px 2px 3px black;
+		margin-bottom: 0.75em;
+	}
+
+	.form-wrapper {
+		width: 50%;
+		margin-left: auto;
+		margin-right: auto;
+		background: rgba(0,0,0,0.5);
+		padding: 1em;
+
+		@media(max-width: 900px) {
+			width: 80%;
+		}
+
+		form input[type='text'],  {
+			width: 100%;
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
+	.button:hover {
+		color: white;
+	}
+}
+
+.questions-index-bg {
+	@include background-image('../assets/library-bg.png');
+}
+
+.questions-index {
+
+	color: white;
+
+	.questions-list {
+
+		list-style: none;
+		margin-left: 0;
+
+		@include list();
+
+		@media  (max-width: 600px) {
+			width: 100%;
+		}
+
+		i {
+			margin-left: 1em;
+			margin-right: 0.25em;
+		}
+	}
+
+	.add-question {
+		@include index-header();
+	}
+
+	.post-info {
+		text-align: right;
+		font-size: 0.8em;
+		opacity: 0.8;
+		padding: 0.5em;
+		margin-top: 1.5em;
+		border: 1px solid;
+		border-color: rgba(255,255,255,0.3);
+		// background: rgba(255,255,255,0.2);
+		background: rgba(54,7,24,0.5);
+	}
+
+	.company-name {
+		display: inline;
+	}
+
 }
 
 
@@ -643,7 +815,7 @@ input[type=submit] {
 .pagination {
 
 	background: none;
-	width: 50%;
+	width: 100%;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: center;

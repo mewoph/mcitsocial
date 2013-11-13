@@ -1,3 +1,24 @@
-<% @feedbacks.each do |feedback| %>
-	<h1><%= feedback.feedback_content %></h1>
-<% end %>
+<div class="questions-index">
+
+	<div class="add-question">
+		<div class="text-wrapper">
+			<div class="text1">Have an interview question to share?</div> <a><i class="fa fa-pencil-square-o"></i> Add a Question</a>
+		</div>
+	</div>
+
+	<ul class="questions-list">
+		<% @questions.each do |q| %>
+			<li><%= q.feedback_content %>
+			<div class ="post-info">
+				<div class="company-name"><i class="fa fa-suitcase"></i><%= q.get_company_name(q.company_id) %></div>
+					<i class="fa fa-user"></i> Posted by <%= q.adder_name %> on <%= q.get_created_time %>
+				</div>
+			</li>
+		<% end %>
+	</ul>
+
+</div>
+
+<script>
+$('body').addClass('questions-index-bg');
+</script>

@@ -20,4 +20,12 @@ class Feedback < ActiveRecord::Base
   	user.full_name
   end
 
+  def get_company_name(id)
+    Company.find(id).name 
+  end
+
+  def get_created_time
+  	created_at.strftime('%b %d, %Y')
+  end
+
 end
