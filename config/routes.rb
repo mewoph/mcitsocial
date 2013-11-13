@@ -65,6 +65,7 @@ Mcitsocial::Application.routes.draw do
   resources :feedbacks
   resources :users
   resources :companies
+  resources :feedbacks
 
   # See how all your routes lay out with "rake routes"
 
