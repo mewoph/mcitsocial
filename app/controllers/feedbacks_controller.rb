@@ -17,7 +17,6 @@ class FeedbacksController < ApplicationController
 		@feedback = Feedback.new(params[:feedback])
 		@feedback.save
 		redirect_to company_path(@feedback.company_id)
-
 	end
 
 	def edit
