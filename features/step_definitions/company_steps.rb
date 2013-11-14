@@ -9,8 +9,8 @@ def create_user
 end
 
 def create_valid_user
-	@user_created = FactoryGirl.create(:user, email: @user[:email], password: @user[:password],
-  								password_confirmation: @user[:password_confirmation], confirmed_at: "2013-10-10 10:15:00" )
+	@user_created = FactoryGirl.create(:user, email: @user[:email], password: @user[@password],
+  								password_confirmation: @user[@password], confirmed_at: "2013-10-10 10:15:00" )
 end
 
 def sign_in
@@ -131,4 +131,15 @@ Then /^I should see a list of all feedbacks and the company name it belongs to$/
   page.should have_content "What is this?"
 end
 
+Then /^I should see "(.*?)" comments and "(.*?)" questions$/ do |arg1, arg2|
+  find('questions-list').all('questions').count.should eql(arg1)
+  find('comments-list').all('comments').count.should eql(arg2)
+end
 
+# Then /^I should see all questions in question section$/ do
+#   pending # express the regexp above with the code you wish you had
+# end
+
+# Then /^I should see all comments in comments section$/ do
+#   pending # express the regexp above with the code you wish you had
+# end
