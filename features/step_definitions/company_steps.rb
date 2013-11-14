@@ -132,4 +132,8 @@ Then /^I should see a list of all feedbacks and the company name it belongs to$/
   page.should have_content "What is this?"
 end
 
-
+Then /^I should see "(.*?)" comments and "(.*?)" questions$/ do |arg1, arg2|
+	puts page.body
+  find('questions-list').all("li").count.should eql(arg1)
+  find('comments-list').all("li").count.should eql(arg2)
+end
