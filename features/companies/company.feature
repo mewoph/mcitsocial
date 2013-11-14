@@ -11,11 +11,11 @@ Background:
 	| First Name | Last Name | Bio   | Is Current Student | Is Part Time | Matriculation Date | Graduation Date | Previous Work | Undergrad Major | Undergrad School | Hometown | Email | Courses | Languages | Interests |
 	| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT596,CIT550" | "Java,Ruby" |  "MCIT social" |
 	And the following feedbacks exist:
-	| feedback_content 								| company_id | is_question | adder id |
+	| feedback_content 								  | company_id | is_question | adder id |
 	| What is that? 								  | 1          | true        | 1        |
  	| Where am I? 									  | 1          | true        | 1        |
 	| What is this? 								  | 2          | true        | 2        |
-	| What is the meaning of life? 	  | 2          | true        | 1        |
+	| What is the meaning of life? 	                  | 2          | true        | 1        |
 
 Scenario: A Registered User Can View A List of Companies
 	Given I am a valid user that is logged in
@@ -49,7 +49,7 @@ Scenario: A Registered User Can View All Feedbacks Of A Company
 Scenario: An Unregistered User Cannot View A Companies Information
 	Given I am an unregistered user
 	When I view the company "Microsoft"
-	Then I should see a message saying you must sign in
+	Then I should see a message saying you must sign i
 	And I should not see "Microsoft"s information
 
 Scenario: An Unregistered User Cannot View The List Of Companies
@@ -57,5 +57,18 @@ Scenario: An Unregistered User Cannot View The List Of Companies
 	When I view the companies index page
 	Then I should see a message saying you must sign in
 	And I should not see any of the companies names
-	
-#TODO: Testing pagination or load more 
+
+Scenario: A registered user can view questions and comments diveded by type
+	Given I am a valid user that is logged in
+	When I view the company "Microsoft"
+	Then I should see "3" comments and "2" questions
+
+Scenario: A registered user can view questions and comments diveded by type
+	Given I am a valid user that is logged in
+	When I view the company "Microsoft"
+	Then I should see all questions in question section
+
+Scenario: A registered user can view questions and comments diveded by type
+	Given I am a valid user that is logged in
+	When I view the company "Microsoft"
+	Then I should see all comments in comments section
