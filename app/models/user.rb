@@ -41,7 +41,7 @@
 
 class User < ActiveRecord::Base
   # attr_accessible :title, :body
-  attr_accessible :email, :password, :password_confirmation, :profile_picture, :first_name, :last_name, :matriculation_date, :graduation_date, :bio, :undergrad_major, :undergrad_school, :hometown, :previous_work, :areas_of_interest, :languages, :is_current_student, :courses
+  attr_accessible :email, :password, :password_confirmation, :profile_picture, :first_name, :last_name, :matriculation_date, :graduation_date, :bio, :undergrad_major, :undergrad_school, :hometown, :previous_work, :areas_of_interest, :languages, :is_current_student, :is_parttime, :courses
   has_attached_file :profile_picture, :styles => { :square => "400x400>", :thumb => "100x100>"}
   devise :database_authenticatable, :registerable, :recoverable, :confirmable, :rememberable, :trackable, :validatable, :timeoutable
   validates_length_of :bio, :maximum => 140, :too_long  => "Bio is over 140 chars."

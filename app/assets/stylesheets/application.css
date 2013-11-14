@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require font-awesome
+ *= require chosen
  *= require_tree .
  */

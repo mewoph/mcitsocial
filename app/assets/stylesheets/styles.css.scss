@@ -611,6 +611,16 @@ input[type=submit] {
 		margin-bottom: 150px;
 	}
 
+	.user-name {
+		display: inline;
+		width: auto;
+	}
+
+	.user-name:hover {
+		cursor: pointer;
+		color: $green;
+	}
+
 
 	h1 {
 		margin-top: 0.5em;
@@ -651,6 +661,13 @@ input[type=submit] {
 			.company-name {
 				color: $green;
 			}
+		}
+	}
+
+	.comments-list {
+		li:hover {
+			background: none;
+			cursor: default;
 		}
 	}
 
@@ -700,6 +717,27 @@ input[type=submit] {
 
 .feedback-new {
 	color: white;
+
+	.radiobuttons-group {
+		display: block;
+	}
+
+	.select-wrapper {
+		color: black;
+		margin-bottom: 2em;
+		display: block;
+		padding: 0.5em;
+
+		h2 {
+			float: left;
+			font-family: $italiana;
+			color: white;
+			font-size: 1.25em;
+			margin-top: -5px;
+			margin-right: 0.75em;
+		}
+	}
+
 	@include form-input();
 	textarea {
 		height: 200px;
@@ -732,6 +770,11 @@ input[type=submit] {
 			padding-left: 0;
 			padding-right: 0;
 		}
+
+		textarea {
+			margin-top: 1em;
+		}
+
 	}
 
 	.button:hover {
@@ -739,7 +782,7 @@ input[type=submit] {
 	}
 }
 
-.questions-index-bg {
+.questions-index-bg, .question-show-bg {
 	@include background-image('../assets/library-bg.png');
 }
 
@@ -762,6 +805,15 @@ input[type=submit] {
 			margin-left: 1em;
 			margin-right: 0.25em;
 		}
+
+		.company-name:hover, .user-name:hover {
+			color: #3498db;
+		}
+
+		.user-name {
+			width: auto;
+			display: inline;
+		}
 	}
 
 	.add-question {
@@ -776,7 +828,6 @@ input[type=submit] {
 		margin-top: 1.5em;
 		border: 1px solid;
 		border-color: rgba(255,255,255,0.3);
-		// background: rgba(255,255,255,0.2);
 		background: rgba(54,7,24,0.5);
 	}
 
@@ -784,6 +835,30 @@ input[type=submit] {
 		display: inline;
 	}
 
+}
+
+.question-show {
+	color: white;
+	background: rgba(0,0,0,0.5);
+	padding: 2em;
+	margin-bottom: 4em;
+
+	h1 {
+		color: white;
+		margin-bottom: 1em;
+		font-size: 2em;
+	}
+
+	.company-name {
+		font-size: 2em;
+		font-family: $italiana;
+		margin-bottom: 0.5em;
+	}
+
+	.adder-name, .company-name {
+		text-align: right;
+		opacity: 0.7;
+	}
 }
 
 
@@ -831,6 +906,11 @@ input[type=submit] {
 		padding: 1em;
 	}
 
+}
+
+.chosen-select {
+	color: black;
+	margin-bottom: 1em;
 }
 
 /* Classes that are dynamically added */

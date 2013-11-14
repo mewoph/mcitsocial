@@ -5,8 +5,10 @@
                 <div class="hero-unit profile-leftbox">
                   <div class="profile-picture"><%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %></div>
                   <h2 class="name"><%= @user.full_name %></h2>
-                  <% if @user.is_current_student %>
-                    <h4>Current Student</h4>
+                  <% if @user.is_current_student and !@user.is_parttime%>
+                    <h4>Current Full Time Student</h4>
+                  <% elsif @user.is_current_student and @user.is_parttime%>
+                    <h4>Current Part Time Student</h4>
                   <% else %>
                     <h4>Alum</h4>
                   <% end %>

@@ -29,14 +29,13 @@ def see_profile(user)
 	page.should have_content user.hometown
 	page.should have_content user.email
 	if user.is_current_student 
-		then page.should have_content "Current Student"
+		if user.is_parttime 
+		then page.should have_content "Current Part Time Student"
+		else 
+		page.should have_content "Current Full Time Student"
+		end
 	else
-		page.should have_content "Former Student"
-	end
-	if user.is_parttime 
-		then page.should have_content "Full Time Student"
-	else 
-		page.should have_content "Part Time Student"
+		page.should have_content "Alum"
 	end
 	a =  user.courses.split(",")
 	a.each do |course|
@@ -57,16 +56,6 @@ def not_see_profile(user)
 	page.should_not have_content user.undergrad_major
 	page.should_not have_content user.hometown
 	page.should_not have_content user.email
-	if user.is_current_student 
-		then page.should_not have_content "Current Student"
-	else
-		page.should_not have_content "Former Student"
-	end
-	if user.is_parttime 
-		then page.should_not have_content "Part Time Student"
-	else 
-		page.should_not have_content "Full Time Student"
-	end
 	a =  user.courses.split(",")
 	a.each do |course|
 		page.should_not have_content course
