@@ -2,8 +2,10 @@
 #When
 
 When /^I view a question show page$/ do
-	@feedback = Feedback.find(1)
-	visit feedback_path(@feedback);
+	puts "WE GOT HERE IN THIS PLACE OMG"
+	puts Feedback.all
+	@feedback = Feedback.first
+	visit feedback_path(@feedback)
 end
 
 #Then

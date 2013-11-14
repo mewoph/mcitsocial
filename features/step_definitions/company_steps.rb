@@ -43,7 +43,9 @@ end
 
 Given /^the following feedbacks exist:$/ do |table|
   table.hashes.each do |attributes|
-    FactoryGirl.create(:feedback, feedback_content: attributes["feedback_content"], company_id: attributes["company_id"], is_question: attributes["is_question"])
+    FactoryGirl.create(:feedback, feedback_content: attributes["feedback_content"], company_id: attributes["company_id"],
+     is_question: attributes["is_question"], adder_id: attributes["adder id"])
+  	puts Feedback.all
   end 
 end
 
