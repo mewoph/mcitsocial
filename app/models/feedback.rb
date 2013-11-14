@@ -14,7 +14,10 @@
 class Feedback < ActiveRecord::Base
   attr_accessible :id, :adder_id, :company_id, :feedback_content, :is_question
   belongs_to :company
-
+  validates :feedback_content, :presence => {:message => "Feedback cannot be blank."}
+  validates :is_question, :presence => {:message => "Must pick either interview question or comment."}
+  paginates_per 5
+  
   searchable do #can only search text fields on solr, so need to convert out string fields to text
   	text :feedback_content
   	string  :sort_feedback_content do
@@ -33,6 +36,14 @@ class Feedback < ActiveRecord::Base
 
   def get_created_time
   	created_at.strftime('%b %d, %Y')
+  end
+
+  def make_company_collection
+    collection = Array.new
+    Company.all.each do |company|
+      collection.push([company.name, company.id])
+    end
+    collection
   end
 
 end

@@ -8,7 +8,7 @@
 			    <button class="btn" type="submit"><i class="icon-search"></i></button>
 			  </div>
 			<% end %>
-			<div class="text1">Have an interview question to share?</div> <a><i class="fa fa-pencil-square-o"></i> Add a Question</a>
+			<div class="text1">Have an interview question to share?</div><%= link_to '<i class="fa fa-pencil-square-o"></i> Add a Question'.html_safe, new_feedback_path %>
 		</div>
 	</div>
 
@@ -25,6 +25,8 @@
 			</li>
 		<% end %>
 	</ul>
+
+	<%= paginate @questions %>
 
 </div>
 

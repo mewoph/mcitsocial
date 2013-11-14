@@ -2,13 +2,21 @@
 
 <%= simple_form_for(@feedback) do |form| %>
 
-    <h1>Feedback for <%= @feedback.get_company_name(@feedback.company_id) %></h1>
+    <% if not params[:company_id].nil? %>
+        <h1>Feedback for <%= @feedback.get_company_name(@feedback.company_id) %></h1>
+        <%= form.hidden_field :company_id, :value => @feedback.company_id.to_i %>
+    <% else %>
+    <div class='select-wrapper'>
+       <h2> Feedback for </h2>
+        <%= form.input :company_id, :collection => @feedback.make_company_collection, :input_html => {:class => 'chosen-select'}, label: false %>
+    </div>
+    <% end %>
 
-    <%= form.hidden_field :company_id, :value => @feedback.company_id.to_i %>
+    <div class="radiobuttons-group">
     <%= form.input :is_question, collection: [['Interview Question', true] ,['Comment', false]], as: :radio_buttons, label: false %>
     <%= form.hidden_field :adder_id, :value => current_user.id%>
+    </div>
 
-    <div class="custom-label"></div>
     <%= form.input :feedback_content, label: false, as: :text %> 
     <%= form.button :submit, class: 'button' %>
   <% end %>
@@ -25,6 +33,11 @@
 		$('#feedback_feedback_content').attr('placeholder', '  Enter your comment');
 
 	});
+
+    $('.chosen-select').attr("data-placeholder", "Select a company").chosen({
+      allow_single_deselect: true,
+      no_results_text: 'No results matched',
+    });
 
 
 </script>

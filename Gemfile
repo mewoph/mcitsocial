@@ -18,9 +18,9 @@ gem 'unicorn'
 gem 'font-awesome-rails'
 gem "simple_form"
 gem 'kaminari'
+gem 'chosen-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-
 
 group :test do
 	gem "email_spec"

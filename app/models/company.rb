@@ -31,7 +31,6 @@ class Company < ActiveRecord::Base
   #   feedbacks.where(:is_question => false)
   # }
 
-  
 
   def num_questions
   	count = 0
@@ -49,6 +48,5 @@ class Company < ActiveRecord::Base
   	end
   	count
   end
-
 
 end
