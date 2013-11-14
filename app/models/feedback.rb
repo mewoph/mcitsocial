@@ -15,7 +15,7 @@ class Feedback < ActiveRecord::Base
   attr_accessible :id, :adder_id, :company_id, :feedback_content, :is_question
   belongs_to :company
   validates :feedback_content, :presence => {:message => "Feedback cannot be blank."}
-  validates :is_question, :presence => {:message => "Must pick either interview question or comment."}
+  validates :is_question, :inclusion => {:in => [true, false], :message => "Must pick either interview question or comment."}
   paginates_per 5
   
   def adder_name

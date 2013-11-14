@@ -114,26 +114,67 @@ end
 Then /^I should not see any of the companies names$/ do
 	page.should_not have_content "Microsoft"
 	page.should_not have_content "Amazon"
+	companies = Company.all
+	companies.each do |c |
+		page.should_not have_content c.name
+	end
 end
 
 Then /^I should be able to view all of "(.*?)"s feedbacks$/ do |name|
   page.should have_content "What is that?"
+  page.should have_content "Where am I?"
+  page.should have_content "What is the meaning of life?"
+  company = Company.where(:name => name)[0]
+  company.feedbacks.each do |f|
+  	page.should have_content f.feedback_content
+  end
 end
 
-Then /^I should not be able to view any other companies feedbacks$/ do
-  page.should_not have_content "What is the meaning of life?"
-  page.should_not have_content "What is this?"
+Then /^I should see a login required message$/ do 
+	page.should have_content "You need to sign in or sign up before continuing."
+end
+
+Then /^I should not be able to view "(.*?)"s feedbacks$/ do |company|
+  company = Company.where(:name => company)[0]
+  company.feedbacks.each do | f |
+  	page.should_not have_content f.feedback_content
+
+  end 
 end
 
 Then /^I should see a list of all feedbacks and the company name it belongs to$/ do
-  page.should have_content "What is that?"
-  page.should have_content "Where am I?"
-  page.should have_content "What is the meaning of life?"
-  page.should have_content "What is this?"
+  feedback = Feedback.all
+  feedback.each do | f |
+  	page.should have_content f.feedback_content
+  	c = Company.where(:id => f.company_id)[0]
+  	page.should have_content c.name 
+  end
 end
 
-Then /^I should see "(.*?)" comments and "(.*?)" questions$/ do |arg1, arg2|
-	puts page.body
-  find('questions-list').all("li").count.should eql(arg1)
-  find('comments-list').all("li").count.should eql(arg2)
+Then /^I should see "(.*?)" comments and "(.*?)" questions$/ do |num_comments, num_questions|
+  find('.comments-list').all("li").count.should eql(num_comments.to_i)
+  find('.questions-list').all("li").count.should eql(num_questions.to_i)
+end
+
+Then /^I should see all of "(.*?)"s questions in the question section$/ do |name|
+  company = Company.where(:name => name)[0]
+  company.feedbacks.each do |feedback|
+  	if feedback.is_question
+  		find('.questions-list').should have_content feedback.feedback_content
+  	else
+  		find('.questions-list').should_not have_content feedback.feedback_content
+  	end
+  end
+end
+
+
+Then /^I should see all of "(.*?)"s comments in the comments section$/ do |name|
+  company = Company.where(:name => name)[0]
+  company.feedbacks.each do |feedback|
+  	if not feedback.is_question
+  		find('.comments-list').should have_content feedback.feedback_content
+  	else
+  		find('.comments-list').should_not have_content feedback.feedback_content
+  	end
+  end
 end

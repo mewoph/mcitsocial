@@ -11,11 +11,13 @@ Background:
 	| First Name | Last Name | Bio   | Is Current Student | Is Part Time | Matriculation Date | Graduation Date | Previous Work | Undergrad Major | Undergrad School | Hometown | Email | Courses | Languages | Interests |
 	| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT596,CIT550" | "Java,Ruby" |  "MCIT social" |
 	And the following feedbacks exist:
-	| feedback_content 								  | company_id | is_question | adder id |
+	| feedback_content 								| company_id | is_question | adder id |
 	| What is that? 								  | 1          | true        | 1        |
  	| Where am I? 									  | 1          | true        | 1        |
-	| What is this? 								  | 2          | true        | 2        |
-	| What is the meaning of life? 	                  | 2          | true        | 1        |
+	| What is this? 								  | 1          | false       | 2        |
+	| What is the meaning of life? 	  | 1          | true        | 1        |
+	| Another question 								| 2          | true        | 2        |
+	| Yet Another Question        	  | 2          | true        | 1        |
 
 Scenario: A Registered User Can View A List of Companies
 	Given I am a valid user that is logged in
@@ -44,31 +46,31 @@ Scenario: A Registered User Can View All Feedbacks Of A Company
 	Given I am a valid user that is logged in
 	When I view the company "Microsoft"
 	Then I should be able to view all of "Microsoft"s feedbacks
-	And I should not be able to view any other companies feedbacks
+	And I should not be able to view "Amazon"s feedbacks
 
 Scenario: An Unregistered User Cannot View A Companies Information
 	Given I am an unregistered user
 	When I view the company "Microsoft"
-	Then I should see a message saying you must sign i
+	Then I should see a login required message
 	And I should not see "Microsoft"s information
 
 Scenario: An Unregistered User Cannot View The List Of Companies
 	Given I am an unregistered user
 	When I view the companies index page
-	Then I should see a message saying you must sign in
+	Then I should see a login required message
 	And I should not see any of the companies names
 
 Scenario: A registered user can view questions and comments diveded by type
 	Given I am a valid user that is logged in
 	When I view the company "Microsoft"
-	Then I should see "3" comments and "2" questions
+	Then I should see "1" comments and "3" questions
 
 Scenario: A registered user can view questions and comments diveded by type
 	Given I am a valid user that is logged in
 	When I view the company "Microsoft"
-	Then I should see all questions in question section
+	Then I should see all of "Microsoft"s questions in the question section
 
 Scenario: A registered user can view questions and comments diveded by type
 	Given I am a valid user that is logged in
 	When I view the company "Microsoft"
-	Then I should see all comments in comments section
+	Then I should see all of "Microsoft"s comments in the comments section
