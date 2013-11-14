@@ -51,7 +51,7 @@ end
 #When
 When /^I click on the companies tab$/ do
 	within(".navbar") do
-		click_link "companies"
+		click_link "Companies"
 	end
 end
 
@@ -72,7 +72,7 @@ end
 
 When(/^I click on the feedbacks tab$/) do
   within(".navbar") do
-		click_link "questions"
+		click_link "Questions"
 	end
 end
 
