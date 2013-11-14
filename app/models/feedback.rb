@@ -14,8 +14,9 @@
 class Feedback < ActiveRecord::Base
   attr_accessible :id, :adder_id, :company_id, :feedback_content, :is_question
   belongs_to :company
+  validates :company_id, :presence => {:message => "Please select a company."}
   validates :feedback_content, :presence => {:message => "Feedback cannot be blank."}
-  validates :is_question, :presence => {:message => "Must pick either interview question or comment."}
+  validates :is_question, :inclusion => {:in => [true, false], :message => "Must pick either interview question or comment."}
   paginates_per 5
   
   searchable do #can only search text fields on solr, so need to convert out string fields to text

@@ -19,9 +19,15 @@ class FeedbacksController < ApplicationController
 	end
 
 	def new
-		@feedback = Feedback.new
-		if not params[:company_id].nil?
+		@feedback = Feedback.new(:is_question => true)
+		if not params[:company_id].blank?
 			@feedback.company_id = params[:company_id]
+		end
+		if not params[:is_question].blank?
+			@feedback.is_question = params[:is_question]
+		end
+		if not params[:feedback_content].blank?
+			@feedback.feedback_content = params[:feedback_content]
 		end
 	end
 
@@ -36,7 +42,7 @@ class FeedbacksController < ApplicationController
 			redirect_to company_path(@feedback.company_id)
 		else
 			flash[:alert] = "Please complete the form."
-			redirect_to :back
+			redirect_to new_feedback_path(:feedback_content => params[:feedback][:feedback_content], :company_id => params[:feedback][:company_id], :is_question => params[:feedback][:is_question])
 		end
 	end
 

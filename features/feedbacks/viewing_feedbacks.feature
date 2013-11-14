@@ -3,15 +3,18 @@ Feature: Viewing Feedbacks
 
 Background:
 	Given the following companies exist:
-	| Name |
+	| name |
 	| Microsoft| 
 	| Amazon| 
+	And the following users exist:
+	| First Name | Last Name | Bio   | Is Current Student | Is Part Time | Matriculation Date | Graduation Date | Previous Work | Undergrad Major | Undergrad School | Hometown | Email | Courses | Languages | Interests |
+	| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT596,CIT550" | "Java,Ruby" |  "MCIT social" |
 	And the following feedbacks exist:
-	| feedback_content 								| company_id | is_question |
-	| What is that? 								| 1 | true |
-	| Where am I? 									| 1 | true | 
-	| What is this? 								| 2 | true |
-	| What is the meaning of life? 					| 2 | true |
+	| feedback_content 								| company_id | is_question | adder id |
+	| What is that? 								| 1          | true        | 1        |
+	| Where am I? 									| 1          | true        | 1        |
+	| What is this? 								| 2          | true        | 2        |
+	| What is the meaning of life? 					| 2          | true        | 1        |       
 
 Scenario: A Registered User Can View A List Of Feedbacks On The Feedbacks Index Page
 	Given I am a valid user that is logged in

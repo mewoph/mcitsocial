@@ -1,0 +1,56 @@
+# == Schema Information
+#
+# Table name: feedbacks
+#
+#  id               :integer          not null, primary key
+#  company_id       :integer
+#  adder_id         :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  feedback_content :string(255)
+#  is_question      :boolean
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+# This model initially had no columns defined.  If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: 
+    id: 1
+    feedback_content: How are you?
+    adder_id: 1
+    company_id: 1
+    is_question: true
+
+two: 
+    id: 2
+    feedback_content: What are you?
+    adder_id: 1
+    company_id: 1
+    is_question: true
+
+three: 
+    id: 3
+    feedback_content: Comment
+    adder_id: 1
+    company_id: 1
+    is_question: false
+
+four: 
+    id: 4
+    feedback_content: Hello
+    adder_id: 1
+    company_id: 1
+    is_question: false
+
+five: 
+    id: 5
+    feedback_content: When?
+    adder_id: 1
+    company_id: 1
+    is_question: true
+
+
+#  column: value

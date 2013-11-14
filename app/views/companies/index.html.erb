@@ -14,9 +14,7 @@
 		</div>
 
 	</div>
-	<% if @search_results %>
-		<h2>Search Results</h2>
-	<% end %>
+
 <ul class="companies-list">
 <%  @companies.each do |company| %>
 		<li onclick="location.href='<%= company_path(company.id) %>';"><div class="company-name"><%= company.name  %></div>

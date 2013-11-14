@@ -716,6 +716,13 @@ input[type=submit] {
 }
 
 .feedback-new {
+	@include index-header();
+
+	background:none;
+
+	.text1{
+		margin-bottom:10px;
+	}
 	color: white;
 
 	.radiobuttons-group {
@@ -724,9 +731,10 @@ input[type=submit] {
 
 	.select-wrapper {
 		color: black;
-		margin-bottom: 2em;
+		margin-bottom: 1em;
 		display: block;
 		padding: 0.5em;
+		padding-left: 0em;
 
 		h2 {
 			float: left;

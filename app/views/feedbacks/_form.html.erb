@@ -2,7 +2,8 @@
 
 <%= simple_form_for(@feedback) do |form| %>
 
-    <% if not params[:company_id].nil? %>
+
+    <% if not params[:company_id].blank? %>
         <h1>Feedback for <%= @feedback.get_company_name(@feedback.company_id) %></h1>
         <%= form.hidden_field :company_id, :value => @feedback.company_id.to_i %>
     <% else %>
@@ -10,6 +11,8 @@
        <h2> Feedback for </h2>
         <%= form.input :company_id, :collection => @feedback.make_company_collection, :input_html => {:class => 'chosen-select'}, label: false %>
     </div>
+    <div class="text1">Didn't see the company you're looking for?</div>
+            <%= link_to "<i class='fa fa-suitcase'></i>  Add Company".html_safe, new_company_path %>
     <% end %>
 
     <div class="radiobuttons-group">
