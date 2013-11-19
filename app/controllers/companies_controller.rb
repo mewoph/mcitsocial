@@ -20,6 +20,9 @@ class CompaniesController < ApplicationController
 
 	def new
 		@company = Company.new
+		if params[:back_to_form].present?
+			$back_to_form = true
+		end
 	end
 
 	def show
@@ -34,7 +37,14 @@ class CompaniesController < ApplicationController
 			@company = Company.new(params[:company])
 			if @company.save
 				flash[:notice] = "Company Created"
-				redirect_to @company
+
+				if $back_to_form
+					$back_to_form = false
+					redirect_to new_feedback_path(:company_id => @company.id)
+				else
+					redirect_to @company
+				end
+
 			else
 				flash[:alert] = "Company name cannot be blank."
 				redirect_to :back
