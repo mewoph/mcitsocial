@@ -13,6 +13,8 @@ class FeedbacksController < ApplicationController
 				fulltext params[:search] do
 			    	fields(:feedback_content)
 			    end
+			    with :is_question, true
+			    order_by :created_at, :desc
 			end
 			@questions = @results.results
 		end
