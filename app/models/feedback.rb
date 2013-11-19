@@ -41,7 +41,8 @@ class Feedback < ActiveRecord::Base
 
   def make_company_collection
     collection = Array.new
-    Company.all.each do |company|
+    companies = Company.order(:name)
+    companies.each do |company|
       collection.push([company.name, company.id])
     end
     collection
