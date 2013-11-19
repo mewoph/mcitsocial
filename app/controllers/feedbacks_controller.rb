@@ -3,10 +3,10 @@ class FeedbacksController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@questions = Feedback.where(is_question: true).order(:created_at).page params[:page]
+		@questions = Feedback.where(is_question: true).order('created_at DESC').page params[:page]
 		if params[:search].blank?
 			@search_results = false
-			@questions = Feedback.where(is_question: true).order(:created_at).page params[:page]
+			@questions = Feedback.where(is_question: true).order('created_at DESC').page params[:page]
 		else
 			@search_results = true 
 			@results = Feedback.search do
