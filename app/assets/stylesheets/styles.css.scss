@@ -867,6 +867,16 @@ input[type=submit] {
 		text-align: right;
 		opacity: 0.7;
 	}
+
+	.user-name {
+		display: inline;
+		width: auto;
+	}
+
+	.user-name:hover, .company-name:hover {
+		color: $green;
+		cursor: pointer;
+	}
 }
 
 
