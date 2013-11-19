@@ -42,6 +42,10 @@ users = User.create([{email: "User@user.com", first_name: "John", last_name: "Sm
 		password_confirmation: 'something', areas_of_interest: "MCIT", languages: "Java,Rails" , 
 		courses: "CIT550,CIT552, CIT573"}])
 
+	User.all.each do |user|
+		user.confirm!
+	end
+
 	companies = Company.create([{name: "Amazon"}, {name: "Microsoft"}, {name: "Apple"}])
 
 	feedbacks = Feedback.create([{company_id: 1, adder_id: 1, feedback_content: "What is a linked list?", is_question: true}, 
