@@ -686,6 +686,7 @@ input[type=submit] {
 
 	.form-wrapper {
 		width: 40%;
+		min-height: 125px;
 		margin-left: auto;
 		margin-right: auto;
 		background: black;
@@ -706,7 +707,24 @@ input[type=submit] {
 		}
 
 		.button:hover {
-		color: white;
+			color: white;
+		}
+
+
+		.span4, .span8 {
+			margin: 0;
+			padding-top: 0;
+			padding-right: 1em;
+			text-align: left;
+		}
+
+		.cancel {
+			background: #3498db;
+			box-shadow: 0px 5px 1px #1A6291;
+		}
+
+		.cancel:hover, .cancel:active {
+				background: #2980b9;
 		}
 	}
 }
@@ -764,6 +782,7 @@ input[type=submit] {
 
 	.form-wrapper {
 		width: 50%;
+		min-height: 425px;
 		margin-left: auto;
 		margin-right: auto;
 		background: rgba(0,0,0,0.5);
@@ -785,9 +804,32 @@ input[type=submit] {
 
 	}
 
+	.submit, .cancel {
+		display: inline-block;
+		margin-left: 0;
+		width: 100%;
+	}
+
 	.button:hover {
 		color: white;
 	}
+
+	.span4, .span8 {
+		margin: 0;
+		padding-top: 0;
+		padding-right: 1em;
+		text-align: left;
+	}
+
+	.cancel {
+		background: #3498db;
+		box-shadow: 0px 5px 1px #1A6291;
+	}
+
+	.cancel:hover, .cancel:active {
+			background: #2980b9;
+	}
+
 }
 
 .questions-index-bg, .question-show-bg {

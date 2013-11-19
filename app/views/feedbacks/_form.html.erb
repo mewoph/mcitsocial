@@ -21,7 +21,14 @@
     </div>
 
     <%= form.input :feedback_content, label: false, as: :text %> 
-    <%= form.button :submit, class: 'button' %>
+
+    <div class="span8">
+        <%= form.button :submit, class: 'submit button' %>
+    </div>
+    <div class="span4">
+        <%= link_to '<div class="cancel button">Cancel</div>'.html_safe, :back %>
+    </div>
+
   <% end %>
 
 </div>

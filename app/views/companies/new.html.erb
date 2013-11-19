@@ -2,7 +2,15 @@
 	<div class="form-wrapper">
 		<%= simple_form_for @company do |f| %>
 		  <%= f.text_field :name, placeholder: 'Company Name' %>
-		  <%= f.button :submit, id: 'submit_button', class: 'button', value: 'Add Company' %>
+		  
+
+		<div class="span8">
+			<%= f.button :submit, id: 'submit_button', class: 'button', value: 'Add Company' %>
+		</div>
+		<div class="span4">
+		    <%= link_to '<div class="cancel button">Cancel</div>'.html_safe, :back %>
+		</div>
+
 		<% end %>
 	</div>
 </div>
