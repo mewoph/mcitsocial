@@ -170,6 +170,15 @@ input[type=submit] {
 
 }
 
+.landing {
+	.forgot-password{
+		padding: 1em;
+		a:hover {
+			color: $silver;
+		}
+	}
+}
+
 .email-confirm {
 	margin: 0;
 	font-family: $roboto;

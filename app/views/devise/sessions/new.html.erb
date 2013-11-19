@@ -4,8 +4,6 @@
 
 		<h1>mcit social</h1>
 
-	<!-- 	<h2 class="temp">Sign in</h2>
-	 -->
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 		  <div>
 		  <%= f.email_field :email, :autofocus => true, :placeholder => 'EMAIL' %></div>
@@ -14,10 +12,11 @@
 		  <%= f.password_field :password, :placeholder => 'PASSWORD' %></div>
 
 
-		  <div><%= f.submit "SIGN IN", :class => 'button', :id => 'buttonid' %></div>
-		<% end %>
+		  <div><%= f.submit "SIGN IN", :class => 'button', :id => "buttonid" %></div>
+		  
+		  <div class ="forgot-password"><%= link_to "Forgot your password?", new_password_path(resource_name) %><br /></div>
 
-		<% render "devise/shared/links" %>
+		<% end %>
 
 	</span>
 
