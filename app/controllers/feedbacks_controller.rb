@@ -3,7 +3,6 @@ class FeedbacksController < ApplicationController
 	before_filter :authenticate_user!
 
 	def index
-		@questions = Feedback.where(is_question: true).order('created_at DESC').page params[:page]
 		if params[:search].blank?
 			@search_results = false
 			@questions = Feedback.where(is_question: true).order('created_at DESC').page params[:page]
@@ -13,6 +12,8 @@ class FeedbacksController < ApplicationController
 				fulltext params[:search] do
 			    	fields(:feedback_content)
 			    end
+			    with :is_question, true
+			    order_by :created_at, :desc
 			end
 			@questions = @results.results
 		end

@@ -12,7 +12,7 @@
 #
 
 class Feedback < ActiveRecord::Base
-  attr_accessible :id, :adder_id, :company_id, :feedback_content, :is_question
+  attr_accessible :id, :adder_id, :company_id, :feedback_content, :is_question, :created_at
   belongs_to :company
   validates :company_id, :presence => {:message => "Please select a company."}
   validates :feedback_content, :presence => {:message => "Feedback cannot be blank."}
@@ -24,6 +24,8 @@ class Feedback < ActiveRecord::Base
   	string  :sort_feedback_content do
       feedback_content.downcase.gsub(/^(an?|the)/, '')
     end
+    boolean :is_question
+    time :created_at
   end
 
   def adder_name
