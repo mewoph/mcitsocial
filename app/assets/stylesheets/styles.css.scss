@@ -48,6 +48,12 @@ $italiana: 'Italiana', serif;
 	}
 }
 
+@mixin ellipsis() {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+}
+
 body {
 	font-family: $roboto;
 }
@@ -114,9 +120,9 @@ input[type=submit] {
 	font-weight: 300;
 	text-align: center;
 	width: auto;
-	background-color: rgba(230,126,34,1);
-	color: white;
+	background-color: rgba(0,0,0,0.3);
 	border: none;
+	color: white;
 	text-shadow: none;
 }
 
@@ -232,6 +238,10 @@ input[type=submit] {
 
 		.edit-user:hover, .edit-user:active {
 			background: #2980b9;
+		}
+
+		.email-user {
+			@include ellipsis();
 		}
 	}
 
@@ -410,9 +420,7 @@ input[type=submit] {
 	.show-name {
 		margin: 1em;
 		margin-top: 0.5em;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+		@include ellipsis();
 	}
 
 	.button {
