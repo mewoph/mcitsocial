@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   validates_attachment_size :profile_picture, :less_than => 5.megabytes
 
   # Gets the full name of of the user
-  def full_name
+  def to_s
   	if first_name.blank? && last_name.blank?
   		email
   	elsif first_name.blank?
