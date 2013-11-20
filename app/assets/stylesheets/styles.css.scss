@@ -410,6 +410,9 @@ input[type=submit] {
 	.show-name {
 		margin: 1em;
 		margin-top: 0.5em;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	.button {
