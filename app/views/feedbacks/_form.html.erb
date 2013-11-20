@@ -12,7 +12,7 @@
         <%= form.input :company_id, :collection => @feedback.make_company_collection, :input_html => {:class => 'chosen-select'}, label: false %>
     </div>
     <div class="text1">Didn't see the company you're looking for?</div>
-            <%= link_to "<i class='fa fa-suitcase'></i>  Add Company".html_safe, new_company_path %>
+            <%= link_to "<i class='fa fa-suitcase'></i>  Add Company".html_safe, new_company_path(:back_to_form => true) %>
     <% end %>
 
     <div class="radiobuttons-group">
@@ -21,7 +21,14 @@
     </div>
 
     <%= form.input :feedback_content, label: false, as: :text %> 
-    <%= form.button :submit, class: 'button' %>
+
+    <div class="span8">
+        <%= form.button :submit, class: 'submit button' %>
+    </div>
+    <div class="span4">
+        <%= link_to '<div class="cancel button">Cancel</div>'.html_safe, :back %>
+    </div>
+
   <% end %>
 
 </div>
