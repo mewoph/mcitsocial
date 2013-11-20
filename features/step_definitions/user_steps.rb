@@ -69,6 +69,7 @@ end
 #Given
 Given /^the following users exist:$/ do |table|
   create_password
+
   table.hashes.each do |attributes|
     FactoryGirl.create(:user, first_name: attributes["First Name"], last_name: attributes["Last Name"], bio: attributes["Bio"], 
     	is_current_student: attributes["Is Current Student"], graduation_date: attributes["Graduation Date"],

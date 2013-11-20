@@ -4,7 +4,7 @@
             <div class="column span4">
                 <div class="hero-unit profile-leftbox">
                   <div class="profile-picture"><%= image_tag(@user.profile_picture.url) if @user.profile_picture.present? %></div>
-                  <h2 class="name"><%= @user.full_name %></h2>
+                  <h2 class="name"><%= @user %></h2>
                   <% if @user.is_current_student and !@user.is_parttime%>
                     <h4>Current Full Time Student</h4>
                   <% elsif @user.is_current_student and @user.is_parttime%>
