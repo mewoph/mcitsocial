@@ -14,6 +14,7 @@ class FeedbacksController < ApplicationController
 			    end
 			    with :is_question, true
 			    order_by :created_at, :desc
+			    paginate :page => params[:page], :per_page => 5
 			end
 			@questions = @results.results
 		end
