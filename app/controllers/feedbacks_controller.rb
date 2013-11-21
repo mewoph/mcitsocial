@@ -34,7 +34,15 @@ class FeedbacksController < ApplicationController
 
 	def show
 		@feedback = Feedback.find(params[:id])
-		@comment = Comment.new
+		if not params[:comment].blank?
+			@comment = Comment.new(:commenter_id => current_user.id, :content_id => params[:id], :comment => params[:comment])
+			@comment.save
+			redirect_to feedback_path(@feedback.id)
+		end
+		@feedback_comments = Comment.where(:content_id => params[:id])
+
+		# params.delete[:comment]
+		
 	end
 
 	def create
