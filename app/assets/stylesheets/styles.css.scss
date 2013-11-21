@@ -761,7 +761,7 @@ input[type=submit] {
 	@include background-image('../assets/rittenhouse_bg.png');
 }
 
-.feedback-new {
+.feedback-new, .protip-new {
 	@include index-header();
 
 	background:none;
@@ -951,7 +951,7 @@ input[type=submit] {
 
 .protips-index{
 	color: white;
-	
+
 	.add-feedback{
 		@include index-header();
 
