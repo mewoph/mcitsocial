@@ -66,6 +66,7 @@ Mcitsocial::Application.routes.draw do
   resources :users
   resources :companies
   resources :feedbacks
+  resources :comments
   get "/questions" => "feedbacks#index"
 
 

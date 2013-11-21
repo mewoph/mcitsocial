@@ -34,6 +34,7 @@ class FeedbacksController < ApplicationController
 
 	def show
 		@feedback = Feedback.find(params[:id])
+		@comment = Comment.new
 	end
 
 	def create

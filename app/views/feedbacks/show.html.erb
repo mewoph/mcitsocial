@@ -7,9 +7,19 @@
 		<%= @feedback.get_company_name(@feedback.company_id) %>
 	</div>
 
-		<div class="adder-name">
-			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
-		</div>
+	<div class="adder-name">
+		<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
+	</div>
+
+	<div> 
+		<%= simple_form_for @comment, :url => new_comment_path, :html => { :multipart => true } do |form| %>
+                             
+                   <%= form.text_area :comment %>
+
+         <input type="submit" name="commit" value="Add Answer" class="button" />
+
+         <% end %>
+	</div>
 					
 </div>
 
