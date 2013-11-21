@@ -34,7 +34,6 @@
 #  profile_picture_content_type :string(255)
 #  profile_picture_file_size    :integer
 #  profile_picture_updated_at   :datetime
-#  course_id                    :integer
 #  areas_of_interest            :string(255)
 #  languages                    :string(255)
 #  courses                      :string(255)
