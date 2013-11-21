@@ -949,6 +949,19 @@ input[type=submit] {
 	}
 }
 
+.protips-index{
+	color: white;
+	
+	.add-feedback{
+		@include index-header();
+
+	}
+}
+
+.protips-index-bg {
+	@include background-image('../assets/ben-bg.png');
+}
+
 
 /* PAGINATION */
 .pagination a, .pagination span.current, .pagination span.gap {
