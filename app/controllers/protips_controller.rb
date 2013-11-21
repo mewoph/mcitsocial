@@ -1,0 +1,2 @@
+class ProtipsController < ApplicationController
+end
