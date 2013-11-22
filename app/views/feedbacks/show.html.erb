@@ -7,9 +7,23 @@
 		<%= @feedback.get_company_name(@feedback.company_id) %>
 	</div>
 
-		<div class="adder-name">
-			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
-		</div>
+	<div class="adder-name">
+		<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
+	</div>
+
+	<div> 
+
+		<% @feedback_comments.each do |comment| %>
+			<h3><%= comment.comment%></h3>
+			<h5><%= comment.commenter_id%></h5>
+		<% end %>
+
+		<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
+				  <div class="input-append">
+				    <%= text_field_tag :comment, params[:comment], class: "span12", placeholder: "Type your answer here..." %>				    <button class="btn" type="submit"><i class="icon-search"></i></button>
+				  </div>
+		<% end %>
+	</div>
 					
 </div>
 
