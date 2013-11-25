@@ -921,9 +921,21 @@ input[type=submit] {
 
 .question-show {
 	color: white;
-	background: rgba(0,0,0,0.5);
 	padding: 2em;
 	margin-bottom: 4em;
+
+	.question-header {
+		padding: 2em;
+		background: rgba(0,0,0,0.5);
+
+	}
+
+	.comment {
+		margin-top: 20px;
+		margin-left: 150px;
+		padding: 2em;
+		background: rgba(0,0,0,0.5);
+	}
 
 	h1 {
 		color: white;

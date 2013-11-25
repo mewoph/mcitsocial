@@ -41,8 +41,15 @@ class FeedbacksController < ApplicationController
 			redirect_to feedback_path(@feedback.id)
 		end
 		@feedback_comments = Comment.where(:content_id => params[:id])
+		if not params[:like].blank?
+			@comment = Comment.find(params[:comment_id])
+			@comment.upvote_ids.push(@feedback.id)
+		end
+		if not params[:dislike].blank?
 
-		# params.delete[:comment]
+		end
+		# report.ids.push(post.id)
+
 		
 	end
 

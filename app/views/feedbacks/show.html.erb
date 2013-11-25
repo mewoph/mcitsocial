@@ -1,21 +1,23 @@
 <div class="question-show">
 
+	<div class="question-header">
+		<h1><%= @feedback.feedback_content %></h1>
 
-	<h1><%= @feedback.feedback_content %></h1>
+		<div class="company-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';">
+			<%= @feedback.get_company_name(@feedback.company_id) %>
+		</div>
 
-	<div class="company-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';">
-		<%= @feedback.get_company_name(@feedback.company_id) %>
+		<div class="adder-name">
+			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
+		</div>
 	</div>
-
-	<div class="adder-name">
-		<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
-	</div>
-
-	<div> 
+	<div class="main-body"> 
 
 		<% @feedback_comments.each do |comment| %>
-			<h3><%= comment.comment%></h3>
-			<h5><%= comment.commenter_id%></h5>
+			<div class="comment">
+				<h3><%= comment.comment%></h3>
+				<h5><%= User.find(comment.commenter_id).full_name %></h5>
+			</div>
 		<% end %>
 
 		<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
