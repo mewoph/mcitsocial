@@ -17,6 +17,12 @@
 			<div class="comment">
 				<h3><%= comment.comment%></h3>
 				<h5><%= User.find(comment.commenter_id).full_name %></h5>
+				<h6>Count: <%= comment.votes.size %></h6>
+				<% if !current_user.voted_for? comment %>
+						<%= link_to "Like", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :dislike => "disliked") %>
+				<% else %>
+						<%= link_to "Dislike", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :like => "like") %>
+				<% end %>
 			</div>
 		<% end %>
 
