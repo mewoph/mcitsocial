@@ -1,7 +1,7 @@
 <div class="form-wrapper">
 <%= simple_form_for(@protip) do |form|%>
 
-	<%= form.input :category_id, :collection => Category.all %>
+	<%= form.input :category, :collection => Category.all %>
 	<%= form.input :title%>
 	<%= form.input :content%>
     <%= form.hidden_field :adder_id, :value => current_user.id%>

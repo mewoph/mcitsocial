@@ -21,6 +21,8 @@ gem 'kaminari'
 gem 'chosen-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'active_hash'
+
 
 group :test do
 	gem "email_spec"
