@@ -12,7 +12,7 @@ Scenario: A Registered User Can Navigate to Create Protip Page
 
 
 Scenario: A Registered User Can Create a New Protip
-	When I create a protip with title "ABC" and content "DEF"
+	When I create a protip with title "ABC", content "DEF", and category "Philadelphia" 
 	And I click create protip button
 	Then I should see a success protip created message
 	And I should see the protip show page with the title "ABC" and content "DEF" and my name as adder name
@@ -25,12 +25,17 @@ Scenario: A Registered User Can Cancel Protip Creation
 	Then I should be redirected back to protips index page
 
 Scenario: A Registered User Cannot Successfully Create a Protip Without Title
-	When I create a protip with content "ABC" and with no title
+	When I create a protip with content "ABC", category "Philadelphia", and with no title
+	Then I should see an error message
+	And the protip with content "ABC" should not exist
+
+Scenario: A Registered User Cannot Successfully Create a Protip Without Choosing a Category
+	When I create a protip with content "ABC", title "DEF", and do not choose a category
 	Then I should see an error message
 	And the protip with content "ABC" should not exist
 
 Scenario: A Registered User Cannot Successfully Create A Protip Without Content
-	When I create a protip with title "ABC" and with no content
+	When I create a protip with title "ABC", category "Phiadelphia", and with no content
 	Then I should see an error message
 	And the protip with title "ABC" should not exist
 
