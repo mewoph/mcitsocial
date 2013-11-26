@@ -20,6 +20,7 @@
 		<li onclick="location.href='<%= company_path(company.id) %>';"><div class="company-name"><%= company.name  %></div>
 
 			<% num_comments = company.num_comments.to_s %>
+			<% num_comments = num_comments.to_i >= 100 ? "99+" : num_comments %>
 			<% num_questions = company.num_questions.to_s %>
 
 			<% comments_link = "<i class='fa fa-comments'></i><div class='number'>" + num_comments + "</div>" %>			
