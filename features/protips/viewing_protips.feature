@@ -1,4 +1,4 @@
-Given I am a valid user that is logged inGiven I am a valid user that is logged inFeature: Protips View 
+Feature: I am a valid user that is logged inGiven I am a valid user that is logged inFeature: Protips View 
 	As a registered user of the website
 	I should be able to view all protips on the index page and a single protip on its show page
 

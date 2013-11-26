@@ -5,8 +5,8 @@ Background:
 	Given I am a valid user that is logged in
 
 Scenario: A Registered User Can Navigate to Create Protip Page
-	When I click on protips link in the nav bar
-	And I click on add protips link
+	When I click on the protips link in the nav bar
+	And I click on the add protips link
 	Then I should be able to enter protips title
 	And I should be able to enter protips content
 
