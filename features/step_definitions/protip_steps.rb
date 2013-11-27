@@ -1,6 +1,4 @@
-#Given
-
-#When
+# Helpers
 
 def visit_form_page
 	within(".navbar") do 
@@ -8,6 +6,19 @@ def visit_form_page
 	end
 	click_link "Add a Protip"
 end
+
+def get_adder_id(name)
+	User.where(:first_name => name).first.id
+end
+
+# Given
+Given /^the following protips exist:$/ do |table|
+  table.hashes.each do |attributes|
+    FactoryGirl.create(:protip, adder_id: get_adder_id(attributes["Adder First Name"]), title: attributes["Title"], content: attributes["Content"], category: attributes["Category"])
+  end 
+end
+
+# When
 
 When /^I click on protips link in the nav bar$/ do
 	within(".navbar") do
@@ -53,7 +64,7 @@ When /^I create a protip with title "(.*?)", category "(.*?)", and with no conte
 	page.select(protip_category, :from => "protip_category")
 end
 
-#Then
+# Then
 
 Then /^I should be able to enter protips title$/ do
 	visit_form_page
@@ -83,7 +94,10 @@ Then /^I should see a protip creation error message$/ do
 	page.should have_content "Please complete the form."
 end
 
-Then /^The protip with title "ABC" should not exist$/ do
+Then /^The protip with content "(.*?)" should not exist$/ do |protip_content|
+end
+
+Then /^The protip with title "(.*?)" should not exist$/ do |protip_title|
 	#TODO - how to check whether a protip doesn't exist in the database
 	# click all four categories, make sure the tip doesn't exist?
 end

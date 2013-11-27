@@ -9,13 +9,13 @@ Background:
 		| Connor    | Liddic | Web Developer | true | false | 2010-08-05 | 2012-05-05 | Program Manager | Colgate University | Graphic Design | Albany | cl@seas.upenn.edu | "CIT598,CIT552" | "Ruby,Rails" | "MCIT" |
 
 	Given the following protips exist: 
-		| Adder First Name | Title |  Content        | Number of Upvotes | Category ID  |
-		| Abeer            | ABC   | Don't be afraid |  10               | 1            | 
-		| Connor           | CDE   | Be scared       | 3                 | 2            |
-		| Abeer            | EFG   | Yesss           | 20                | 3            |
-		| Abeer            | HIJ   | Something       |  55               | 1            | 
-		| Connor           | JKL   | Thinking        | 300               | 1            |
-		| Abeer            | LMO   | What            | 0                 | 3            |
+		| Adder First Name | Title |  Content        | Number of Upvotes | Category       |
+		| Abeer            | ABC   | Don't be afraid |  10               | Philly Tips    | 
+		| Connor           | CDE   | Be scared       | 3                 | Penn Tips      |
+		| Abeer            | EFG   | Yesss           | 20                | Interview Tips |
+		| Abeer            | HIJ   | Something       |  55               | Miscellaneous  | 
+		| Connor           | JKL   | Thinking        | 300               | Penn Tips      |
+		| Abeer            | LMO   | What            | 0                 | Philly Tips    |
 	Given the following comments exist:
 		| Protip     | Adder Name | Comment |
 		| ABC        | Abeer      | NO      |
