@@ -35,20 +35,20 @@ Scenario: A Registered User can view the protips index page
 
 Scenario: A Registered Use Can View The Protips With Category "Philly Tips"
 	Given I am a valid user that is logged in
-	When I click on the protips link in the nav bar
+	When I click on protips link in the nav bar
 	Then I should be able to click on the "Philly Tips" category 
 	And I should be able to view all protips categorized as "Philly Tips"
 
 
 Scenario: A Registered Use Can View The Protips With Category "Interview Tips"
 	Given I am a valid user that is logged in
-	When I click on the protips link in the nav bar
+	When I click on protips link in the nav bar
 	Then I should be able to click on the "Interview Tips" category 
 	And I should be able to view all protips categorized as "Interview Tips"
 
 Scenario: A Registered Use Can View The Protips With Category "Penn Tips"
 	Given I am a valid user that is logged in
-	When I click on the protips link in the nav bar
+	When I click on protips link in the nav bar
 	Then I should be able to click on the "Penn Tips" category 
 	And I should be able to view all protips categorized as "Penn Tips"
 

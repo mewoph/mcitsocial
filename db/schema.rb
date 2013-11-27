@@ -13,6 +13,15 @@
 
 ActiveRecord::Schema.define(:version => 20131125202038) do
 
+  create_table "comments", :force => true do |t|
+    t.integer  "commenter_id"
+    t.string   "comment"
+    t.integer  "content_id"
+    t.text     "upvote_ids"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -36,10 +45,10 @@ ActiveRecord::Schema.define(:version => 20131125202038) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "feedbacks", :force => true do |t|
-    t.integer  "company_id"
     t.integer  "adder_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "company_id"
     t.string   "feedback_content"
     t.boolean  "is_question"
   end
@@ -51,14 +60,6 @@ ActiveRecord::Schema.define(:version => 20131125202038) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "category"
-  end
-
-  create_table "questions", :force => true do |t|
-    t.string   "question"
-    t.integer  "company_id"
-    t.integer  "adder_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
