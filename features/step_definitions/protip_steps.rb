@@ -1,9 +1,13 @@
 # Helpers
 
-def visit_form_page
-	within(".navbar") do 
+def visit_index_page
+	within(".navbar") do
 		click_link "Protips"
 	end
+end
+
+def visit_form_page
+	visit_index_page
 	click_link "Add a Protip"
 end
 
@@ -11,10 +15,40 @@ def get_adder_id(name)
 	User.where(:first_name => name).first.id
 end
 
+def get_protip_id(title)
+	Protip.where(:title => title).first.id
+end
+
+def get_protip_content(title)
+	Protip.where(:title => title).first.content
+end
+
+def get_adder_name(title)
+	adder_id = Protip.where(:title => title).first.adder_id
+	User.where(:id => adder_id).to_s
+end
+
+def get_all_comments(title)
+	protip_id = Protip.where(:title => title).first.id
+	comments = Comment.where(:content_id => protip_id)
+	all_comments = ""
+	comments.each do |comment|
+		all_comments += comment
+		all_comments += " "
+	end
+	all_comments
+end
+
 # Given
 Given /^the following protips exist:$/ do |table|
   table.hashes.each do |attributes|
     FactoryGirl.create(:protip, adder_id: get_adder_id(attributes["Adder First Name"]), title: attributes["Title"], content: attributes["Content"], category: attributes["Category"])
+  end 
+end
+
+Given /^the following comments exist:$/ do |table|
+  table.hashes.each do |attributes|
+    FactoryGirl.create(:comment, commenter_id: get_adder_id(attributes["Adder First Name"]), comment: attributes["Comment"], content_id: get_protip_id(attributes["Protip"]))
   end 
 end
 
@@ -64,6 +98,25 @@ When /^I create a protip with title "(.*?)", category "(.*?)", and with no conte
 	page.select(protip_category, :from => "protip_category")
 end
 
+When /^I click on the "(.*?)" category$/ do |category|
+	visit_index_page
+	click_link category
+end
+
+When /^I click the protip with title "(.*?)"$/ do |protip_title|
+	click_link protip_title
+end
+
+When /^I view the protips index page$/ do 
+	visit_index_page
+end
+
+When /^I click on "(.*?)" within the protip "(.*?)"$/ do |adder_name, protip_title|
+	within(".protip-show") do 
+		click_link adder_name
+	end
+end
+
 # Then
 
 Then /^I should be able to enter protips title$/ do
@@ -100,4 +153,72 @@ end
 Then /^The protip with title "(.*?)" should not exist$/ do |protip_title|
 	#TODO - how to check whether a protip doesn't exist in the database
 	# click all four categories, make sure the tip doesn't exist?
+end
+
+Then /^I should see the four categories$/ do
+	visit_index_page
+	page.should have_content "Philly Tips"
+	page.should have_content "Penn Tips"
+	page.should have_content "Interview Tips"
+	page.should have_content "Miscellaneous"
+end
+
+Then /^I should be able to view all protips categorized as "(.*?)"$/ do |category|
+	#TODO - implement this
+end
+
+Then /^I should be taken to the show page$/ do
+	page.should have_css(".protip-show")
+end
+
+Then /^I should be able to view the content of "(.*?)"$/ do |protip_title|
+	page.should have_content protip_title
+	page.should have_content get_protip_content(protip_title)
+end
+
+Then /^I should see the name of the user who posted the protip "(.*?)"$/ do |protip_title|
+	page.should have_content get_adder_name(protip_title)
+	# what if title is not unique?
+end
+
+Then /^I should be able to see the comments for "(.*?)"$/ do |protip_title|
+	page.should have_content get_all_comments(protip_title)
+end
+
+Then /^I should not be able to see the comments for "(.*?)"$/ do |other_protip|
+	page.should have_no_content get_all_comments(other_protip)
+end
+
+Then /^I should not be able to see the content for "(.*?)"$/ do |other_protip|
+	page.should have_no_content get_protip_content(other_protip)
+end
+
+Then /^the protips should be ordered by number of upvotes$/ do
+	#TODO - implement this
+end
+
+Then /^I should see "(.*?)" at the top of the index$/ do |first_protip|
+	#TODO - implement this
+end
+
+Then /^I should see "(.*?)" at the bottom of the index$/ do |last_protip|
+	#TODO - implement this
+end
+
+Then(/^I should not be able to view the protips index page$/) do
+	page.should have_no_css(".protips-index")
+end
+
+Then(/^I should not be able to view the protips show page$/) do
+  page.should have_no_css(".protip-show")
+end
+
+
+Then /^I should see the profile of "(.*?)"$/ do |adder_name|
+	page.should have_css(".profile-show")
+	page.should have_content adder_name
+end
+
+Then /^I should see equal number of protip titles and adder names$/ do
+	#TODO - implement this
 end

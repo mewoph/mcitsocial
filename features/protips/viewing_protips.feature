@@ -17,11 +17,11 @@ Background:
 		| Connor           | JKL   | Thinking        | 300               | Penn Tips      |
 		| Abeer            | LMO   | What            | 0                 | Philly Tips    |
 	Given the following comments exist:
-		| Protip     | Adder Name | Comment |
-		| ABC        | Abeer      | NO      |
-		| CDE        | Connor     | YES     |
-		| ABC        | Connor     | AHH     |
-		| EFG        | Abeer      | What?   | 
+		| Protip     | Adder First Name | Comment |
+		| ABC        | Abeer            | NO      |
+		| CDE        | Connor           | YES     |
+		| ABC        | Connor           | AHH     |
+		| EFG        | Abeer            | What?   | 
 
 	
 
@@ -36,42 +36,43 @@ Scenario: A Registered User can view the protips index page
 Scenario: A Registered Use Can View The Protips With Category "Philly Tips"
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
-	Then I should be able to click on the "Philly Tips" category 
-	And I should be able to view all protips categorized as "Philly Tips"
+	And I click on the "Philly Tips" category 
+	Then I should be able to view all protips categorized as "Philly Tips"
 
 
 Scenario: A Registered Use Can View The Protips With Category "Interview Tips"
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
-	Then I should be able to click on the "Interview Tips" category 
-	And I should be able to view all protips categorized as "Interview Tips"
+	And I click on the "Interview Tips" category 
+	Then I should be able to view all protips categorized as "Interview Tips"
 
 Scenario: A Registered Use Can View The Protips With Category "Penn Tips"
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
-	Then I should be able to click on the "Penn Tips" category 
-	And I should be able to view all protips categorized as "Penn Tips"
+	And I click on the "Penn Tips" category 
+	Then I should be able to view all protips categorized as "Penn Tips"
 
 Scenario: A Registered Can View The Protips Show Page
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
 	And I click the protip with title "ABC"
-	Then I should be able to view the content of "ABC"
+	Then I should be taken to the show page
+	And I should be able to view the content of "ABC"
 	And I should see the name of the user who posted the protip "ABC"
 	And I should be able to see the comments for "ABC"
 
 Scenario: A Protip Show Page Should Only Show Its Own Comments And Content
 	Given I am a valid user that is logged in
-	When I view the protip with title "ABC"
-	Then I should not be able to see comments for "CDE"
-	And I should not be able to see comments for "EFG"
+	When I click the protip with title "ABC"
+	Then I should not be able to see the comments for "CDE" while on "ABC"
+	And I should not be able to see the comments for "EFG"
 	And I should not be able to see the content for "CDE"
 	And I should not be able to see the content for "EFG"
 
 Scenario: A Protip Index Page Should Be Ordered By Upvotes
 	Given I am a valid user that is logged in
 	When I view the protips index page
-	And I click on category "1"
+	And I click on the "Philly Tips" category
 	Then the protips should be ordered by number of upvotes
 	And I should see "EFG" at the top of the index
 	And I should see "CDE" at the bottom of the index
@@ -84,7 +85,7 @@ Scenario: An Unregistered User Should Not Be Able To View Protips
 Scenario: A Registered User Can Nagivate to Protip Adder's Profile Page
 	Given I am a valid user that is logged in
 	When I view the protips index page
-	And I click on category "1"
+	And I click on the "Interview Tips" category
 	And I click on "Abeer Minhas" within the protip "ABC"
 	Then I should see the profile of "Abeer"
 
