@@ -14,6 +14,7 @@ class FeedbacksController < ApplicationController
 			    end
 			    with :is_question, true
 			    order_by :created_at, :desc
+			    paginate :page => params[:page], :per_page => 5
 			end
 			@questions = @results.results
 		end
@@ -34,6 +35,15 @@ class FeedbacksController < ApplicationController
 
 	def show
 		@feedback = Feedback.find(params[:id])
+		if not params[:comment].blank?
+			@comment = Comment.new(:commenter_id => current_user.id, :content_id => params[:id], :comment => params[:comment])
+			@comment.save
+			redirect_to feedback_path(@feedback.id)
+		end
+		@feedback_comments = Comment.where(:content_id => params[:id])
+
+		# params.delete[:comment]
+		
 	end
 
 	def create

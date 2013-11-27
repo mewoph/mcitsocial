@@ -6,7 +6,22 @@ class UsersController < ApplicationController
 	before_filter :validate_bio_length, :only => [:create, :update]
 
 	def index
-		@users = User.all
+		if params[:search].blank?
+			@users = User.order('created_at DESC').page params[:page]
+		else
+			@results = User.search do
+				fulltext params[:search] do
+			    	fields(:first_name)
+			    	fields(:last_name)
+			    	fields(:previous_work)
+			    	fields(:areas_of_interest)
+			    	fields(:languages)
+			    end
+			    order_by(:created_at, :desc)
+			    paginate :page => params[:page], :per_page => 4
+			end
+			@users = @results.results
+		end
 	end
 
 	def new
