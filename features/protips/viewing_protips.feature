@@ -73,8 +73,7 @@ Scenario: A Protip Index Page Should Be Ordered By Upvotes
 	Given I am a valid user that is logged in
 	When I view the protips index page
 	And I click on the "Philly Tips" category
-	Then the protips should be ordered by number of upvotes
-	And I should see "EFG" at the top of the index
+	Then I should see "EFG" at the top of the index
 	And I should see "CDE" at the bottom of the index
 
 Scenario: An Unregistered User Should Not Be Able To View Protips

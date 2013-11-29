@@ -39,6 +39,15 @@ def get_all_comments(title)
 	all_comments
 end
 
+def get_all_protip_titles(category)
+	protips = Protip.where(:category => category)
+	all_titles = ""
+	protips.each do |protip|
+		all_titles += protip
+		all_titles += " "
+	end
+end
+
 # Given
 Given /^the following protips exist:$/ do |table|
   table.hashes.each do |attributes|
@@ -134,9 +143,8 @@ Then /^I should see a success protip created message$/ do
 end
 
 Then /^I should see the protip show page with the title "(.*?)" and content "(.*?)" and my name as adder name$/ do |protip_title, protip_content|
-	page.should have_content protip_title
-	page.should have_content protip_content
-	#TODO - refine this
+	page.find(".title").should have_content protip_title
+	page.find(".content").should have_content protip_content
 end
 
 Then /^I should be redirected back to protips index page$/ do
@@ -151,8 +159,14 @@ Then /^The protip with content "(.*?)" should not exist$/ do |protip_content|
 end
 
 Then /^The protip with title "(.*?)" should not exist$/ do |protip_title|
-	#TODO - how to check whether a protip doesn't exist in the database
-	# click all four categories, make sure the tip doesn't exist?
+	click_link "Philly Tips"
+	page.should have_no_content protip_title
+	click_link "Penn Tips"
+	page.should have_no_content protip_title
+	click_link "Interview Tips"
+	page.should have_no_content protip_title
+	click_link "Miscellaneous"
+	page.should have_no_content protip_title
 end
 
 Then /^I should see the four categories$/ do
@@ -164,7 +178,8 @@ Then /^I should see the four categories$/ do
 end
 
 Then /^I should be able to view all protips categorized as "(.*?)"$/ do |category|
-	#TODO - implement this
+	click_link category
+	page.should have_content get_all_protip_titles(category)
 end
 
 Then /^I should be taken to the show page$/ do
@@ -177,7 +192,7 @@ Then /^I should be able to view the content of "(.*?)"$/ do |protip_title|
 end
 
 Then /^I should see the name of the user who posted the protip "(.*?)"$/ do |protip_title|
-	page.should have_content get_adder_name(protip_title)
+	page.find(".adder-name").should have_content get_adder_name(protip_title)
 	# what if title is not unique?
 end
 
@@ -193,16 +208,12 @@ Then /^I should not be able to see the content for "(.*?)"$/ do |other_protip|
 	page.should have_no_content get_protip_content(other_protip)
 end
 
-Then /^the protips should be ordered by number of upvotes$/ do
-	#TODO - implement this
-end
-
 Then /^I should see "(.*?)" at the top of the index$/ do |first_protip|
-	#TODO - implement this
+	page.should have_selector('protips-list li:first-child', text: first_protip)
 end
 
 Then /^I should see "(.*?)" at the bottom of the index$/ do |last_protip|
-	#TODO - implement this
+	page.should have_selector('protips-list li:last-child', text: last_protip)
 end
 
 Then(/^I should not be able to view the protips index page$/) do
@@ -215,10 +226,11 @@ end
 
 
 Then /^I should see the profile of "(.*?)"$/ do |adder_name|
-	page.should have_css(".profile-show")
+	page.should have_css ".profile-show"
 	page.should have_content adder_name
 end
 
 Then /^I should see equal number of protip titles and adder names$/ do
-	#TODO - implement this
+	num_names = page.all('.adder-name').count
+	page.all('.protip-title').count.should eql(num_names)
 end
