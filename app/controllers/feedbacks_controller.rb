@@ -35,13 +35,12 @@ class FeedbacksController < ApplicationController
 
 	def show
 		@feedback = Feedback.find(params[:id])
-		# @feedback.liked_by current_user
 		if not params[:comment].blank?
 			@comment = Comment.new(:commenter_id => current_user.id, :content_id => params[:id], :comment => params[:comment])
 			@comment.save
 			redirect_to feedback_path(@feedback.id)
 		end
-		@feedback_comments = Comment.where(:content_id => params[:id])
+		@feedback_comments = Comment.sort_by_popularity(Comment.where(:content_id => params[:id]))
 		puts params[:update_comment_id].blank?
 
 		if not params[:update_comment_id].blank?

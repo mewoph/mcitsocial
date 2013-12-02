@@ -927,7 +927,6 @@ input[type=submit] {
 	.question-header {
 		padding: 2em;
 		background: rgba(0,0,0,0.5);
-
 	}
 
 	.comment {
@@ -949,7 +948,7 @@ input[type=submit] {
 		margin-bottom: 0.5em;
 	}
 
-	.adder-name, .company-name {
+	.adder-name, .company-name, .likes {
 		text-align: right;
 		opacity: 0.7;
 	}
