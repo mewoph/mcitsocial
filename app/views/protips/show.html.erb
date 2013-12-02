@@ -5,7 +5,7 @@
 	<h2> <%= @protip.content %> </h2>
 
 		<div class="adder-name">
-			<i class="fa fa-user"></i> Posted by <%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
+			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@protip.adder_id) %>';"><%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
 		</div>
 					
 </div>
