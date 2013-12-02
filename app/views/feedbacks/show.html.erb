@@ -16,6 +16,20 @@
 		<% @feedback_comments.each do |comment| %>
 			<h3><%= comment.comment%></h3>
 			<h5><%= comment.commenter_id%></h5>
+
+			<% @feedback.get_sub_comments(comment.id).each do |sub_comment| %>
+				<h4><%= sub_comment.comment%></h4>
+				<h5><%= sub_comment.commenter_id%></h5>
+			<% end %>
+		
+			<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
+				  <div class="input-append">
+				    <%= text_field_tag :comment_response, params[:comment_response], class: "span12", placeholder: "Type your response here..." %> 
+				    <%= hidden_field_tag :responding_to_id, comment.id %>
+				    <button class="btn" type="submit"><i class="icon-search"></i></button>
+				  </div>
+				  <% end %>
+
 		<% end %>
 
 		<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
