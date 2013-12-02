@@ -20,4 +20,14 @@ class Protip < ActiveRecord::Base
   def get_adder_name
   	User.find(:adder_id)
   end
+
+  def adder_name
+  	User.find(adder_id)
+  end
+
+  def get_created_time
+  	created_at.strftime('%b %d, %Y')
+  end
+
+
 end

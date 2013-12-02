@@ -22,6 +22,7 @@ gem 'chosen-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'active_hash'
+gem "magnific-popup-rails"
 
 
 group :test do
