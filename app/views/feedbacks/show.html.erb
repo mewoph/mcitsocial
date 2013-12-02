@@ -8,7 +8,7 @@
 	</div>
 
 		<div class="adder-name">
-			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
+			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@feedback.adder_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
 		</div>
 					
 </div>
