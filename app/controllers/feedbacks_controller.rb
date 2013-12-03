@@ -42,21 +42,18 @@ class FeedbacksController < ApplicationController
 		end
 		if not params[:comment_response].blank?
 			@comment_response = SubComment.new(:commenter_id => current_user.id, :content_id => params[:responding_to_id], :comment => params[:comment_response])
-			# puts.params[:comment_id][:value]
 			@comment_response.save
 			redirect_to feedback_path(@feedback.id)
 		end
-		@feedback_comments = Comment.where(:content_id => params[:id])
-		if not params[:like].blank?
-			@comment = Comment.find(params[:comment_id])
-			@comment.upvote_ids.push(@feedback.id)
+		@feedback_comments = Comment.where(:content_id => params[:id]).order("cached_votes_total DESC")
+		if not params[:update_comment_id].blank?
+			@comment = Comment.find(params[:update_comment_id])
+			if not params[:like].blank?
+				@comment.unliked_by current_user
+			else
+				@comment.liked_by current_user				
+			end
 		end
-		if not params[:dislike].blank?
-
-		end
-		# report.ids.push(post.id)
-
-		
 	end
 
 	def create

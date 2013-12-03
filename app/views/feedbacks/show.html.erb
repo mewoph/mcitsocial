@@ -8,14 +8,27 @@
 		</div>
 
 		<div class="adder-name">
-			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
+			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@feedback.adder_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
 		</div>
 	</div>
 	<div class="main-body"> 
 
 		<% @feedback_comments.each do |comment| %>
-			<h3><%= comment.comment%></h3>
-			<h5><%= User.find(comment.commenter_id).full_name %></h5>
+			<div class="comment">
+				<h4><%= comment.comment%></h4>
+				<span class="likes">
+					<h5><%= comment.votes.size %> <i class="fa fa-thumbs-o-up"></i> 
+					<% if !current_user.voted_for? comment %>
+							<%= link_to "Like", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :dislike => "disliked") %>
+					<% else %>
+							<%= link_to "Dislike", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :like => "like") %>
+					<% end %>
+					</h5>
+				</span>
+				<div class="adder-name">
+					<i class="fa fa-user"></i> Answered by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).full_name %></div>  on <%= comment.get_created_time %>
+				</div>
+			</div>
 
 			<% @feedback.get_sub_comments(comment.id).each do |sub_comment| %>
 				<h4><%= sub_comment.comment%></h4>
@@ -30,12 +43,14 @@
 				  </div>
 				  <% end %>
 		<% end %>
-
-		<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
-				  <div class="input-append">
-				    <%= text_field_tag :comment, params[:comment], class: "span12", placeholder: "Type your answer here..." %>				    <button class="btn" type="submit"><i class="icon-search"></i></button>
-				  </div>
-		<% end %>
+		<div class="comment">
+			<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
+			<h5>Write your response below:</h5>
+					    <%= text_area_tag :comment, params[:comment], class: "span10", placeholder: "Type your answer here..." %>
+					    <button class="btn" type="submit">Add Answer</button>
+					  
+			<% end %>
+		</div>
 	</div>
 					
 </div>
