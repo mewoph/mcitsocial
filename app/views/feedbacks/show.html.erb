@@ -26,15 +26,16 @@
 					</h5>
 				</span>
 				<div class="adder-name">
-					<i class="fa fa-user"></i> Answer by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).full_name %></div>  on <%= comment.get_created_time %>
+					<i class="fa fa-user"></i> Answered by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).full_name %></div>  on <%= comment.get_created_time %>
 				</div>
 			</div>
 		<% end %>
 		<div class="comment">
 			<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
-					  <div class="input-append">
-					    <%= text_field_tag :comment, params[:comment], class: "span12", placeholder: "Type your answer here..." %>				    <button class="btn" type="submit">Add Answer</button>
-					  </div>
+			<h5>Write your response below:</h5>
+					    <%= text_area_tag :comment, params[:comment], class: "span10", placeholder: "Type your answer here..." %>
+					    <button class="btn" type="submit">Add Answer</button>
+					  
 			<% end %>
 		</div>
 	</div>
