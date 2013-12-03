@@ -40,6 +40,12 @@ class FeedbacksController < ApplicationController
 			@comment.save
 			redirect_to feedback_path(@feedback.id)
 		end
+		if not params[:comment_response].blank?
+			@comment_response = SubComment.new(:commenter_id => current_user.id, :content_id => params[:responding_to_id], :comment => params[:comment_response])
+			# puts.params[:comment_id][:value]
+			@comment_response.save
+			redirect_to feedback_path(@feedback.id)
+		end
 		@feedback_comments = Comment.where(:content_id => params[:id])
 		if not params[:like].blank?
 			@comment = Comment.find(params[:comment_id])

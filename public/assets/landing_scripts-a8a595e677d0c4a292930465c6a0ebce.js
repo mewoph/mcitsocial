@@ -1,1 +1,0 @@
-$(function(){var a=Math.floor(3*Math.random());console.log(a),0==a?$("body").addClass("background-image1"):1==a?$("body").addClass("background-image2"):$("body").addClass("background-image3")});
