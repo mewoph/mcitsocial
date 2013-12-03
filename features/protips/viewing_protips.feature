@@ -25,7 +25,7 @@ Background:
 
 	
 
-Scenario: A Registered User can view the protips index page
+Scenario: A Registered User Can View the Protips Index Page
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
 	Then I should see the four categories
@@ -33,26 +33,26 @@ Scenario: A Registered User can view the protips index page
 	# And I should see the number of upvotes on each protip
 	# And I should see the name of the user who posted each protip
 
-Scenario: A Registered Use Can View The Protips With Category "Philly Tips"
+Scenario: A Registered User Can View The Protips With Category "Philly Tips"
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
 	And I click on the "Philly Tips" category 
 	Then I should be able to view all protips categorized as "Philly Tips"
 
 
-Scenario: A Registered Use Can View The Protips With Category "Interview Tips"
+Scenario: A Registered User Can View The Protips With Category "Interview Tips"
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
 	And I click on the "Interview Tips" category 
 	Then I should be able to view all protips categorized as "Interview Tips"
 
-Scenario: A Registered Use Can View The Protips With Category "Penn Tips"
+Scenario: A Registered User Can View The Protips With Category "Penn Tips"
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
 	And I click on the "Penn Tips" category 
 	Then I should be able to view all protips categorized as "Penn Tips"
 
-Scenario: A Registered Can View The Protips Show Page
+Scenario: A Registered User Can View The Protips Show Page
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
 	And I click the protip with title "ABC"

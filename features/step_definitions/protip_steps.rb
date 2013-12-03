@@ -224,7 +224,6 @@ Then(/^I should not be able to view the protips show page$/) do
   page.should have_no_css(".protip-show")
 end
 
-
 Then /^I should see the profile of "(.*?)"$/ do |adder_name|
 	page.should have_css ".profile-show"
 	page.should have_content adder_name
