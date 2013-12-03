@@ -15,11 +15,11 @@
 
 		<% @feedback_comments.each do |comment| %>
 			<h3><%= comment.comment%></h3>
-			<h5><%= User.find(comment.commenter_id).full_name %</h5>
+			<h5><%= User.find(comment.commenter_id).full_name %></h5>
 
 			<% @feedback.get_sub_comments(comment.id).each do |sub_comment| %>
 				<h4><%= sub_comment.comment%></h4>
-				<h5><%= User.find(sub_comment.commenter_id).full_name %</h5>
+				<h5><%= User.find(sub_comment.commenter_id).full_name %></h5>
 			<% end %>
 		
 			<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
