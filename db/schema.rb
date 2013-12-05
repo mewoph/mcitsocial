@@ -11,7 +11,6 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
 ActiveRecord::Schema.define(:version => 20131202193510) do
 
   create_table "comments", :force => true do |t|
@@ -25,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.integer  "cached_votes_score", :default => 0
     t.integer  "cached_votes_up",    :default => 0
   end
-
 
   add_index "comments", ["cached_votes_score"], :name => "index_comments_on_cached_votes_score"
   add_index "comments", ["cached_votes_total"], :name => "index_comments_on_cached_votes_total"
@@ -54,10 +52,10 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "feedbacks", :force => true do |t|
+    t.integer  "company_id"
     t.integer  "adder_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
-    t.integer  "company_id"
     t.string   "feedback_content"
     t.boolean  "is_question"
   end
@@ -69,6 +67,14 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.string   "category"
+  end
+
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.integer  "company_id"
+    t.integer  "adder_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "sub_comments", :force => true do |t|

@@ -15,6 +15,8 @@ alum.png: alum-fd673cde7a523bdd851b87161bfd6a28.png
 alum/index.png: alum-fd673cde7a523bdd851b87161bfd6a28.png
 ben-bg.png: ben-bg-f1db65bae7f4c56fe2bdd1bfc28a075d.png
 ben-bg/index.png: ben-bg-f1db65bae7f4c56fe2bdd1bfc28a075d.png
+bricks.png: bricks-2423c8b0d69020a22f69744f0b3464a2.png
+bricks/index.png: bricks-2423c8b0d69020a22f69744f0b3464a2.png
 current.png: current-7fe4831b41cfe0cf006f8a83d29ddd89.png
 current/index.png: current-7fe4831b41cfe0cf006f8a83d29ddd89.png
 diamond-bg.png: diamond-bg-c7447b919ac123c66eeca9a4013505ab.png
@@ -51,13 +53,8 @@ jquery.tipsy.js: jquery.tipsy-146879b46f884059cb69f4d28ebb530d.js
 jquery/index.tipsy.js: jquery.tipsy-146879b46f884059cb69f4d28ebb530d.js
 landing_scripts.js: landing_scripts-6e821913bc04101440053159d711b989.js
 landing_scripts/index.js: landing_scripts-6e821913bc04101440053159d711b989.js
-<<<<<<< HEAD
-application.css: application-078d9032ca121ec718d7decaf56dadc1.css
-application/index.css: application-078d9032ca121ec718d7decaf56dadc1.css
-=======
-application.css: application-41e831a53d39aff186911b24ffd296a9.css
-application/index.css: application-41e831a53d39aff186911b24ffd296a9.css
->>>>>>> e13b2031b99176d6d75d37db259d926f6121d53e
+application.css: application-34299206ebd036caa5274574e7d49256.css
+application/index.css: application-34299206ebd036caa5274574e7d49256.css
 datepicker.css: datepicker-9a741ebcfcab726f8743af61390fb6bf.css
 datepicker/index.css: datepicker-9a741ebcfcab726f8743af61390fb6bf.css
 jquery.tagsinput.css: jquery.tagsinput-95c74a7afdaddcfa7889ebd63c693332.css
