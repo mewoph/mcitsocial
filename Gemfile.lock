@@ -30,6 +30,7 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
+    acts_as_votable (0.8.0)
     addressable (2.3.5)
     annotate (2.5.0)
       rake
@@ -295,6 +296,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_hash
+  acts_as_votable (~> 0.8.0)
   annotate (>= 2.5.0)
   aws-sdk
   capybara (>= 1.1.3)

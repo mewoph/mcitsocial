@@ -921,9 +921,28 @@ input[type=submit] {
 
 .question-show {
 	color: white;
-	background: rgba(0,0,0,0.5);
 	padding: 2em;
 	margin-bottom: 4em;
+
+	.question-header {
+		padding: 2em;
+		background: rgba(0,0,0,0.5);
+	}
+
+	.comment {
+		margin-top: 20px;
+		margin-left: 150px;
+		padding: 2em;
+		background: rgba(0,0,0,0.5);
+	}
+
+	.sub-comment {
+		margin-left: 250px;
+	}
+
+	#comment {
+		margin-top: 0px;
+	}
 
 	h1 {
 		color: white;
@@ -937,7 +956,7 @@ input[type=submit] {
 		margin-bottom: 0.5em;
 	}
 
-	.adder-name, .company-name {
+	.adder-name, .company-name, .likes {
 		text-align: right;
 		opacity: 0.7;
 	}
