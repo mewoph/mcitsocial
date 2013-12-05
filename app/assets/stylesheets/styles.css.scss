@@ -919,7 +919,7 @@ input[type=submit] {
 
 }
 
-.question-show {
+.question-show, {
 	color: white;
 	padding: 2em;
 	margin-bottom: 4em;
@@ -972,8 +972,81 @@ input[type=submit] {
 	}
 }
 
+.protip-show, {
+	color: white;
+	background: rgba(0,0,0,0.5);
+	padding: 2em;
+	margin-bottom: 4em;
+
+	h1 {
+		color: white;
+		margin-bottom: 1em;
+		font-size: 2em;
+	}
+
+	h2{
+		color: white;
+		margin-bottom: 1em;
+		font-size: 1.5em;
+	}
+
+	.adder-name {
+		text-align: right;
+		opacity: 0.7;
+	}
+
+	.user-name {
+		display: inline;
+		width: auto;
+	}
+
+	.user-name:hover, .company-name:hover {
+		color: $green;
+		cursor: pointer;
+	}
+}
+
+	.modal-popup {
+
+	  position: relative;
+	  background: #FFF;
+	  @include background-image('bricks.png');
+	  padding: 20px;
+	  width: auto;
+	  max-width: 500px;
+	  margin: 20px auto;
+	  .protips-list{
+	  	background: rgba(0,0,0,0.2);
+
+	  	list-style: none;
+			margin-left: 0;
+
+			@include list();
+
+			@media  (max-width: 600px) {
+				width: 100%;
+			}
+
+			i {
+				margin-left: 1em;
+				margin-right: 0.25em;
+			}
+
+			.user-name:hover {
+				color: #3498db;
+			}
+
+			.user-name {
+				width: auto;
+				display: inline;
+			}
+	  }
+	}
+
 .protips-index{
 	color: white;
+
+
 
 	.add-feedback{
 		@include index-header();
@@ -981,7 +1054,7 @@ input[type=submit] {
 	}
 }
 
-.protips-index-bg {
+.protips-index-bg, .protip-show-bg {
 	@include background-image('../assets/ben-bg.png');
 }
 
