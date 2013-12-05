@@ -148,6 +148,7 @@ GEM
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
     lumberjack (1.0.4)
+    magnific-popup-rails (0.9.8)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -312,6 +313,7 @@ DEPENDENCIES
   guard-cucumber
   jquery-rails
   kaminari
+  magnific-popup-rails (~> 0.9.8)
   mailcatcher (~> 0.5.12)
   paperclip (~> 3.0)
   pg (= 0.15.1)

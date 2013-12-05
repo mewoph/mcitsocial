@@ -1,0 +1,13 @@
+	<ul class="protips-list">
+		<% if @philly_tips.any? %>
+			<% @philly_tips.each do |p| %>
+				<li><div onclick="location.href='<%= protip_path(p.id) %>';"><%= p.title %></div>
+				<div class ="post-info">
+						<i class="fa fa-user"></i>Posted by <div class="user-name" onclick="location.href='<%= user_path(p.adder_id) %>';">  <%= p.adder_name %></div> on <%= p.get_created_time %>
+					</div>
+				</li>
+			<% end %>
+		<% else %>
+			<h1> There are currently no Philly Protips :( </h1>
+		<% end %> 
+	</ul>

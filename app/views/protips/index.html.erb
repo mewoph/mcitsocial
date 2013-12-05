@@ -1,3 +1,7 @@
+<div id="test-popup" class="modal-popup mfp-hide">
+	<%= render "phillytips" %>
+</div>
+
 <div class="protips-index">
 
 	<div class ="add-feedback">
@@ -5,7 +9,9 @@
 			<div class="text1">Have a protip to share?</div><%= link_to '<i class="fa fa-pencil-square-o"></i> Add a Protip'.html_safe, new_protip_path %>
 		</div>
 	</div>
-	<a class="test-popup-link" href="<%=protip_path(1)%>">Open popup</a>
+
+
+<a href="#test-popup" class="open-popup-link">Show inline popup</a>
 
 
 
@@ -20,9 +26,12 @@
 
 </div>
 <script>
-	$('body').addClass('protips-index-bg');
-$('.test-popup-link').magnificPopup({ 
-	// other options
+
+$('.open-popup-link').magnificPopup({
+  type:'inline',
+  midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
 });
+	$('body').addClass('protips-index-bg');
+
 </script>
 
