@@ -26,14 +26,14 @@
 					</h5>
 				</span>
 				<div class="adder-name">
-					<i class="fa fa-user"></i> Answered by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).full_name %></div>  on <%= comment.get_created_time %>
+					<i class="fa fa-user"></i> Answered by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id) %></div>  on <%= comment.get_created_time %>
 				</div>
 			</div>
 
 			<% @feedback.get_sub_comments(comment.id).each do |sub_comment| %>
 				<div class="comment sub-comment">
 					<h4><%= sub_comment.comment%></h4>
-					<h5><%= User.find(sub_comment.commenter_id).full_name %></h5>
+					<h5><%= User.find(sub_comment.commenter_id) %></h5>
 				</div>	
 			<% end %>
 

@@ -66,9 +66,10 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.text     "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "category"
   end
 
-create_table "sub_comments", :force => true do |t|
+  create_table "sub_comments", :force => true do |t|
     t.integer  "commenter_id"
     t.string   "comment"
     t.integer  "content_id"
