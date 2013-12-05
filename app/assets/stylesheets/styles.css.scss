@@ -765,7 +765,7 @@ input[type=submit] {
 	@include background-image('../assets/rittenhouse_bg.png');
 }
 
-.feedback-new {
+.feedback-new, .protip-new {
 	@include index-header();
 
 	background:none;
@@ -1003,6 +1003,19 @@ input[type=submit] {
 	.sub-comment{
 		margin-top: 5px;
 	}
+}
+
+.protips-index{
+	color: white;
+
+	.add-feedback{
+		@include index-header();
+
+	}
+}
+
+.protips-index-bg {
+	@include background-image('../assets/ben-bg.png');
 }
 
 

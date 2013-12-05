@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20131202193510) do
 
   create_table "comments", :force => true do |t|
@@ -24,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.integer  "cached_votes_score", :default => 0
     t.integer  "cached_votes_up",    :default => 0
   end
+
 
   add_index "comments", ["cached_votes_score"], :name => "index_comments_on_cached_votes_score"
   add_index "comments", ["cached_votes_total"], :name => "index_comments_on_cached_votes_total"
