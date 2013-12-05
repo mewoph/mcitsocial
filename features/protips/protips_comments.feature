@@ -18,12 +18,12 @@ Background:
 		| Abeer            | HIJ   | Something       |  55               | Miscellaneous  | 
 		| Connor           | JKL   | Thinking        | 300               | Penn Tips      |
 		| Abeer            | LMO   | What            | 0                 | Philly Tips    |
-	Given the following protip comments exist:
-		| Protip     | Adder First Name | Comment | Number of Upvotes |
-		| ABC        | Abeer            | comment1 |	10		      |
-		| ABC        | Connor           | comment2 |	2 		      |
-		| ABC        | Connor           | comment3 |	20 		      |
-		| ABC        | Abeer            | comment4 |    47		      |
+	Given the following comments exist:
+		| Protip     | Adder First Name | Comment  |  
+		| ABC        | Abeer            | comment1 |	
+		| ABC        | Connor           | comment2 |
+		| ABC        | Connor           | comment3 |
+		| ABC        | Abeer            | comment4 |   
 
 Scenario: A Registered User Can Add a New Comment To a Protip
 	When I enter "ThisIsMyComment" in the comment field

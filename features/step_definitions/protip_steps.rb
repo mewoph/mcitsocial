@@ -67,16 +67,12 @@ Given /^the following protips exist:$/ do |table|
   end 
 end
 
-Given /^the following comments exist:$/ do |table|
+Given /^the following comments to protips exist:$/ do |table|
   table.hashes.each do |attributes|
     FactoryGirl.create(:comment, commenter_id: get_adder_id(attributes["Adder First Name"]), comment: attributes["Comment"], content_id: get_protip_id(attributes["Protip"]))
   end 
 end
 
-Given(/^the following protip comments exist:$/) do |table|
-  # table is a Cucumber::Ast::Table
-  pending # express the regexp above with the code you wish you had
-end
 
 Given /^I am on a protips show page$/ do
 	visit_show_page
@@ -162,11 +158,9 @@ When /^I enter nothing in the comment field$/ do
 end
 
 When /^I click on the upvote link for a comment$/ do
-  pending # express the regexp above with the code you wish you had
 end
 
 When /^I click on the undo link$/ do
-  pending # express the regexp above with the code you wish you had
 end
 
 # Then
