@@ -984,13 +984,16 @@ input[type=submit] {
 }
 
 	.modal-popup {
+
 	  position: relative;
 	  background: #FFF;
+	  @include background-image('bricks.png');
 	  padding: 20px;
 	  width: auto;
 	  max-width: 500px;
 	  margin: 20px auto;
 	  .protips-list{
+	  	background: rgba(0,0,0,0.2);
 
 	  	list-style: none;
 			margin-left: 0;
