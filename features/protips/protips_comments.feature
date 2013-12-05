@@ -3,7 +3,6 @@ Feature: Adding, Viewing, Upvoting Protips Comments
 
 Background: 
 	Given I am a valid user that is logged in
-	Given I am on a protips show page
 
 	Given the following users exist: 
 		| First Name | Last Name | Bio   | Is Current Student | Is Part Time | Matriculation Date | Graduation Date | Previous Work | Undergrad Major | Undergrad School | Hometown | Email | Courses | Languages | Interests |
@@ -23,7 +22,10 @@ Background:
 		| ABC        | Abeer            | comment1 |	
 		| ABC        | Connor           | comment2 |
 		| ABC        | Connor           | comment3 |
-		| ABC        | Abeer            | comment4 |   
+		| ABC        | Abeer            | comment4 |
+
+	Given I am on a protips show page
+   
 
 Scenario: A Registered User Can Add a New Comment To a Protip
 	When I enter "ThisIsMyComment" in the comment field

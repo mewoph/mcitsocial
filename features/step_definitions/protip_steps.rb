@@ -12,8 +12,11 @@ def visit_form_page
 end
 
 def visit_show_page
-	click_link "Philly Tips"
-	click_link "ABC"
+	visit_index_page
+	find("#phillytips").click
+	within("#phillytips li:first-child") do
+		first("div").click
+	end
 end
 
 def get_adder_id(name)
@@ -63,8 +66,11 @@ end
 # Given
 Given /^the following protips exist:$/ do |table|
   table.hashes.each do |attributes|
-    FactoryGirl.create(:protip, adder_id: get_adder_id(attributes["Adder First Name"]), title: attributes["Title"], content: attributes["Content"], category: attributes["Category"])
+  	category = Category.find_by_name attributes["Category"]
+	category.id.to_s
+    FactoryGirl.create(:protip, adder_id: get_adder_id(attributes["Adder First Name"]), title: attributes["Title"], content: attributes["Content"], category: category)
   end 
+  # puts Protip.all
 end
 
 Given /^the following comments to protips exist:$/ do |table|
