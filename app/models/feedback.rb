@@ -38,8 +38,7 @@ class Feedback < ActiveRecord::Base
   end
 
   def adder_name
-  	user = User.find(adder_id)
-  	user.full_name
+  	User.find(adder_id)
   end
 
   def get_company_name(id)

@@ -11,6 +11,7 @@
 			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@feedback.adder_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
 		</div>
 	</div>
+
 	<div class="row-fluid"> 
 		<div class="span10 offset1">
 			<% @feedback_comments.each do |comment| %>
