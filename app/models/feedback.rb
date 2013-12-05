@@ -36,6 +36,10 @@ class Feedback < ActiveRecord::Base
     Company.find(id).name 
   end
 
+  def get_sub_comments(id)
+    SubComment.where(:content_id => id)
+  end
+
   def get_created_time
   	created_at.strftime('%b %d, %Y')
   end

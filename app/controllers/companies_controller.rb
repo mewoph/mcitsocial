@@ -12,6 +12,8 @@ class CompaniesController < ApplicationController
 				fulltext params[:search] do
 			    	fields(:name)
 			    end
+			    order_by :created_at, :desc
+			    paginate :page => params[:page], :per_page => 5
 			end
 			@companies = @results.results
 		end

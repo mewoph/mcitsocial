@@ -19,6 +19,7 @@ class Company < ActiveRecord::Base
     string  :sort_name do
       name.downcase.gsub(/^(an?|the)/, '')
     end
+    time :created_at
   end
 
 #TODO - add order to questions and comments

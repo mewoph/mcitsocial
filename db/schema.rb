@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131125202038) do
+
+ActiveRecord::Schema.define(:version => 20131202193510) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "commenter_id"
+    t.string   "comment"
+    t.integer  "content_id"
+    t.text     "upvote_ids"
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_score", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
+  end
+
+
+  add_index "comments", ["cached_votes_score"], :name => "index_comments_on_cached_votes_score"
+  add_index "comments", ["cached_votes_total"], :name => "index_comments_on_cached_votes_total"
+  add_index "comments", ["cached_votes_up"], :name => "index_comments_on_cached_votes_up"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -36,10 +54,10 @@ ActiveRecord::Schema.define(:version => 20131125202038) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "feedbacks", :force => true do |t|
-    t.integer  "company_id"
     t.integer  "adder_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.integer  "company_id"
     t.string   "feedback_content"
     t.boolean  "is_question"
   end
@@ -53,12 +71,12 @@ ActiveRecord::Schema.define(:version => 20131125202038) do
     t.string   "category"
   end
 
-  create_table "questions", :force => true do |t|
-    t.string   "question"
-    t.integer  "company_id"
-    t.integer  "adder_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "sub_comments", :force => true do |t|
+    t.integer  "commenter_id"
+    t.string   "comment"
+    t.integer  "content_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "users", :force => true do |t|
@@ -97,5 +115,22 @@ ActiveRecord::Schema.define(:version => 20131125202038) do
     t.string   "languages"
     t.string   "courses"
   end
+
+  create_table "votes", :force => true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], :name => "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
 end

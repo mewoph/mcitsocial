@@ -46,6 +46,33 @@ class User < ActiveRecord::Base
   validates_length_of :bio, :maximum => 140, :too_long  => "Bio is over 140 chars."
   validates_attachment_content_type :profile_picture, :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/, :message => 'file type is not allowed (only jpeg/png/gif images)'
   validates_attachment_size :profile_picture, :less_than => 5.megabytes
+  paginates_per 12
+  acts_as_voter
+
+  searchable do #can only search text fields on solr, so need to convert out string fields to text
+    text :first_name
+    string  :sort_first_name do
+      first_name.downcase.gsub(/^(an?|the)/, '')
+    end
+    text :last_name
+    string  :sort_last_name do
+      last_name.downcase.gsub(/^(an?|the)/, '')
+    end
+    text :previous_work
+    string  :sort_previous_work do
+      previous_work.downcase.gsub(/^(an?|the)/, '')
+    end
+    text :languages
+    string  :sort_languages do
+      languages.downcase.gsub(/^(an?|the)/, '')
+    end
+    text :areas_of_interest
+    string  :sort_areas_of_interest do
+      areas_of_interest.downcase.gsub(/^(an?|the)/, '')
+    end
+    time :created_at
+  end
+
 
   # Gets the full name of of the user
   def to_s
