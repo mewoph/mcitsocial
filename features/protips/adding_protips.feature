@@ -15,7 +15,7 @@ Scenario: A Registered User Can Create a New Protip
 	When I create a protip with title "ABC", content "DEF", and category "Philly Tips" 
 	And I click create protip button
 	Then I should see a success protip created message
-	And I should see the protip show page with the title "ABC" and content "DEF" and my name as adder name
+	And I should see the protip show page with the title "ABC" and content "DEF" and "Abeer" as adder name
 	# And I should see the protip with the title "ABC" on the protips index page
 
 Scenario: A Registered User Can Cancel Protip Creation
