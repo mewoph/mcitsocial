@@ -1,0 +1,39 @@
+#NOTE: This is not a features page we were asked to write a 'script' page that has easy to follow steps to understand and test the product.
+
+Feature: Edit Landing Page
+	As a registered user 
+	I want to be able to navigate away from the landing page
+	So I can view other tabs
+
+Background: 
+	Given the following users exist:
+		| First Name | Last Name | Bio   | Is Current Student | Is Part Time | Matriculation Date | Graduation Date | Previous Work | Undergrad Major | Undergrad School | Hometown | Email | Courses | Languages | Interests |
+		| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT 596,CIT 550" | "Java,Ruby" |  "MCIT social" |
+		| Connor    | Liddic | Web Developer | true | false | 2010-08-05 | 2012-05-05 | Program Manager | Colgate University | Graphic Design | Albany | cl@seas.upenn.edu | "CIT 598,CIT 552" | "Ruby,Rails" | "MCIT" |
+
+Scenario: I sign in and visit the users tab
+	Given I am logged in as "Abeer"
+	When I click the "Find Users" tab
+	Then I should see the "users" index page
+
+Scenario: I sign in and visit the companies tab
+	Given I am logged in as "Abeer"
+	When I click the "Find Companies" tab
+	Then I should see the "companies" index page
+
+Scenario: I sign in and visit the interview questions tab
+	Given I am logged in as "Abeer"
+	When I click the "See Interview Questions" tab
+	Then I should see the "questions" index page
+
+Scenario: I sign in and visit the protips tab
+	Given I am logged in as "Abeer"
+	When I click the "See Protips" tab
+	Then I should see the "protips" index page
+
+Scenario: I sign in and visit the edit profile tab
+	Given I am logged in as "Abeer"
+	When I click the "Edit my Profile" tab
+	Then I should see "Abeer"s edit profile page
+	And not "Connor"s edit profile page
+

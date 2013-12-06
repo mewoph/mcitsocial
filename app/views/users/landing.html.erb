@@ -2,7 +2,9 @@
 
 	<span class="home-box">
 
-		<h2>Hi there, <%= current_user.first_name %>!</h2>
+
+		<h2>Hi there, <%= current_user.to_s %>!</h2>
+		
 
 		<span class="box-menu">
 			<div class="menu-item1" onclick="location.href='<%= users_path %>';">
