@@ -51,7 +51,7 @@ Scenario: A Registered User Can See If She Has Upvoted a Comment
 	Then I should see if I have upvoted a comment for the protip
 
 Scenario: A Registered User Can Navigate to Comment Adder's Profile Page
-	When I click on "Abeer Minhas" within the protip "ABC"
+	When I click on "Abeer Minhas" within the protip "ABC" in the "Philly Tips" category
 	Then I should see the profile of "Abeer"
 
 Scenario: A Registered User Can Upvote a Comment

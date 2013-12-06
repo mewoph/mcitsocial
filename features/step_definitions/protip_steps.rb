@@ -15,7 +15,7 @@ end
 
 def visit_protips_category(category_selector)
 	visit_index_page
-	find(category_selector).click
+	click_link category_selector
 end
 
 def visit_show_page
@@ -24,6 +24,11 @@ def visit_show_page
 	within("#phillytips li:first-child") do
 		first("div").click
 	end
+end
+
+def visit_interview_page
+	visit_index_page
+	find("#interviewtips").click
 end
 
 def get_adder_id(name)
@@ -59,16 +64,6 @@ def get_all_comments(title)
 	end
 	all_comments
 end
-
-def get_all_protip_titles(category)
-	protips = Protip.where(:category => category)
-	all_titles = ""
-	protips.each do |protip|
-		all_titles += protip
-		all_titles += " "
-	end
-end
-
 
 # Given
 Given /^the following protips exist:$/ do |table|
@@ -140,39 +135,53 @@ When /^I create a protip with title "(.*?)", category "(.*?)", and with no conte
 end
 
 When /^I click on the "(.*?)" category$/ do |category|
-	visit_index_page
-	first('li div').click
+	visit_protips_category(category)
 end
 
 When /^I click the protip with title "(.*?)" under "(.*?)"$/ do |protip_title, category|
+<<<<<<< HEAD
 	visit_protips_category(category)
 	click protip_title
+=======
+	visit_index_page
+	within(category) do 
+	click_link protip_title
+	end
+>>>>>>> 88ee4694aad4bec8813c096385de1f3aeb87f68c
 end
 
 When /^I view the protips index page$/ do 
 	visit_index_page
 end
 
-When /^I click on "(.*?)" within the protip "(.*?)"$/ do |adder_name, protip_title|
-	visit_show_page
-	save_and_open_page
-	within(".protip-show") do 
-		click_link adder_name
+When /^I click on "(.*?)" within the protip "(.*?)" in the "(.*?)" category$/ do |adder_name, protip_title, category|
+	within(category) do
+		within(".post-info") do 
+			click_link adder_name
+		end
 	end
 end
 
 When /^I enter "(.*?)" in the comment field$/ do |comment|
 	visit_show_page
-	fill_in "comment", :with => comment
+	within (".protips-index") do 
+		click_link "Add a Protip"
+	end
+	page.select("Penn Tips", :from => "protip_category")
+	fill_in "Title", :with => "test"
+	fill_in "protip_content", :with => comment
 end
 
 When /^I click submit comment$/ do
-	click_link "Add Comment"
+	click_button "Create Protip"
 end
 
 When /^I enter nothing in the comment field$/ do
 	visit_show_page
-	fill_in "comment", :with => ""
+	within (".protips-index") do 
+		click_link "Add a Protip"
+	end
+	fill_in "protip_content", :with => ""
 end
 
 When /^I click on the upvote link for a comment$/ do
@@ -245,7 +254,11 @@ end
 
 Then /^I should be able to view all protips categorized as "(.*?)"$/ do |category|
 	click_link category
-	page.should have_content get_all_protip_titles(category)
+	protips = Protip.where(:category => category)
+	protips.each do |tip|
+		page.should have_content tip.title
+	end
+	
 end
 
 Then /^I should be taken to the show page$/ do
@@ -301,7 +314,7 @@ Then /^I should see equal number of protip titles and adder names$/ do
 end
 
 Then /^I should see a success comment created message$/ do
-	page.should have_content "Comment added"
+	page.should have_content "Protip Created"
 end
 
 Then /^I should see "(.*?)" on the protips show page$/ do |comment|
@@ -313,7 +326,7 @@ Then /^I should see "(.*?)" along with the comment$/ do |comment_adder|
 end
 
 Then /^I should see an comment adding error message$/ do
-	page.should have_content "Comment cannot be blank"
+	page.should have_content "Please complete the form."
 end
 
 Then /^I should see all comments for the protip titled "(.*?)"$/ do |protip_title|
