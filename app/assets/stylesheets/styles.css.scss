@@ -924,9 +924,9 @@ input[type=submit] {
 
 }
 
-.question-show {
 
-	@include form-input();
+.question-show, {
+
 
 	color: white;
 	padding: 2em;
@@ -1010,17 +1010,174 @@ input[type=submit] {
 	}
 }
 
-.protips-index{
+.protip-show, {
 	color: white;
+	background: rgba(0,0,0,0.5);
+	padding: 2em;
+	margin-bottom: 4em;
 
-	.add-feedback{
-		@include index-header();
+	h1 {
+		color: white;
+		margin-bottom: 1em;
+		font-size: 2em;
+	}
 
+	h2{
+		color: white;
+		margin-bottom: 1em;
+		font-size: 1.5em;
+	}
+
+	.adder-name {
+		text-align: right;
+		opacity: 0.7;
+	}
+
+	.user-name {
+		display: inline;
+		width: auto;
+	}
+
+	.user-name:hover, .company-name:hover {
+		color: $green;
+		cursor: pointer;
 	}
 }
 
-.protips-index-bg {
-	@include background-image('../assets/ben-bg.png');
+.modal-popup {
+
+	  position: relative;
+	  background: #FFF;
+	  @include background-image('city-bg2.png');
+	  padding: 20px;
+	  max-width: 960px;
+	  min-height: 500px;
+	  margin: 20px auto;
+	  padding-top: 50px;
+
+	  h1 {
+	  	color: white;
+	  	margin-bottom: 1em;
+	  }
+
+	  .protips-list {
+
+	  	background: rgba(0,0,0,0.2);
+	  	color: white;
+	  	margin-bottom: 1em;
+
+	  	list-style: none;
+
+			margin-left: 0;
+
+			@include list();
+
+			@media  (max-width: 600px) {
+				width: 100%;
+			}
+
+			i {
+				margin-left: 1em;
+				margin-right: 0.25em;
+			}
+
+			.post-info {
+				margin-top: 1em;
+				font-size: 0.8em;
+
+				i {
+					margin-left: 0;
+				}
+			}
+
+			.user-name:hover {
+				color: #3498db;
+			}
+
+			.user-name {
+				width: auto;
+				display: inline;
+			}
+	  }
+}
+
+.protips-index{
+	color: white;
+	padding: 0;
+
+	.add-feedback {
+		@include index-header();
+	}
+
+	.container {
+		margin: 0;
+		padding: 0;
+	}
+
+	.span3 {
+		margin-left: 0;
+		padding: 0.5em;
+	}
+
+	.square1, .square2, .square3, .square4 {
+		width: 100%;
+		height: 0; 
+		// height is 0, but the bottom padding is set to 100%
+		// this is to make the "height" always same as the width
+		background:  #f53d65;
+		border-radius: 10px;
+		background: rgba(245, 61, 101, 0.7);
+		border: 1px solid;
+		border-color: white;
+		display: inline-block;
+		padding-bottom: 100%;
+		-webkit-transition: all 0.15s linear;
+		-moz-transition: all 0.15s linear;
+		transition: all 0.15s linear;
+
+		h1 {
+			margin-top: 35%;
+			text-align: center;
+			font-size: 1.5em;
+			color: white;
+		}
+	}
+
+	.square1:hover {
+		background: rgba(245, 61, 101, 0.3);
+	}
+
+	.square2 {
+		background:  #ff3d00;
+		background: rgba(255, 61, 0, 0.6);
+	}
+
+	.square2:hover {
+		background: rgba(255, 61, 0, 0.3);
+	}
+
+	.square3 {
+		background:  #228653;
+		background: rgba(34, 134, 83, 0.7);
+	}
+
+	.square3:hover {
+		background: rgba(34, 134, 83, 0.3);
+	}
+
+	.square4 {
+		background:  #329000;
+		background: rgba(50, 144, 0, 0.6);
+	}
+
+	.square4:hover {
+		background: rgba(50, 144, 0, 0.3);
+	}
+
+}
+
+.protips-index-bg, .protip-show-bg {
+	@include background-image('../assets/city-bg.png');
 }
 
 

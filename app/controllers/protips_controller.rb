@@ -3,7 +3,10 @@ class ProtipsController < ApplicationController
 
 	def index
 		@protips = Protip.all
-
+		@philly_tips = Protip.where(:category => find_category_id("Philly Tips")).order('created_at DESC')
+		@penn_tips = Protip.where(:category => find_category_id("Penn Tips")).order('created_at DESC')
+		@interview_tips = Protip.where(:category => find_category_id("Interview Tips")).order('created_at DESC')
+		@misc_tips = Protip.where(:category => find_category_id("Miscellaneous")).order('created_at DESC')
 	end
 
 	def new
@@ -38,5 +41,11 @@ class ProtipsController < ApplicationController
 	def destroy
 
 	end
+
+	private
+		def find_category_id(name)
+			category = Category.find_by_name name
+			category.id.to_s
+		end
 
 end

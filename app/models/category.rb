@@ -1,9 +1,9 @@
  class Category < ActiveHash::Base
   self.data = [
-    {:name => "Interview Tips"},
-    {:name => "Penn Tips"},
-    {:name => "Philly Tips"},
-    {:name => "Miscellaneous"}
+    {:id => 1, :name => "Interview Tips"},
+    {:id => 2, :name => "Penn Tips"},
+    {:id => 3, :name => "Philly Tips"},
+    {:id => 4, :name => "Miscellaneous"}
   ]
 end 
 

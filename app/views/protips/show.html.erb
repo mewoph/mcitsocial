@@ -1,2 +1,16 @@
-<%= @protip.title %>
-<%= @protip.content %>
+<div class="protip-show">
+
+
+	<h1><%= @protip.title %></h1>
+	<h2> <%= @protip.content %> </h2>
+
+		<div class="adder-name">
+			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@protip.adder_id) %>';"><%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
+		</div>
+					
+</div>
+
+<script>
+	$('body').addClass('protip-show-bg');
+</script>
+
