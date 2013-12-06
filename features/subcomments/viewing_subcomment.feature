@@ -15,12 +15,23 @@ Background:
 	| What is that?    | 1 		    | true        | 1        |
 
 	And the following comments exist:
+<<<<<<< HEAD
 	| comment         | content_id | commenter_id |
 	| That is a test. |  1         |  1           |
 
 	And the following subcomments exist:
 	| I second that this is test.  |  1 |  1 |
 	| But what type of test is it? |  2 |  1 |
+=======
+	| comment | content_id | commenter_id |
+	| "That is a test." |  1 |  1 |
+	And the following sub_comments exist:
+	| comment | content_id | commenter_id |
+	| "I second that this is test." |  1 |  1 |
+	| "But what type of test is it?" |  1 |  2 |
+	| "That is a widget" |  2 |  1 |
+	| "are you sure? it looks like a thingamabob" |  2 |  2 |
+>>>>>>> c135f3033c499b835361ca47762a40c142ee48ea
 
 	Scenario: A Registered User can view the feedback show page and see subcomments
 		Given I am a valid user that is logged in
