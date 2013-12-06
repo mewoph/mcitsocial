@@ -1267,7 +1267,7 @@ input[type=submit] {
 
 	  position: relative;
 	  background: #FFF;
-	  @include background-image('city-bg2.png');
+	  @include background-image('brick-walk-bg.png');
 	  padding: 20px;
 	  max-width: 960px;
 	  min-height: 500px;
@@ -1385,7 +1385,7 @@ input[type=submit] {
 	}
 
 	.square1:hover {
-		background: rgba(245, 61, 101, 0.3);
+		background: rgba(245, 61, 101, 1);
 	}
 
 	.square2 {
@@ -1394,7 +1394,7 @@ input[type=submit] {
 	}
 
 	.square2:hover {
-		background: rgba(255, 61, 0, 0.3);
+		background: rgba(255, 61, 0, 1);
 	}
 
 	.square3 {
@@ -1403,7 +1403,7 @@ input[type=submit] {
 	}
 
 	.square3:hover {
-		background: rgba(34, 134, 83, 0.3);
+		background: rgba(34, 134, 83, 1);
 	}
 
 	.square4 {
@@ -1412,7 +1412,7 @@ input[type=submit] {
 	}
 
 	.square4:hover {
-		background: rgba(50, 144, 0, 0.3);
+		background: rgba(50, 144, 0, 1);
 	}
 
 }
