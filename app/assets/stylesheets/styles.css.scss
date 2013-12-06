@@ -818,6 +818,10 @@ input[type=submit] {
 				color: $green;
 			}
 		}
+
+		.fa-user {
+			margin-left: 0.5em;
+		}
 	}
 
 	.comments-list {
@@ -1051,9 +1055,32 @@ input[type=submit] {
 
 .question-show, {
 
+	@include form-input();
+
+	textarea {
+		font-size: 1em;
+	}
 
 	color: white;
 	margin-bottom: 4em;
+	padding-top: 0;
+
+
+	.button {
+		width: auto;
+	}
+
+	.circle {
+		width: 125px;
+		height: 125px;
+		border-radius: 50%;
+		background: red;
+		overflow: hidden;
+		background-size: cover;
+		background-position: center;
+		border: 1px solid;
+		border-color: white;
+	}
 
 	.question-header {
 		padding: 2em;
@@ -1064,14 +1091,16 @@ input[type=submit] {
 		margin-top: 20px;
 		padding: 2em;
 		background: rgba(0,0,0,0.5);
+		margin-left: 0;
+		width: 100%;
 	}
 
-	
-	.answer-box{
+	.answer-box {
+		display: inline-block;
 		margin-top: 5px;
 	}
 
-	.text-heading{
+	.text-heading {
 		font-family: $italiana;
 		margin-top: 0px;
 	}
@@ -1130,6 +1159,10 @@ input[type=submit] {
 
 	.sub-comment{
 		margin-top: 5px;
+	}
+
+	.fa-user {
+			margin-left: 0.5em;
 	}
 }
 
@@ -1378,5 +1411,28 @@ input[type=submit] {
 
 	@include background-image('../assets/landing_background3.png');
 
+}
+
+
+// SOURCE: http://www.webtoolkit.info/css-clearfix.html#.UqIrDmRDtqM
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clearfix {
+    display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+    display: block;
+}
+ 
+* html .clearfix {
+    height: 1%;
 }
 
