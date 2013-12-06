@@ -1,7 +1,7 @@
 <div class="protip-show">
 
-	<h1><%= @protip.title %></h1>
-	<h2> <%= @protip.content %> </h2>
+	<h1 class="title"><%= @protip.title %></h1>
+	<h2 class ="content"> <%= @protip.content %> </h2>
 	<h5><%= @protip.votes.size %> <i class="fa fa-thumbs-o-up"></i>
 		<% if !current_user.voted_for? @protip %>
 				<%= link_to "kudos", protip_path(:id => @protip.id, :update_protip_id => @protip.id, :dislike => "disliked") %>
@@ -9,8 +9,8 @@
 				<%= link_to "undo", protip_path(:id => @protip.id, :update_protip_id => @protip.id, :like => "like") %>
 		<% end %>
 	</h5>
-		<div class="adder-name">
-			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@protip.adder_id) %>';"><%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
+		<div class="adder-info">
+			<i class="fa fa-user"></i> Posted by <div class="adder-name" onclick="location.href='<%= user_path(@protip.adder_id) %>';"><%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
 		</div>
 
 		<div class="comment answer-box">
