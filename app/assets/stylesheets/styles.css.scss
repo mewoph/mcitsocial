@@ -508,6 +508,7 @@ input[type=submit] {
 			opacity: 0.7;
 			display: inline-block;
 			margin-right: 1em;
+			color: $cloud;
 		}
 
 		a:hover {
@@ -519,7 +520,12 @@ input[type=submit] {
 
 	.search-user {
 		@include index-header();
+
+		form {
+			display: inline-block;
+		}
 	}
+
 
 	.profile-thumb {
 		padding: 1em;
@@ -1047,7 +1053,6 @@ input[type=submit] {
 
 
 	color: white;
-	padding: 2em;
 	margin-bottom: 4em;
 
 	.question-header {
