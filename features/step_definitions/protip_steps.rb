@@ -202,6 +202,7 @@ Then /^I should see a success protip created message$/ do
 end
 
 Then /^I should see the protip show page with the title "(.*?)" and content "(.*?)" and "(.*?)" as adder name$/ do |protip_title, protip_content, adder_name|
+	puts page.body
 	page.find(".title").should have_content protip_title
 	page.find(".content").should have_content protip_content
 	page.find(".adder-name").should have_content adder_name
