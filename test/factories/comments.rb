@@ -3,5 +3,6 @@ FactoryGirl.define do
   	commenter_id 1
   	comment "This is a comment"
   	content_id 1
+  	source 'feedback'
   end
 end

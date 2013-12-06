@@ -15,9 +15,9 @@ Background:
 	| What is that?    | 1 		    | true        | 1        |
 
 	And the following comments exist:
-	| comment               | content_id | commenter_id |
-	| That is a test.       |  1         |  1           |
-	| That is another test. |  1         |  1           |
+	| comment               | content_id | commenter_id |  source  |
+	| That is a test.       |  1         |  1           | feedback |
+	| That is another test. |  1         |  1           | feedback |
 	And the following sub_comments exist:
 	| comment                                   | content_id | commenter_id |
 	| I second that this is test.               |  1         |  1           | 

@@ -3,7 +3,7 @@
 Given /^the following comments exist:$/ do |table|
   table.hashes.each do |attributes|
     FactoryGirl.create(:comment, comment: attributes["comment"], content_id: attributes["content_id"], 
-    	commenter_id: attributes["commenter_id"])
+    	commenter_id: attributes["commenter_id"], source: attributes["source"])
   end 
 end
 

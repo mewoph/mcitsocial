@@ -76,6 +76,14 @@ ActiveRecord::Schema.define(:version => 20131206161233) do
   add_index "protips", ["cached_votes_total"], :name => "index_protips_on_cached_votes_total"
   add_index "protips", ["cached_votes_up"], :name => "index_protips_on_cached_votes_up"
 
+  create_table "questions", :force => true do |t|
+    t.string   "question"
+    t.integer  "company_id"
+    t.integer  "adder_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "sub_comments", :force => true do |t|
     t.integer  "commenter_id"
     t.string   "comment"
