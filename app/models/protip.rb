@@ -17,6 +17,7 @@ class Protip < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :presence => true
   validates :category, :presence => true
+  acts_as_votable
 
   def get_adder_name
   	User.find(:adder_id)

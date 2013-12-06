@@ -45,7 +45,7 @@ class FeedbacksController < ApplicationController
 			@comment_response.save
 			redirect_to feedback_path(@feedback.id)
 		end
-		@feedback_comments = Comment.where(:content_id => params[:id]).order("cached_votes_total DESC")
+		@feedback_comments = Comment.where(:content_id => params[:id]).order("cached_votes_up DESC")
 		if not params[:update_comment_id].blank?
 			@comment = Comment.find(params[:update_comment_id])
 			if not params[:like].blank?

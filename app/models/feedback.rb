@@ -17,7 +17,7 @@ class Feedback < ActiveRecord::Base
   validates :company_id, :presence => {:message => "Please select a company."}
   validates :feedback_content, :presence => {:message => "Feedback cannot be blank."}
   validates :is_question, :inclusion => {:in => [true, false], :message => "Must pick either interview question or comment."}
-  paginates_per 5
+  paginates_per 10
   
   searchable do #can only search text fields on solr, so need to convert out string fields to text
   	text :feedback_content
@@ -26,6 +26,15 @@ class Feedback < ActiveRecord::Base
     end
     boolean :is_question
     time :created_at
+  end
+
+  def count_responses
+    count = Comment.where(:content_id => id).count
+    if count == 1
+      return count.to_s + " Response"
+    else
+      return count.to_s + " Responses"
+    end
   end
 
   def adder_name
