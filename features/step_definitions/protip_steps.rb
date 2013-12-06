@@ -146,7 +146,7 @@ end
 
 When /^I click the protip with title "(.*?)" under "(.*?)"$/ do |protip_title, category|
 	visit_protips_category(category)
-	click_link protip_title
+	click protip_title
 end
 
 When /^I view the protips index page$/ do 
@@ -198,7 +198,6 @@ Then /^I should see a success protip created message$/ do
 end
 
 Then /^I should see the protip show page with the title "(.*?)" and content "(.*?)" and "(.*?)" as adder name$/ do |protip_title, protip_content, adder_name|
-	puts page.body
 	page.find(".title").should have_content protip_title
 	page.find(".content").should have_content protip_content
 	page.find(".adder-name").should have_content adder_name
@@ -213,16 +212,26 @@ Then /^I should see a protip creation error message$/ do
 end
 
 Then /^The protip with content "(.*?)" should not exist$/ do |protip_content|
+	visit_index_page
+	find(".square1").click
+	page.should have_no_content protip_content
+	find(".square2").click
+	page.should have_no_content protip_content
+	find(".square3").click
+	page.should have_no_content protip_content
+	find(".square4").click
+	page.should have_no_content protip_content
 end
 
 Then /^The protip with title "(.*?)" should not exist$/ do |protip_title|
-	click_link "Philly Tips"
+	visit_index_page
+	find(".square1").click
 	page.should have_no_content protip_title
-	click_link "Penn Tips"
+	find(".square2").click
 	page.should have_no_content protip_title
-	click_link "Interview Tips"
+	find(".square3").click
 	page.should have_no_content protip_title
-	click_link "Miscellaneous"
+	find(".square4").click
 	page.should have_no_content protip_title
 end
 
