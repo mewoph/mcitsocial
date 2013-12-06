@@ -50,6 +50,9 @@ class UsersController < ApplicationController
 	def destroy
 	end
 
+	def landing
+	end
+
 	def sign_in
 	end
 

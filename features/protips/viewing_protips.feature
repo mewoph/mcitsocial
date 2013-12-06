@@ -55,7 +55,7 @@ Scenario: A Registered User Can View The Protips With Category "Penn Tips"
 Scenario: A Registered User Can View The Protips Show Page
 	Given I am a valid user that is logged in
 	When I click on protips link in the nav bar
-	And I click the protip with title "ABC"
+	And I click the protip with title "ABC" under "#phillytips"
 	Then I should be taken to the show page
 	And I should be able to view the content of "ABC"
 	And I should see the name of the user who posted the protip "ABC"
@@ -63,7 +63,7 @@ Scenario: A Registered User Can View The Protips Show Page
 
 Scenario: A Protip Show Page Should Only Show Its Own Comments And Content
 	Given I am a valid user that is logged in
-	When I click the protip with title "ABC"
+	When I click the protip with title "ABC" under "#phillytips"
 	Then I should not be able to see the comments for "CDE" while on "ABC"
 	And I should not be able to see the comments for "EFG"
 	And I should not be able to see the content for "CDE"
@@ -85,7 +85,7 @@ Scenario: A Registered User Can Nagivate to Protip Adder's Profile Page
 	Given I am a valid user that is logged in
 	When I view the protips index page
 	And I click on the "Interview Tips" category
-	And I click on "Abeer Minhas" within the protip "ABC"
+	And I click on "Abeer Minhas" within the protip "EFG"
 	Then I should see the profile of "Abeer"
 
 Scenario: A Registered User Should See the Same Number of Protip Titles and of Adder Names
