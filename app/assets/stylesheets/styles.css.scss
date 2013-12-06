@@ -1070,16 +1070,26 @@ input[type=submit] {
 		width: auto;
 	}
 
-	.circle {
+	.circle, .circle-sm, .square-mask {
 		width: 125px;
 		height: 125px;
 		border-radius: 50%;
-		background: red;
 		overflow: hidden;
 		background-size: cover;
 		background-position: center;
 		border: 1px solid;
 		border-color: white;
+	}
+
+	.square-mask {
+		width: 100px;
+		height: 100px;
+		border-radius: 10px;
+	}
+
+	.circle-sm {
+		width: 90px;
+		height: 90px;
 	}
 
 	.question-header {
@@ -1088,11 +1098,23 @@ input[type=submit] {
 	}
 
 	.comment {
-		margin-top: 20px;
+		margin-top: 5px;
 		padding: 2em;
 		background: rgba(0,0,0,0.5);
 		margin-left: 0;
 		width: 100%;
+	}
+
+	.individual-comment {
+		border-top: 1px solid;
+		border-bottom: 1px solid;
+		border-color: white;
+		padding-top: 1em;
+		padding-bottom: 3em;
+
+		h4 {
+			font-size: 1.5em;
+		}
 	}
 
 	.answer-box {
@@ -1105,9 +1127,6 @@ input[type=submit] {
 		margin-top: 0px;
 	}
 
-	#comment {
-		margin-top: 0px;
-	}
 
 	h1 {
 		color: white;
@@ -1121,9 +1140,19 @@ input[type=submit] {
 		margin-bottom: 0.5em;
 	}
 
-	.adder-name, .company-name, .likes {
+	.subcomment-adder-name, .adder-name, .company-name, .likes {
 		text-align: right;
 		opacity: 0.7;
+	}
+
+	.subcomment-adder-name {
+		float: left;
+		font-weight: 300;
+
+		.user-name {
+			font-weight: 400;
+			color: white;
+		}
 	}
 
 	.user-name {
@@ -1134,6 +1163,11 @@ input[type=submit] {
 	.user-name:hover, .company-name:hover {
 		color: $green;
 		cursor: pointer;
+	}
+
+	.comment-content {
+		padding-top: 1em;
+		font-size: 1.25em;
 	}
 
 	.button {
@@ -1157,12 +1191,22 @@ input[type=submit] {
 		text-align:left;
 	}
 
-	.sub-comment{
-		margin-top: 5px;
+	hr {
+		margin-bottom: 0;
+	}
+
+	.sub-comment {
+		background: none;
+		border-bottom: 1px solid;
+		border-color: rgba(255, 255, 255, 0.3);
 	}
 
 	.fa-user {
 			margin-left: 0.5em;
+	}
+
+	.reply-comment {
+		padding-top: 2em;
 	}
 }
 
