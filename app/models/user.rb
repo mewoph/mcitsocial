@@ -34,7 +34,6 @@
 #  profile_picture_content_type :string(255)
 #  profile_picture_file_size    :integer
 #  profile_picture_updated_at   :datetime
-#  course_id                    :integer
 #  areas_of_interest            :string(255)
 #  languages                    :string(255)
 #  courses                      :string(255)
@@ -47,8 +46,8 @@ class User < ActiveRecord::Base
   validates_length_of :bio, :maximum => 140, :too_long  => "Bio is over 140 chars."
   validates_attachment_content_type :profile_picture, :content_type => /^image\/(jpg|jpeg|pjpeg|png|x-png|gif)$/, :message => 'file type is not allowed (only jpeg/png/gif images)'
   validates_attachment_size :profile_picture, :less_than => 5.megabytes
-  paginates_per 4
-
+  paginates_per 12
+  acts_as_voter
 
   searchable do #can only search text fields on solr, so need to convert out string fields to text
     text :first_name
@@ -76,7 +75,7 @@ class User < ActiveRecord::Base
 
 
   # Gets the full name of of the user
-  def full_name
+  def to_s
   	if first_name.blank? && last_name.blank?
   		email
   	elsif first_name.blank?

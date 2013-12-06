@@ -1,0 +1,75 @@
+<div id="interviewtips" class="modal-popup mfp-hide">
+	<%= render "interviewtips" %>
+	<%= link_to '<i class="fa fa-pencil-square-o"></i> Add a Protip'.html_safe, new_protip_path %>
+</div>
+
+<div id="penntips" class="modal-popup mfp-hide">
+	<%= render "penntips" %>
+	<%= link_to '<i class="fa fa-pencil-square-o"></i> Add a Protip'.html_safe, new_protip_path %>
+</div>
+
+<div id="phillytips" class="modal-popup mfp-hide">
+	<%= render "phillytips" %>
+	<%= link_to '<i class="fa fa-pencil-square-o"></i> Add a Protip'.html_safe, new_protip_path %>
+</div>
+
+<div id="misctips" class="modal-popup mfp-hide">
+	<%= render "misctips" %>
+	<%= link_to '<i class="fa fa-pencil-square-o"></i> Add a Protip'.html_safe, new_protip_path %>
+</div>
+
+<div class="protips-index">
+
+	<div class ="add-protip">
+		<div class ="text-wrapper">
+			<div class="text1">Have a protip to share?</div><%= link_to '<i class="fa fa-pencil-square-o"></i> Add a Protip'.html_safe, new_protip_path, :id => 'add-protip-link' %>
+		</div>
+	</div>
+
+	<div class="span12">
+
+		<div class="span3">
+			<a href="#interviewtips" class="open-popup-link">
+				<div class="square1">
+					<h1>Interview Tips</h1>
+				</div>
+			</a>
+		</div>
+
+		<div class="span3">
+			<a href="#penntips" class="open-popup-link">
+				<div class="square2">
+					<h1>Penn Tips</h1>
+				</div>
+			</a>
+		</div>
+
+		<div class="span3">
+			<a href="#phillytips" class="open-popup-link">
+				<div class="square3">
+					<h1>Philly Tips</h1>
+				</div>
+			</a>
+		</div>
+
+		<div class="span3">
+			<a href="#misctips" class="open-popup-link">
+				<div class="square4">
+					<h1>Miscellaneous</h1>
+				</div>
+			</a>
+		</div>
+	</div>
+
+</div>
+
+
+<script>
+$('.open-popup-link').magnificPopup({
+  type:'inline',
+  midClick: true 
+});
+
+$('body').addClass('protips-index-bg');
+</script>
+

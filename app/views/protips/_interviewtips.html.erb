@@ -1,0 +1,17 @@
+<% if @interview_tips.any? %>
+	<ul class="protips-list">
+			<% @interview_tips.each do |p| %>
+				<li><div onclick="location.href='<%= protip_path(p.id) %>';"><%= p.title %></div>
+				<div class ="post-info">
+						<div class="count"><i class="fa fa-comments-o"></i> <%= p.count_responses('protip') %></div>
+						<i class="fa fa-user"></i>Posted by <div class="user-name" onclick="location.href='<%= user_path(p.adder_id) %>';">  <%= p.adder_name %></div> on <%= p.get_created_time %>
+					</div>
+				</li>
+			<% end %>
+	</ul>
+<% else %>
+	<h1>There are currently no Interview Protips :(</h1>
+<% end %> 
+
+
+

@@ -21,6 +21,9 @@ gem 'kaminari'
 gem 'chosen-rails'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'active_hash'
+gem "magnific-popup-rails", "~> 0.9.8"
+gem 'acts_as_votable', '~> 0.8.0'
 
 group :test do
 	gem "email_spec"

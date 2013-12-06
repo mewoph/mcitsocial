@@ -2,6 +2,7 @@
 	<div class="row-fluid">
 		<div class="search-user">
 			<div class="text-wrapper">
+				<div class="text1">Looking for a user?</div>
 				<%= form_tag(users_path, :method => "get", class: "navbar-form", id: "search-form") do %>
 				  <div class="input-append">
 				    <%= text_field_tag :search, params[:search], class: "span12", placeholder: "Search Users" %>
@@ -22,7 +23,7 @@
 				<% else %>
 					<div class="picture-thumb" style='background-image:url("http://placehold.it/300x300")'></div>
 				<% end %>
-				<div class="show-name"><%= user.full_name %></div>
+				<div class="show-name"><%= user %></div>
 				<%= link_to '<div class="button">Show Profile</div>'.html_safe, user %>
 			</div>
 		</div>

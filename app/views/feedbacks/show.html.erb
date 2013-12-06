@@ -1,15 +1,70 @@
 <div class="question-show">
 
+	<div class="question-header">
+		<h1><%= @feedback.feedback_content %></h1>
 
-	<h1><%= @feedback.feedback_content %></h1>
-
-	<div class="company-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';">
-		<%= @feedback.get_company_name(@feedback.company_id) %>
-	</div>
+		<div class="company-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';">
+			<%= @feedback.get_company_name(@feedback.company_id) %>
+		</div>
 
 		<div class="adder-name">
-			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= company_path(@feedback.company_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
+			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@feedback.adder_id) %>';"><%= @feedback.adder_name %></div> on <%= @feedback.get_created_time %>
 		</div>
+	</div>
+
+	<div class="row-fluid"> 
+		<div class="span10 offset1">
+			<div class="comment answer-box">
+				<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
+					<h5 class="text-heading">Add your answer below:</h5>
+					<%= text_area_tag :comment, params[:comment], class: "span12 text-box text", placeholder: "Type your answer here..." %>
+					<button class="button" type="submit">Add Answer</button>	  
+				<% end %>
+			</div>
+
+			<% @feedback_comments.each do |comment| %>
+				<div class="comment">
+					<h4><%= comment.comment%></h4>
+					<span class="likes">
+						<h5><%= comment.votes.size %> <i class="fa fa-thumbs-o-up"></i> 
+						<% if !current_user.voted_for? comment %>
+								<%= link_to "kudos", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :dislike => "disliked") %>
+						<% else %>
+								<%= link_to "undo", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :like => "like") %>
+						<% end %>
+						</h5>
+					</span>
+					<div class="adder-name">
+						<i class="fa fa-user"></i> Answer by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).to_s %></div>  on <%= comment.get_created_time %>
+					</div>
+				</div>
+				<% @feedback.get_sub_comments(comment.id).each do |sub_comment| %>
+					<div class="row-fluid"> 
+						<div class="span10 offset1">
+							<div class="comment sub-comment">
+								<h4><%= sub_comment.comment%></h4>
+								<div class="adder-name">
+									<i class="fa fa-user"></i> Response by <div class="user-name" onclick="location.href='<%= user_path(sub_comment.commenter_id) %>';"><%= User.find(sub_comment.commenter_id).to_s %></div>  on <%= sub_comment.get_created_time %>
+								</div>
+							</div>	
+						</div>
+					</div>
+					
+				<% end %>
+				<div class="row-fluid"> 
+					<div class="span10 offset1">
+						<div class="comment sub-comment">
+							<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
+								<%= text_area_tag :comment_response, params[:comment_response], class: "span12 text-box", placeholder: "Type your response here..." %> 
+								<%= hidden_field_tag :responding_to_id, comment.id %>
+								<button class="button button-blue" type="submit">Add Reply</button>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
 					
 </div>
 

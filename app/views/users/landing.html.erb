@@ -1,0 +1,33 @@
+<div class="home">
+
+	<span class="home-box">
+
+		<h2>Hi there, <%= current_user.first_name %>!</h2>
+
+		<span class="box-menu">
+			<div class="menu-item1" onclick="location.href='<%= users_path %>';">
+				<h3>Find Users</h3>
+			</div>
+			<div class="menu-item2" onclick="location.href='<%= companies_path %>';">
+				<h3>Find Companies</h3>
+			</div>
+			<div class="menu-item3" onclick="location.href='<%= feedbacks_path %>';">
+				 <h3>See Interview Questions</h3>
+			</div>
+			<div class="menu-item4" onclick="location.href='<%= protips_path %>';">
+				<h3>See Protips</h3>
+			</div>
+			<div class="menu-item5" onclick="location.href='<%= edit_user_path(current_user.id) %>';">
+				<h3>Edit my Profile</h3>
+			</div>
+		</span>
+	</span>
+</div>
+
+<script>
+	$('body').addClass('home-bg');
+</script>
+
+
+
+

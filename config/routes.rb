@@ -51,7 +51,6 @@ Mcitsocial::Application.routes.draw do
   # root :to => 'welcome#index'
 
 
-
   devise_for :users, :skip => [:sessions, :registrations] do
     get "/signin" => "devise/sessions#new", :as => :new_user_session
     post "/signin" => "devise/sessions#create", :as => :user_session
@@ -60,13 +59,16 @@ Mcitsocial::Application.routes.draw do
     post "/signup" => "devise/registrations#create", :as => :user_registration
   end
 
-  root :to => "users#sign_in"
+  root :to => "users#sign_in", :constraints => lambda {|req| req.session[:session_id].blank?}
+  root :to => "users#landing", :constraints => lambda {|req| !req.session[:session_id].blank?}
 
   resources :feedbacks
   resources :users
   resources :companies
   resources :feedbacks
+  resources :protips
   get "/questions" => "feedbacks#index"
+  get "/home" => "users#landing"
 
 
 

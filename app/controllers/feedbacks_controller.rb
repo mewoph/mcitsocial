@@ -35,6 +35,25 @@ class FeedbacksController < ApplicationController
 
 	def show
 		@feedback = Feedback.find(params[:id])
+		if not params[:comment].blank?
+			@comment = Comment.new(:commenter_id => current_user.id, :content_id => params[:id], :comment => params[:comment], :source => 'feedback')
+			@comment.save
+			redirect_to feedback_path(@feedback.id)
+		end
+		if not params[:comment_response].blank?
+			@comment_response = SubComment.new(:commenter_id => current_user.id, :content_id => params[:responding_to_id], :comment => params[:comment_response])
+			@comment_response.save
+			redirect_to feedback_path(@feedback.id)
+		end
+		@feedback_comments = Comment.where(:content_id => params[:id], :source => 'feedback').order("cached_votes_up DESC")
+		if not params[:update_comment_id].blank?
+			@comment = Comment.find(params[:update_comment_id])
+			if not params[:like].blank?
+				@comment.unliked_by current_user
+			else
+				@comment.liked_by current_user				
+			end
+		end
 	end
 
 	def create
