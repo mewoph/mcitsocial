@@ -12,36 +12,8 @@
 		</div>
 	</div>
 
-<!--  HEAD??
 	<div class="row-fluid"> 
 		<div class="span10 offset1">
-below is from Answers branch?? -->
-	<div class="main-body"> 
-
-		<% @feedback_comments.each do |comment| %>
-			<div class="comment">
-				<h4><%= comment.comment%></h4>
-				<span class="likes">
-					<h5><span class="like"><%= comment.votes.size %></span><i class="fa fa-thumbs-o-up"></i> 
-					<% if !current_user.voted_for? comment %>
-							<%= link_to "kudos", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :dislike => "disliked") %>
-					<% else %>
-							<%= link_to "undo", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :like => "like") %>
-					<% end %>
-					</h5>
-				</span>
-				<div class="adder-name">
-					<i class="fa fa-user"></i> Answered by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).full_name %></div>  on <%= comment.get_created_time %>
-				</div>
-			</div>
-
-			<% @feedback.get_sub_comments(comment.id).each do |sub_comment| %>
-				<div class="comment sub-comment">
-					<h4><%= sub_comment.comment%></h4>
-					<h5><%= User.find(sub_comment.commenter_id).full_name %></h5>
-				</div>	
-			<% end %>
-<!-- end of  -->
 			<div class="comment answer-box">
 				<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
 					<h5 class="text-heading">Add your answer below:</h5>
