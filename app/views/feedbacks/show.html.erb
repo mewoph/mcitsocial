@@ -29,21 +29,36 @@
 	<div class="span10 comment clearfix">
 	<% @feedback_comments.each do |comment| %>
 		<div class="individual-comment">
-			
-			<h4><%= comment.comment%></h4>
 
-			<span class="likes">
-				<h5><%= comment.votes.size %> <i class="fa fa-thumbs-o-up"></i> 
-				<% if !current_user.voted_for? comment %>
-						<%= link_to "kudos", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :dislike => "disliked") %>
-				<% else %>
-						<%= link_to "undo", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :like => "like") %>
-				<% end %>
-				</h5>
-			</span>
+			<div class="row fluid">
 
-			<div class="adder-name">
-				<i class="fa fa-user"></i> Answer by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).to_s %></div>  on <%= comment.get_created_time %>
+				<div class="span2 commenter-pic">
+					<% commenter = User.find(comment.commenter_id) %>
+						<div class="square-mask" style="background-image:url(<%= commenter.profile_picture.url %>);">
+						</div>
+				</div>
+
+				<div class="span10">
+					<div class="comment-adder-name">
+						<div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).to_s %></div> answered on <%= comment.get_created_time %>:
+					</div>
+
+					<div class="comment-content">
+							<br/>
+							<%= comment.comment %>
+					</div>
+
+					<span class="likes">
+						<h5><%= comment.votes.size %> <i class="fa fa-thumbs-o-up"></i> 
+						<% if !current_user.voted_for? comment %>
+								<%= link_to "kudos", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :dislike => "disliked") %>
+						<% else %>
+								<%= link_to "undo", feedback_path(:id => @feedback.id, :update_comment_id => comment.id, :like => "like") %>
+						<% end %>
+						</h5>
+					</span>
+				</div>
+
 			</div>
 
 
@@ -52,11 +67,11 @@
 				<div class="comment sub-comment span8">
 					<div class="span2">
 						<% commenter = User.find(sub_comment.commenter_id) %>
-						<div class="square-mask" style="background-image:url(<%= commenter.profile_picture.url %>);">
+						<div class="square-mask-sm" style="background-image:url(<%= commenter.profile_picture.url %>);">
 						</div>
 					</div>
 
-					<div class="span10">
+					<div class="span10 subcomment-content">
 						<div class="subcomment-adder-name">
 							<div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';">
 								<%= User.find(comment.commenter_id) %></div> replied on <%= comment.get_created_time %>:
@@ -77,7 +92,7 @@
 							</div>
 							<div class="span10">
 							<%= form_tag(feedback_path(@feedback.id), :method => "get", class: "navbar-form") do %>
-								<%= text_area_tag :comment_response, params[:comment_response], class: "span12 text-box", placeholder: "Type your response here..." %> 
+								<%= text_area_tag :comment_response, params[:comment_response], class: "span12 text-box", placeholder: "Type your reply here..." %> 
 								<%= hidden_field_tag :responding_to_id, comment.id %>
 								<button class="button button-blue" type="submit">Add Reply</button>
 							<% end %>
