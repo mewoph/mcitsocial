@@ -22,7 +22,7 @@
 				<div class="count"><i class="fa fa-comments-o"></i> <%= q.count_responses('feedback') %></div>
 				<div class="company-name" onclick="location.href='<%= company_path(q.company_id) %>';"><i class="fa fa-suitcase"></i><%= q.get_company_name(q.company_id) %></div>
 					<i class="fa fa-user"></i>Posted by <div class="user-name" onclick="location.href='<%= user_path(q.adder_id) %>';">  <%= q.adder_name %></div> on <%= q.get_created_time %>
-				<div class="count"><i class="fa fa-comments-o"></i> <%= q.count_responses %></div>
+				<div class="count"><i class="fa fa-comments-o"></i> <%= q.count_responses('feedback') %></div>
 
 				</div>
 			</li>
