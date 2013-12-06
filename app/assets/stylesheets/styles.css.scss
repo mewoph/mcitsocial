@@ -101,7 +101,11 @@ input[type=submit] {
 
 	.sign-in-status {
 		color: #777777;
-		padding: 10px 15px;
+	}
+
+	.sign-in-status:hover {
+		color: white;
+		cursor: pointer;
 	}
 
 	.navbar-inner {
