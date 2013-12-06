@@ -16,7 +16,7 @@ end
 
 When /^I like answer "(.*?)"$/ do |comment|
 	@comment = Comment.where(:comment => comment)[0]
-  	@likes = within(".like")
+  	@likes = find(".likes").text.to_i
   	within(".likes") do
 		click_link "kudos"
 	end
@@ -27,7 +27,7 @@ When /^I unlike a previously liked answer "(.*?)"$/ do |comment|
   	within(".likes") do
 		click_link "kudos"
 	end
-	@likes = within(".like")
+	@likes = find(".likes").text.to_i
 	within(".likes") do
 		click_link "undo"
 	end
@@ -47,9 +47,13 @@ Then /^I should see a list of all comments to that question$/ do
 end
 
 Then /^I should see the number of likes for answer "(.*?)" increase$/ do |arg1|
-  @likes < within(".like")
+	updated_likes = find(".likes").text.to_i
+	@likes.should_not eql(updated_likes)
+	@likes.should be < updated_likes
 end
 
 Then /^I should see the number of likes for answer "(.*?)" decrease$/ do |arg1|
-	@likes > within(".like")
+	updated_likes = find(".likes").text.to_i
+	@likes.should_not eql(updated_likes)
+	@likes.should be > updated_likes
 end
