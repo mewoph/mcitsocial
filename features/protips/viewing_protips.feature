@@ -5,8 +5,8 @@ Feature: I am a valid user that is logged inGiven I am a valid user that is logg
 Background:
 	Given the following users exist: 
 		| First Name | Last Name | Bio   | Is Current Student | Is Part Time | Matriculation Date | Graduation Date | Previous Work | Undergrad Major | Undergrad School | Hometown | Email | Courses | Languages | Interests |
-		| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | "CIT596,CIT550" | "Java,Ruby" |  "MCIT social" |
-		| Connor    | Liddic | Web Developer | true | false | 2010-08-05 | 2012-05-05 | Program Manager | Colgate University | Graphic Design | Albany | cl@seas.upenn.edu | "CIT598,CIT552" | "Ruby,Rails" | "MCIT" |
+		| Abeer      | Minhas    | MCIT Student | true | false  | 2010-08-05 | 2012-05-05 | Social Worker | Binghamton University | Political Science | Binghamton | aminhas@seas.upenn.edu | CIT596,CIT550 | Java,Ruby |  MCIT social |
+		| Connor    | Liddic | Web Developer | true | false | 2010-08-05 | 2012-05-05 | Program Manager | Colgate University | Graphic Design | Albany | cl@seas.upenn.edu | CIT598,CIT552 | Ruby,Rails | MCIT |
 
 	Given the following protips exist: 
 		| Adder First Name | Title |  Content        | Number of Upvotes | Category       |
@@ -16,7 +16,7 @@ Background:
 		| Abeer            | HIJ   | Something       |  55               | Miscellaneous  | 
 		| Connor           | JKL   | Thinking        | 300               | Penn Tips      |
 		| Abeer            | LMO   | What            | 0                 | Philly Tips    |
-	Given the following comments exist:
+	Given the following comments to protips exist:
 		| Protip     | Adder First Name | Comment |
 		| ABC        | Abeer            | NO      |
 		| CDE        | Connor           | YES     |
