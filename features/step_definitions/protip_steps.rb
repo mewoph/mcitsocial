@@ -11,6 +11,11 @@ def visit_form_page
 	click_link "Add a Protip"
 end
 
+def visit_protips_category(category_selector)
+	visit_index_page
+	find(category_selector).click
+end
+
 def visit_show_page
 	visit_index_page
 	find("#phillytips").click
@@ -93,7 +98,7 @@ When /^I click on protips link in the nav bar$/ do
 end
 
 When /^I click on the add protips link$/ do
-	click_link "Add a Protip"
+	find('#add-protip-link').click
 end
 
 When /^I create a protip with title "(.*?)", content "(.*?)", and category "(.*?)"$/ do |protip_title, protip_content, protip_category|
@@ -132,10 +137,11 @@ end
 
 When /^I click on the "(.*?)" category$/ do |category|
 	visit_index_page
-	click_link category
+	first('li div').click
 end
 
-When /^I click the protip with title "(.*?)"$/ do |protip_title|
+When /^I click the protip with title "(.*?)" under "(.*?)"$/ do |protip_title, category|
+	visit_protips_category(category)
 	click_link protip_title
 end
 
@@ -144,6 +150,8 @@ When /^I view the protips index page$/ do
 end
 
 When /^I click on "(.*?)" within the protip "(.*?)"$/ do |adder_name, protip_title|
+	visit_show_page
+	save_and_open_page
 	within(".protip-show") do 
 		click_link adder_name
 	end
@@ -253,11 +261,11 @@ Then /^I should not be able to see the content for "(.*?)"$/ do |other_protip|
 end
 
 Then /^I should see "(.*?)" at the top of the index$/ do |first_protip|
-	page.should have_selector('protips-list li:first-child', text: first_protip)
+	page.should have_selector('.protips-list li:first-child', text: first_protip)
 end
 
 Then /^I should see "(.*?)" at the bottom of the index$/ do |last_protip|
-	page.should have_selector('protips-list li:last-child', text: last_protip)
+	page.should have_selector('.protips-list li:last-child', text: last_protip)
 end
 
 Then /^I should not be able to view the protips index page$/ do

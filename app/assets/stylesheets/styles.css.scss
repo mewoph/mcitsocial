@@ -4,6 +4,9 @@ $cloud: #ecf0f1;
 $belize: #2980b9;
 $green: #27ae60;
 $silver: #bdc3c7;
+$carrot: #e67e22;
+$pomegranate: #c0392b;
+$turquoise: #1abc9c;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
 $italiana: 'Italiana', serif;
@@ -55,6 +58,7 @@ $italiana: 'Italiana', serif;
 }
 
 body {
+	padding: 5em;
 	font-family: $roboto;
 }
 
@@ -71,8 +75,21 @@ input[type=submit] {
 	width: 100%;
 }
 
-.navbar {
-	opacity: 0.7;
+#main-nav {
+	opacity: 0.9;
+	background-color: black;
+	-webkit-box-shadow: 0px 20px 50px #000000;
+    -moz-box-shadow:    0px 20px 50px #000000;
+    box-shadow:         0px 20px 50px #000000;
+    border: none;
+    z-index:999;
+
+    .brand {
+		font-family: $lobster;
+		color: white;
+		text-shadow: none;
+		letter-spacing: 1px;
+	}
 
 	.navbar-right {
 		float: right;
@@ -82,11 +99,29 @@ input[type=submit] {
 		color: #777777;
 		padding: 10px 15px;
 	}
+
+	.navbar-inner {
+		background: black;
+		padding-left: 1em;
+		text-decoration: none;
+		border: none;
+
+		li a {
+			color: $cloud;
+			text-shadow: none;
+		}
+
+		li a:hover {
+			color: $turquoise;
+		}
+
+		.active > a  {
+			background-color: #181818;
+			color: $turquoise;
+		}
+	}
 }
 
-.brand {
-	font-family: $lobster;
-}
 
 .button {
 	font-family: $roboto;

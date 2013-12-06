@@ -68,6 +68,7 @@ Mcitsocial::Application.routes.draw do
   resources :feedbacks
   resources :protips
   get "/questions" => "feedbacks#index"
+  get "/home" => "users#landing"
 
 
 

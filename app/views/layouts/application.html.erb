@@ -16,12 +16,12 @@
 </head>
 <body>
 
-	<div class="navbar">
+	<div class="navbar navbar-fixed-top" id="main-nav">
 	  <div class="navbar-inner">
 	  	<% if current_user.nil? %>
 	    	<a class="brand" href="/">mcit social</a>
 	    <% else %>
-	    	<a class="brand" href="/users">mcit social</a>
+	    	<a class="brand" href="/home">mcit social</a>
 	    <% end %>
 	    <ul class="nav">
 	      <% if not current_user.nil? %>
