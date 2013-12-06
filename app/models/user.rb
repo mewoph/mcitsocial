@@ -76,7 +76,7 @@ class User < ActiveRecord::Base
 
 
   # Gets the full name of of the user
-  def full_name
+  def to_s
   	if first_name.blank? && last_name.blank?
   		email
   	elsif first_name.blank?

@@ -51,5 +51,5 @@ Then /^I should see the number of likes for answer "(.*?)" increase$/ do |arg1|
 end
 
 Then /^I should see the number of likes for answer "(.*?)" decrease$/ do |arg1|
-  @likes > within(".like")
+	@likes > within(".like")
 end
