@@ -97,6 +97,10 @@ input[type=submit] {
 
 	.navbar-right {
 		float: right;
+
+		@media (max-width: 635px) {
+			float: left;
+		}
 	}
 
 	.sign-in-status {
@@ -128,6 +132,7 @@ input[type=submit] {
 			color: $turquoise;
 		}
 	}
+
 }
 
 
@@ -1060,7 +1065,7 @@ input[type=submit] {
 }
 
 
-.question-show, {
+.question-show, .protip-show {
 
 	@include form-input();
 
@@ -1109,7 +1114,7 @@ input[type=submit] {
 
 	.question-header {
 		padding: 2em;
-		background: rgba(0,0,0,0.5);
+		background: rgba(0,0,0,0.7);
 	}
 
 	.comment {
@@ -1230,26 +1235,46 @@ input[type=submit] {
 }
 
 .protip-show, {
+
 	color: white;
-	background: rgba(0,0,0,0.5);
-	padding: 2em;
-	margin-bottom: 4em;
+	background: none;
+	padding: 0;
+
+	@include form-input();
+
+	.protip {
+		background: rgba(0,0,0,0.7);
+		padding: 2em;
+		margin-bottom: 0;
+		padding-bottom: 3em;
+	}
 
 	h1 {
 		color: white;
-		margin-bottom: 1em;
+		margin-bottom: 0.25em;
 		font-size: 2em;
 	}
 
-	h2{
+	h2 {
 		color: white;
 		margin-bottom: 1em;
 		font-size: 1.5em;
+		font-weight: 300;
+	}
+
+	h5, .adder-info {
+		display: inline-block;
+		margin-right: 0.5em;
+	}
+
+	.info {
+		float: right;
 	}
 
 	.adder-name {
 		text-align: right;
 		opacity: 0.7;
+		display: inline-block;
 	}
 
 	.user-name {
