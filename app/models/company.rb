@@ -11,7 +11,7 @@
 class Company < ActiveRecord::Base
   attr_accessible :name
   has_many :feedbacks
-  paginates_per 5
+  paginates_per 10
   validates :name, :presence => {:message => "Company name cannot be blank"}, :uniqueness => true
 
   searchable do #can only search text fields on solr, so need to convert our string fields to text

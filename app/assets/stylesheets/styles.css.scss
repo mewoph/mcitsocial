@@ -4,6 +4,9 @@ $cloud: #ecf0f1;
 $belize: #2980b9;
 $green: #27ae60;
 $silver: #bdc3c7;
+$carrot: #e67e22;
+$pomegranate: #c0392b;
+$turquoise: #1abc9c;
 $lobster: 'Lobster', cursive;
 $roboto: 'Roboto', sans-serif;
 $italiana: 'Italiana', serif;
@@ -49,13 +52,18 @@ $italiana: 'Italiana', serif;
 }
 
 @mixin ellipsis() {
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 body {
+	padding-top: 5em;
 	font-family: $roboto;
+
+	@media (max-width: 980px) {
+		padding: 0;
+	}
 }
 
 a:hover {
@@ -71,8 +79,21 @@ input[type=submit] {
 	width: 100%;
 }
 
-.navbar {
-	opacity: 0.7;
+#main-nav {
+	opacity: 0.9;
+	background-color: black;
+	-webkit-box-shadow: 0px 20px 50px #000000;
+    -moz-box-shadow:    0px 20px 50px #000000;
+    box-shadow:         0px 20px 50px #000000;
+    border: none;
+    z-index:999;
+
+    .brand {
+		font-family: $lobster;
+		color: white;
+		text-shadow: none;
+		letter-spacing: 1px;
+	}
 
 	.navbar-right {
 		float: right;
@@ -80,13 +101,35 @@ input[type=submit] {
 
 	.sign-in-status {
 		color: #777777;
-		padding: 10px 15px;
+	}
+
+	.sign-in-status:hover {
+		color: white;
+		cursor: pointer;
+	}
+
+	.navbar-inner {
+		background: black;
+		padding-left: 2em;
+		text-decoration: none;
+		border: none;
+
+		li a {
+			color: $cloud;
+			text-shadow: none;
+		}
+
+		li a:hover {
+			color: $turquoise;
+		}
+
+		.active > a  {
+			background-color: #181818;
+			color: $turquoise;
+		}
 	}
 }
 
-.brand {
-	font-family: $lobster;
-}
 
 .button {
 	font-family: $roboto;
@@ -209,6 +252,76 @@ input[type=submit] {
 	h3 {
 		font-weight: 300;
 	}
+}
+
+
+.home {
+
+	text-align: center;
+	padding: 1em;
+
+	h2 {
+		color: white;
+		width: 300px;
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.home-box {
+		display: inline-block;
+		padding: 2em;
+		background: black;
+		background: rgba(0, 0, 0, 0.6);
+	}
+
+	.box-menu {
+		margin-left: auto;
+		margin-right: auto;
+		display: inline-block;
+	}
+
+	.menu-item1, .menu-item2, .menu-item3, .menu-item4, .menu-item5 {
+		width: 300px;
+		min-height: 50px;
+		color: white;
+		background: #f53d65;
+		margin-top: 0.5em;
+		opacity: 0.8;
+		-webkit-transition: 0.25s linear;
+	  	transition: 0.25s linear;
+
+		h3 {
+			font-size: 1.25em;
+			padding-top: 5px;
+			font-weight: 300;
+		}
+	}
+
+	.menu-item2 {
+		background: #ff3d00;
+	}
+
+	.menu-item3 {
+		background: #228653;
+	}
+
+	.menu-item4 {
+		background: #329000;
+	}
+
+	.menu-item5 {
+		background: #174200;
+	}
+
+	.menu-item1:hover, .menu-item2:hover, .menu-item3:hover, .menu-item4:hover, .menu-item5:hover {
+		cursor: pointer;
+		opacity: 1;
+	}
+}
+
+.home-bg {
+	@include background-image('eniac-bg.png');
 }
 
 .profile-show, .profile-edit {
@@ -395,6 +508,7 @@ input[type=submit] {
 			opacity: 0.7;
 			display: inline-block;
 			margin-right: 1em;
+			color: $cloud;
 		}
 
 		a:hover {
@@ -406,7 +520,12 @@ input[type=submit] {
 
 	.search-user {
 		@include index-header();
+
+		form {
+			display: inline-block;
+		}
 	}
+
 
 	.profile-thumb {
 		padding: 1em;
@@ -934,7 +1053,6 @@ input[type=submit] {
 
 
 	color: white;
-	padding: 2em;
 	margin-bottom: 4em;
 
 	.question-header {
