@@ -7,6 +7,32 @@ Given /^the following comments exist:$/ do |table|
   end 
 end
 
+#When
+
+When /^I view "(.*?)" question show page$/ do |question|
+  @feedback = Feedback.where(:feedback_content => question)[0]
+	visit feedback_path(@feedback)
+end
+
+When /^I like answer "(.*?)"$/ do |comment|
+	@comment = Comment.where(:comment => comment)[0]
+  	@likes = within(".like")
+  	within(".likes") do
+		click_link "kudos"
+	end
+end
+
+When /^I unlike a previously liked answer "(.*?)"$/ do |comment|
+  @comment = Comment.where(:comment => comment)
+  	within(".likes") do
+		click_link "kudos"
+	end
+	@likes = within(".like")
+	within(".likes") do
+		click_link "undo"
+	end
+end
+
 #Then
 
 Then /^I should see a list of all comments to that question$/ do
@@ -16,7 +42,14 @@ Then /^I should see a list of all comments to that question$/ do
 		page.should have_content comment.comment
 		page.should have_content user.first_name
 		page.should have_content user.last_name
-		page.should have_content comment.created_at
+		page.should have_content comment.get_created_time
 	end
 end
-  
+
+Then /^I should see the number of likes for answer "(.*?)" increase$/ do |arg1|
+  @likes < within(".like")
+end
+
+Then /^I should see the number of likes for answer "(.*?)" decrease$/ do |arg1|
+  @likes > within(".like")
+end
