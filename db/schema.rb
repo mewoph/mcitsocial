@@ -11,8 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-
-ActiveRecord::Schema.define(:version => 20131202193510) do
+ActiveRecord::Schema.define(:version => 20131205193644) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commenter_id"
@@ -25,7 +24,6 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.integer  "cached_votes_score", :default => 0
     t.integer  "cached_votes_up",    :default => 0
   end
-
 
   add_index "comments", ["cached_votes_score"], :name => "index_comments_on_cached_votes_score"
   add_index "comments", ["cached_votes_total"], :name => "index_comments_on_cached_votes_total"
@@ -66,9 +64,17 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.integer  "adder_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.string   "category"
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_score", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
   end
+
+  add_index "protips", ["cached_votes_score"], :name => "index_protips_on_cached_votes_score"
+  add_index "protips", ["cached_votes_total"], :name => "index_protips_on_cached_votes_total"
+  add_index "protips", ["cached_votes_up"], :name => "index_protips_on_cached_votes_up"
 
   create_table "sub_comments", :force => true do |t|
     t.integer  "commenter_id"

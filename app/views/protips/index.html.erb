@@ -9,7 +9,7 @@
 	<ul class = "protips-list">
 		<% @protips.each do |p| %>
 			<li><div onclick="location.href='<%= protip_path(p.id) %>';"><%= p.title %></div>
-
+				<%= p.votes.size %>
 			</li>
 		<% end %>
 
