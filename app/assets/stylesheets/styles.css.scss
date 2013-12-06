@@ -894,9 +894,11 @@ input[type=submit] {
 }
 
 .feedback-new, .protip-new {
+
 	@include index-header();
 
 	background:none;
+	padding-top: 0;
 
 	.text1{
 		margin-bottom:10px;
@@ -942,7 +944,7 @@ input[type=submit] {
 
 	.form-wrapper {
 		width: 50%;
-		min-height: 425px;
+		min-height: 450px;
 		margin-left: auto;
 		margin-right: auto;
 		background: rgba(0,0,0,0.5);
@@ -958,8 +960,13 @@ input[type=submit] {
 			padding-right: 0;
 		}
 
-		textarea {
-			margin-top: 1em;
+		label {
+			margin: 0;
+		}
+
+		textarea, input[type='text'] {
+			margin-top: 0;
+			text-align: left;
 		}
 
 	}
@@ -1318,12 +1325,29 @@ input[type=submit] {
 	  }
 }
 
-.protips-index{
+.protips-index {
 	color: white;
 	padding: 0;
 
 	.add-feedback {
 		@include index-header();
+	}
+
+	.text-wrapper {
+		display: inline-block;
+	}
+
+	#add-protip-link {
+		color: $carrot;
+	}
+
+	#add-protip-link:hover {
+		color: $cloud;
+	}
+
+	.text1 {
+		float: left;
+		margin-right: 0.25em;
 	}
 
 	.container {
