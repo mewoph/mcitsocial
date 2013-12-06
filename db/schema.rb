@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131205193644) do
+ActiveRecord::Schema.define(:version => 20131206161233) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commenter_id"
@@ -75,14 +75,6 @@ ActiveRecord::Schema.define(:version => 20131205193644) do
   add_index "protips", ["cached_votes_score"], :name => "index_protips_on_cached_votes_score"
   add_index "protips", ["cached_votes_total"], :name => "index_protips_on_cached_votes_total"
   add_index "protips", ["cached_votes_up"], :name => "index_protips_on_cached_votes_up"
-
-  create_table "questions", :force => true do |t|
-    t.string   "question"
-    t.integer  "company_id"
-    t.integer  "adder_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
 
   create_table "sub_comments", :force => true do |t|
     t.integer  "commenter_id"

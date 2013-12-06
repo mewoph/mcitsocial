@@ -13,10 +13,10 @@ Background:
 	| What is that? 								| 1 		 | true        | 1        |
 	| Do the likes work? 							| 1          | true        | 1        |
 	And the following comments exist:
-	| comment               | content_id | commenter_id |
-	| That is a test.       | 1          | 1            |
-	| That is a question.   | 1          | 2            | 
-	| I think it works	    | 2          | 1            |
+	| comment               | content_id | commenter_id | source   |
+	| That is a test.       | 1          | 1            | feedback |
+	| That is a question.   | 1          | 2            | feedback |
+	| I think it works	    | 2          | 1            | feedback |
 
 	Scenario: A Registered User can view the feedback show page and see all the answers
 	Given I am a valid user that is logged in
