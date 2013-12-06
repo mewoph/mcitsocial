@@ -18,11 +18,7 @@
 
 	<div class="navbar navbar-fixed-top" id="main-nav">
 	  <div class="navbar-inner">
-	  	<% if current_user.nil? %>
-	    	<a class="brand" href="/">mcit social</a>
-	    <% else %>
-	    	<a class="brand" href="/home">mcit social</a>
-	    <% end %>
+	    <a class="brand" href="/">mcit social</a>
 	    <ul class="nav">
 	      <% if not current_user.nil? %>
 	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path, :id => "users-nav" %></li>

@@ -59,7 +59,8 @@ Mcitsocial::Application.routes.draw do
     post "/signup" => "devise/registrations#create", :as => :user_registration
   end
 
-  root :to => "users#sign_in"
+  root :to => "users#sign_in", :constraints => lambda {|req| req.session[:session_id].blank?}
+  root :to => "users#landing", :constraints => lambda {|req| !req.session[:session_id].blank?}
 
   resources :feedbacks
   resources :users
