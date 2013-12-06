@@ -17,3 +17,6 @@
 /.DS_Store
 /app/.DS_Store
 /app/assets/.DS_Store
+
+#Ignore the solr folder
+/solr/*
