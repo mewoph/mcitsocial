@@ -51,7 +51,6 @@ Mcitsocial::Application.routes.draw do
   # root :to => 'welcome#index'
 
 
-
   devise_for :users, :skip => [:sessions, :registrations] do
     get "/signin" => "devise/sessions#new", :as => :new_user_session
     post "/signin" => "devise/sessions#create", :as => :user_session

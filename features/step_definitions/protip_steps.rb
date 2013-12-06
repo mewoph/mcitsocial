@@ -8,7 +8,9 @@ end
 
 def visit_form_page
 	visit_index_page
-	click_link "Add a Protip"
+	within(".add-protip") do
+		click_link "Add a Protip"
+	end
 end
 
 def visit_protips_category(category_selector)
@@ -98,7 +100,9 @@ When /^I click on protips link in the nav bar$/ do
 end
 
 When /^I click on the add protips link$/ do
-	find('#add-protip-link').click
+	within(".add-protip") do
+		click_link "Add a Protip"
+	end
 end
 
 When /^I create a protip with title "(.*?)", content "(.*?)", and category "(.*?)"$/ do |protip_title, protip_content, protip_category|

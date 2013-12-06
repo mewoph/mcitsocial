@@ -17,6 +17,7 @@ class Protip < ActiveRecord::Base
   validates :title, :presence => true
   validates :content, :presence => true
   validates :category, :presence => true
+  acts_as_votable
 
   def get_adder_name
   	User.find(:adder_id)
@@ -30,5 +31,13 @@ class Protip < ActiveRecord::Base
   	created_at.strftime('%b %d, %Y')
   end
 
+  def count_responses(source)
+    count = Comment.where(:content_id => id, :source => source).count
+    if count == 1
+      return count.to_s + " Response"
+    else
+      return count.to_s + " Responses"
+    end
+  end
 
 end

@@ -11,18 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131202193510) do
+ActiveRecord::Schema.define(:version => 20131205193644) do
 
   create_table "comments", :force => true do |t|
     t.integer  "commenter_id"
     t.string   "comment"
     t.integer  "content_id"
-    t.text     "upvote_ids"
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
     t.integer  "cached_votes_total", :default => 0
     t.integer  "cached_votes_score", :default => 0
     t.integer  "cached_votes_up",    :default => 0
+    t.string   "source"
   end
 
   add_index "comments", ["cached_votes_score"], :name => "index_comments_on_cached_votes_score"
@@ -64,10 +64,18 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.integer  "adder_id"
     t.string   "title"
     t.text     "content"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.string   "category"
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_score", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
   end
+
+  add_index "protips", ["cached_votes_score"], :name => "index_protips_on_cached_votes_score"
+  add_index "protips", ["cached_votes_total"], :name => "index_protips_on_cached_votes_total"
+  add_index "protips", ["cached_votes_up"], :name => "index_protips_on_cached_votes_up"
+<<<<<<< HEAD
 
   create_table "questions", :force => true do |t|
     t.string   "question"
@@ -76,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20131202193510) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+=======
+>>>>>>> 09c5d52d0f2af57af35533c9c12f60ccac04c7f0
 
   create_table "sub_comments", :force => true do |t|
     t.integer  "commenter_id"
