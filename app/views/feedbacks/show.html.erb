@@ -58,6 +58,7 @@
 						</h5>
 					</span>
 				</div>
+
 			</div>
 
 
@@ -78,15 +79,6 @@
 						<div class="comment-content">
 							<br/>
 							<%= sub_comment.comment%>
-				<% @feedback.get_sub_comments(comment.id).each do |sub_comment| %>
-					<div class="row-fluid"> 
-						<div class="span10 offset1">
-							<div class="comment sub-comment">
-								<h4><%= sub_comment.comment%></h4>
-								<div class="adder-name">
-									<i class="fa fa-user"></i> Response by <div class="user-name" onclick="location.href='<%= user_path(sub_comment.commenter_id) %>';"><%= User.find(sub_comment.commenter_id).to_s %></div>  on <%= sub_comment.get_created_time %>
-								</div>
-							</div>	
 						</div>
 					</div>
 				</div>	
