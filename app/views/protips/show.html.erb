@@ -3,11 +3,34 @@
 
 	<h1><%= @protip.title %></h1>
 	<h2> <%= @protip.content %> </h2>
-
+	<h5><%= @protip.votes.size %> <i class="fa fa-thumbs-o-up"></i>
+		<% if !current_user.voted_for? @protip %>
+				<%= link_to "kudos", protip_path(:id => @protip.id, :update_protip_id => @protip.id, :dislike => "disliked") %>
+		<% else %>
+				<%= link_to "undo", protip_path(:id => @protip.id, :update_protip_id => @protip.id, :like => "like") %>
+		<% end %>
+	</h5>
 		<div class="adder-name">
 			<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@protip.adder_id) %>';"><%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
 		</div>
-					
+
+		<div class="comment answer-box">
+			<%= form_tag(protip_path(@protip.id), :method => "get", class: "navbar-form") do %>
+				<h5 class="text-heading">Add your comment below:</h5>
+				<%= text_area_tag :comment, params[:comment], class: "span12 text-box text", placeholder: "Type your comment here..." %>
+				<button class="button" type="submit">Add Answer</button>	  
+			<% end %>
+		</div>
+
+		<% @protip_comments.each do |comment| %>
+			<div class="comment">
+				<h4><%= comment.comment%></h4>
+				<div class="adder-name">
+					<i class="fa fa-user"></i> Comment by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).to_s %></div>  on <%= comment.get_created_time %>
+				</div>
+			</div>
+		<% end %>
+
 </div>
 
 <script>

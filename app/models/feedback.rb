@@ -28,8 +28,8 @@ class Feedback < ActiveRecord::Base
     time :created_at
   end
 
-  def count_responses
-    count = Comment.where(:content_id => id).count
+  def count_responses(source)
+    count = Comment.where(:content_id => id, :source => source).count
     if count == 1
       return count.to_s + " Response"
     else

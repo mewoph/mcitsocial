@@ -627,6 +627,11 @@ input[type=submit] {
 	width: 80%;
 	color: white;
 
+	.count {
+		text-align: left;
+		display: inline;
+	}
+
 	.header-wrapper {
 		width: 100%;
 
@@ -1065,6 +1070,11 @@ input[type=submit] {
 	  	background: rgba(0,0,0,0.2);
 	  	color: white;
 	  	margin-bottom: 1em;
+
+	  	.count {
+			text-align: left;
+			display: inline;
+		}
 
 	  	list-style: none;
 

@@ -3,6 +3,8 @@
 		<% @penn_tips.each do |p| %>
 			<li><div onclick="location.href='<%= protip_path(p.id) %>';"><%= p.title %></div>
 			<div class ="post-info">
+					<h5><%= p.votes.size %> <i class="fa fa-thumbs-o-up"></i> | 
+					<div class="count"><i class="fa fa-comments-o"></i> <%= p.count_responses('protip') %> | </div>
 					<i class="fa fa-user"></i>Posted by <div class="user-name" onclick="location.href='<%= user_path(p.adder_id) %>';">  <%= p.adder_name %></div> on <%= p.get_created_time %>
 				</div>
 			</li>
