@@ -21,10 +21,10 @@
 	    <a class="brand" href="/">mcit social</a>
 	    <ul class="nav">
 	      <% if not current_user.nil? %>
-	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path, :id => "users-nav" %></li>
-	      <li class=<%= is_active('/companies') %>><%= link_to "Companies", companies_path, :id => "companies-nav" %></li>
-	      <li class=<%= is_active('/questions') %>><%= link_to "Questions", questions_path, :id => "questions-nav" %></li>
-	      <li class=<%= is_active('/protips') %>><%= link_to "Protips", protips_path, :id => "protips-nav" %></li>
+	      <li class=<%= is_active('users') %>><%= link_to "Users", users_path, :id => "users-nav" %></li>
+	      <li class=<%= is_active('companies') %>><%= link_to "Companies", companies_path, :id => "companies-nav" %></li>
+	      <li class=<%= is_active('feedbacks') %>><%= link_to "Questions", questions_path, :id => "questions-nav" %></li>
+	      <li class=<%= is_active('protips') %>><%= link_to "Protips", protips_path, :id => "protips-nav" %></li>
 	      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
 	      <% else %>
 	      	<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
