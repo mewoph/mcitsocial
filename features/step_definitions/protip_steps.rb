@@ -139,15 +139,10 @@ When /^I click on the "(.*?)" category$/ do |category|
 end
 
 When /^I click the protip with title "(.*?)" under "(.*?)"$/ do |protip_title, category|
-<<<<<<< HEAD
-	visit_protips_category(category)
-	click protip_title
-=======
 	visit_index_page
 	within(category) do 
-	click_link protip_title
+		click_link protip_title
 	end
->>>>>>> 88ee4694aad4bec8813c096385de1f3aeb87f68c
 end
 
 When /^I view the protips index page$/ do 
