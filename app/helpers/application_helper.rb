@@ -13,7 +13,8 @@ module ApplicationHelper
   end
   
   def is_active(path)
-      "active" if current_page?(path)
+      "active" if params[:controller].include?(path) and 
+      not current_page?('/')
   end
 
 end

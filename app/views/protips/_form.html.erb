@@ -1,9 +1,12 @@
 <div class="form-wrapper">
 <%= simple_form_for(@protip) do |form|%>
 
-	<%= form.input :category, :collection => Category.all %>
-	<%= form.input :title %>
-	<%= form.input :content %>
+    <label>Category</label>
+	<%= form.input :category, :collection => Category.all, :label => false %>
+    <label>Title</label>
+	<%= form.input :title, :label => false %>
+    <label>Content</label>
+	<%= form.input :content, :label => false %>
     <%= form.hidden_field :adder_id, :value => current_user.id%>
 
     <div class="span8">

@@ -54,6 +54,8 @@ Mcitsocial::Application.configure do
   config.assets.precompile += %w( jquery.tagsinput.js )
   config.assets.precompile += %w( tipsy.css )
   config.assets.precompile += %w( jquery.tipsy.js )
+  config.assets.precompile += %w( jquery.magnific-popup.js )
+  config.assets.precompile += %w( jquery.magnific-popup.css )
 
 
   # Disable delivery errors, bad email addresses will be ignored

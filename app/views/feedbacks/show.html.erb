@@ -12,7 +12,7 @@
 		</div>
 	</div>
 
-	<div class="span10 comment answer-box clearfix">
+	<div class="span10 comment answer-box clearfix" id="responses">
 		<div class="span2">
 			<div class="circle" style="background-image:url(<%= current_user.profile_picture.url %>);">
 			</div>
@@ -27,6 +27,7 @@
 	</div>
 
 	<div class="span10 comment clearfix">
+	<%= "No comments yet." if @feedback_comments.empty? %>
 	<% @feedback_comments.each do |comment| %>
 		<div class="individual-comment">
 

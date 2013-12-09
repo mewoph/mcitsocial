@@ -51,24 +51,39 @@ class User < ActiveRecord::Base
 
   searchable do #can only search text fields on solr, so need to convert out string fields to text
     text :first_name
+    
     string  :sort_first_name do
-      first_name.downcase.gsub(/^(an?|the)/, '')
+      if !first_name.blank?
+        first_name.downcase.gsub(/^(an?|the)/, '')
+      end
     end
+
     text :last_name
     string  :sort_last_name do
-      last_name.downcase.gsub(/^(an?|the)/, '')
+      if !last_name.blank?
+        last_name.downcase.gsub(/^(an?|the)/, '')
+      end
     end
+
     text :previous_work
     string  :sort_previous_work do
-      previous_work.downcase.gsub(/^(an?|the)/, '')
+      if !previous_work.blank?
+        previous_work.downcase.gsub(/^(an?|the)/, '')
+      end
     end
+
     text :languages
     string  :sort_languages do
-      languages.downcase.gsub(/^(an?|the)/, '')
+      if !languages.blank?
+        languages.downcase.gsub(/^(an?|the)/, '')
+      end
     end
+
     text :areas_of_interest
     string  :sort_areas_of_interest do
-      areas_of_interest.downcase.gsub(/^(an?|the)/, '')
+      if !areas_of_interest.blank?
+        areas_of_interest.downcase.gsub(/^(an?|the)/, '')
+      end
     end
     time :created_at
   end

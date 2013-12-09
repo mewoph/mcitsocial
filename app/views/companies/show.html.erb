@@ -14,9 +14,9 @@
 				No questions have been added yet.
 			<% else %>
 				<% @questions.each do |q| %>
-					<li><div  onclick="location.href='<%= feedback_path(q.id) %>';"><%= q.feedback_content %></div>
+					<li><div onclick="location.href='<%= feedback_path(q.id) %>';"><%= q.feedback_content %></div>
 						<div class="adder-name">
-							<div class="count"><i class="fa fa-comments-o"></i> <%= q.count_responses('feedback') %></div>
+							<div class="count" onclick="location.href='<%= feedback_path(q.id) %>#responses';"><i class="fa fa-comments-o"></i> <%= q.count_responses('feedback') %></div>
 							<i class="fa fa-user"></i>  Posted by <div class="user-name" onclick="location.href='<%= user_path(q.adder_id) %>';"><%= q.adder_name %></div>
 							on <%= q.get_created_time %>
 						</div>

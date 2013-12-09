@@ -137,6 +137,7 @@ end
 When /^I click on the "(.*?)" category$/ do |category|
 	visit_protips_category(category)
 end
+<<<<<<< HEAD
 #TODO: Incomplete test
 # When /^I click the protip with title "(.*?)" under "(.*?)"$/ do |protip_title, category|
 # 	visit_index_page
@@ -144,6 +145,15 @@ end
 # 	click protip_title
 # 	end
 # end
+=======
+
+When /^I click the protip with title "(.*?)" under "(.*?)"$/ do |protip_title, category|
+	visit_index_page
+	within(category) do 
+		click_link protip_title
+	end
+end
+>>>>>>> d4b2042b941ac65cec5e3ca2d01018f1d6c74828
 
 When /^I view the protips index page$/ do 
 	visit_index_page
