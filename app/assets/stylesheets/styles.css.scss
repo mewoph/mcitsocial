@@ -98,8 +98,8 @@ input[type=submit] {
 	.navbar-right {
 		float: right;
 
-		@media (max-width: 635px) {
-			float: left;
+		a {
+			opacity: 0.7;
 		}
 	}
 

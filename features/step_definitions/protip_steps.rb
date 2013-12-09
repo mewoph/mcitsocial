@@ -141,7 +141,7 @@ end
 When /^I click the protip with title "(.*?)" under "(.*?)"$/ do |protip_title, category|
 	visit_index_page
 	within(category) do 
-	click_link protip_title
+		click_link protip_title
 	end
 end
 
