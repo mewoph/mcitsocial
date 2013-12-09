@@ -27,6 +27,7 @@
 	</div>
 
 	<div class="span10 comment clearfix">
+	<%= "No comments yet." if @feedback_comments.empty? %>
 	<% @feedback_comments.each do |comment| %>
 		<div class="individual-comment">
 

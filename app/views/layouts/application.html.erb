@@ -8,6 +8,7 @@
   <%= javascript_include_tag "jquery.tipsy" %>
   <%= stylesheet_link_tag    "magnific-popup", :media => "all" %>
   <%= javascript_include_tag "jquery.magnific-popup" %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
   <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,700,900,500' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Italiana' rel='stylesheet' type='text/css'>
@@ -18,27 +19,28 @@
 
 	<div class="navbar navbar-fixed-top" id="main-nav">
 	  <div class="navbar-inner">
-	    <a class="brand" href="/">mcit social</a>
-	    <ul class="nav">
-	      <% if not current_user.nil? %>
-	      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path, :id => "users-nav" %></li>
-	      <li class=<%= is_active('/companies') %>><%= link_to "Companies", companies_path, :id => "companies-nav" %></li>
-	      <li class=<%= is_active('/questions') %>><%= link_to "Questions", questions_path, :id => "questions-nav" %></li>
-	      <li class=<%= is_active('/protips') %>><%= link_to "Protips", protips_path, :id => "protips-nav" %></li>
-	      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
-	      <% else %>
-	      	<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
-	      <% end %>
-	    </ul>
+	  	    <div class="container">
+			  	<a class="brand" href="/">mcit social</a>
+			    <ul class="nav">
+			      <% if not current_user.nil? %>
+			      <li class=<%= is_active('/users') %>><%= link_to "Users", users_path, :id => "users-nav" %></li>
+			      <li class=<%= is_active('/companies') %>><%= link_to "Companies", companies_path, :id => "companies-nav" %></li>
+			      <li class=<%= is_active('/questions') %>><%= link_to "Questions", questions_path, :id => "questions-nav" %></li>
+			      <li class=<%= is_active('/protips') %>><%= link_to "Protips", protips_path, :id => "protips-nav" %></li>
+			      <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+			      <% else %>
+			      	<li class=<%= is_active('/signup') %>> <%= link_to "Sign up", new_user_registration_path %></li>
+			      <% end %>
+			    </ul>
 
-	    <% unless current_user.nil? %>
-	    	<ul class="nav navbar-right">
-	    	<li class="sign-in-status" onclick="location.href='<%= user_path(current_user.id) %>';">My Profile</li>
-	    	</ul>
-	    <% end %>
-
+			    <% unless current_user.nil? %>
+			    	<ul class="nav navbar-right">
+			    	<li class="sign-in-status" onclick="location.href='<%= user_path(current_user.id) %>';">My Profile</li>
+			    	</ul>
+			    <% end %>
+			</div>
+		</div>
 	  </div>
-	</div>
 	<div class="row-fluid">
 	    <div class="span10 offset1">
 			<% if notice %>
