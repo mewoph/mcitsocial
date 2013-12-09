@@ -16,7 +16,7 @@ Background:
         | comment               | content_id | commenter_id | source   |
         | That is a test.       | 1          | 1            | feedback |
         | That is a question.   | 1          | 2            | feedback |
-        | I think it works            | 2          | 1            | feedback |
+        | I think it works      | 2          | 1            | feedback |
 
         Scenario: A Registered User can view the feedback show page and see all the answers
                 Given I am a valid user that is logged in

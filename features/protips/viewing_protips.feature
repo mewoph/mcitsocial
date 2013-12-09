@@ -23,7 +23,6 @@ Background:
 		| ABC        | Connor           | AHH     |
 		| EFG        | Abeer            | What?   | 
 
-	
 
 Scenario: A Registered User Can View the Protips Index Page
 	Given I am a valid user that is logged in
@@ -85,7 +84,7 @@ Scenario: A Registered User Can Nagivate to Protip Adder's Profile Page
 	Given I am a valid user that is logged in
 	When I view the protips index page
 	And I click on the "Interview Tips" category
-	And I click on "Abeer Minhas" within the protip "EFG"
+	And I click on "Abeer Minhas" within the protip "EFG" in the "#interviewtips" category
 	Then I should see the profile of "Abeer"
 
 Scenario: A Registered User Should See the Same Number of Protip Titles and of Adder Names
