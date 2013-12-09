@@ -20,9 +20,9 @@
 				<button class="button" type="submit">Add Answer</button>	  
 			<% end %>
 		</div>
-
+		
+	<div class="comment" id = "comment-list">
 		<% @protip_comments.each do |comment| %>
-			<div class="comment">
 				<h4><%= comment.comment%></h4>
 				<div class="adder-name">
 					<i class="fa fa-user"></i> Comment by <div class="user-name" onclick="location.href='<%= user_path(comment.commenter_id) %>';"><%= User.find(comment.commenter_id).to_s %></div>  on <%= comment.get_created_time %>

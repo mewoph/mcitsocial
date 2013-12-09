@@ -29,15 +29,8 @@ Background:
 
 Scenario: A Registered User Can Add a New Comment To a Protip
 	When I enter "ThisIsMyComment" in the comment field
-	And I click submit comment
-	Then I should see a success comment created message
 	And I should see "ThisIsMyComment" on the protips show page
-	And I should see "AdderName" along with the comment
-
-Scenario: A Registered User Cannot Add a Blank Comment
-	When I enter nothing in the comment field
-	And I click submit comment
-	Then I should see an comment adding error message
+	And I should see "Test Name" along with the comment
 
 Scenario: A Registered User Can See All Comments for a Protip
 	Then I should see all comments for the protip titled "ABC"
