@@ -33,7 +33,7 @@
 
 	    <% unless current_user.nil? %>
 	    	<ul class="nav navbar-right">
-	    	<li class="sign-in-status" onclick="location.href='<%= user_path(current_user.id) %>';">My Profile</li>
+	    	<li class="sign-in-status"><%= link_to "My Profile", user_path(current_user.id) %></li>
 	    	</ul>
 	    <% end %>
 
