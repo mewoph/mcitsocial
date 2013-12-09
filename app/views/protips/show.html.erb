@@ -7,7 +7,7 @@
 
 		<span class="info">
 			<div class="adder-info">
-					<i class="fa fa-user"></i> Posted by <div class="adder-name" onclick="location.href='<%= user_path(@protip.adder_id) %>';"><%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
+					<i class="fa fa-user"></i> Posted by <div class="user-name" onclick="location.href='<%= user_path(@protip.adder_id) %>';"><%= @protip.adder_name %></div> on <%= @protip.get_created_time %>
 			</div>
 
 			<h5><%= @protip.votes.size %> 
@@ -30,8 +30,8 @@
 		<div class="span10">
 			<%= form_tag(protip_path(@protip.id), :method => "get", class: "navbar-form") do %>
 				<h5 class="text-heading">Add your comment below:</h5>
-					<%= text_area_tag :comment, params[:comment], class: "span12 text-box text", placeholder: "Type your answer here..." %>
-					<button class="button" type="submit">Add Answer</button>	
+					<%= text_area_tag :comment, params[:comment], class: "span12 text-box text", placeholder: "Type your comment here..." %>
+					<button class="button" type="submit">Add Comment</button>	
 			<% end %>
 		</div>
 	</div>

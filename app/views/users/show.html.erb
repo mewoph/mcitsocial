@@ -22,7 +22,7 @@
                   <hr/>
                   <p><%= @user.full_bio %></p>
                   <hr/>
-                  <% if !@user.email.blank? %>
+                  <% if !@user.email.blank? && @user.id != current_user.id%>
                     <a href="mailto:<%= @user.email %>"><div class="button email-user">Email <%= @user.first_name %></div></a>
                   <% end %>
 
