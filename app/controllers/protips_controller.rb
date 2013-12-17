@@ -11,6 +11,9 @@ class ProtipsController < ApplicationController
 
 	def new
 		@protip = Protip.new
+		if not params[:category].blank?
+			@protip.category = params[:category]
+		end
 	end
 
 	def show
