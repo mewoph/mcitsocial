@@ -779,6 +779,11 @@ input[type=submit] {
 		display: inline;
 	}
 
+	.count:hover {
+		cursor: pointer;
+		color: $green;
+	}
+
 	.header-wrapper {
 		width: 100%;
 
@@ -1333,9 +1338,15 @@ input[type=submit] {
 	  	color: white;
 	  	margin-bottom: 1em;
 
-	  	.count {
+		.count {
 			text-align: left;
 			display: inline;
+			margin-right: 0.25em;
+		}
+
+		.count:hover {
+			cursor: pointer;
+			color: $green;
 		}
 
 	  	list-style: none;
