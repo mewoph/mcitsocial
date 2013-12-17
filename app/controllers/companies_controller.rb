@@ -30,7 +30,7 @@ class CompaniesController < ApplicationController
 	def show
 		@company = Company.find(params[:id])
 		@questions = @company.feedbacks.where(:is_question => true).order('created_at DESC')
-		@comments = @company.feedbacks.where(:is_question => false)
+		@comments = @company.feedbacks.where(:is_question => false).order('created_at DESC')
 	end
 
 	def create
